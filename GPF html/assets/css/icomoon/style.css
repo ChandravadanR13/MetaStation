@@ -1,0 +1,153 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?sjol96');
+  src:  url('fonts/icomoon.eot?sjol96#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?sjol96') format('truetype'),
+    url('fonts/icomoon.woff?sjol96') format('woff'),
+    url('fonts/icomoon.svg?sjol96#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-social-copy:before {
+  content: "\e91e";
+  color: #fff;
+}
+.icon-social-cancel:before {
+  content: "\e91f";
+}
+.icon-change-email:before {
+  content: "\e91d";
+  color: #ffa200;
+}
+.icon-eye:before {
+  content: "\e91b";
+  color: #fff;
+}
+.icon-eye-slash:before {
+  content: "\e91c";
+  color: #fff;
+}
+.icon-email-q:before {
+  content: "\e91a";
+  color: #ed6f00;
+}
+.icon-profile-back:before {
+  content: "\e919";
+  color: #fff;
+}
+.icon-social-plus:before {
+  content: "\e918";
+  color: #fff;
+}
+.icon-logout:before {
+  content: "\e915";
+  color: #fff;
+}
+.icon-setting:before {
+  content: "\e916";
+  color: #fff;
+}
+.icon-profile:before {
+  content: "\e917";
+  color: #fff;
+}
+.icon-gpf-arrow:before {
+  content: "\e914";
+  color: #fff;
+}
+.icon-world:before {
+  content: "\e913";
+  color: #fff;
+}
+.icon-Dashboard:before {
+  content: "\e909";
+  color: #fff;
+}
+.icon-Dashboard-Fill:before {
+  content: "\e90a";
+  color: #fff;
+}
+.icon-Home:before {
+  content: "\e90b";
+  color: #fff;
+}
+.icon-Home-Fill:before {
+  content: "\e90c";
+  color: #fff;
+}
+.icon-Marketplace:before {
+  content: "\e90d";
+  color: #fff;
+}
+.icon-Marketplace-Fill:before {
+  content: "\e90e";
+  color: #fff;
+}
+.icon-Panel:before {
+  content: "\e90f";
+  color: #fff;
+}
+.icon-Panel-Fill:before {
+  content: "\e910";
+  color: #fff;
+}
+.icon-Wallet:before {
+  content: "\e911";
+  color: #fff;
+}
+.icon-Wallet-Fill:before {
+  content: "\e912";
+  color: #fff;
+}
+.icon-latest-blog-arrow:before {
+  content: "\e908";
+  color: #b1f392;
+}
+.icon-backward-slick:before {
+  content: "\e906";
+  color: #fff;
+}
+.icon-forward-slick:before {
+  content: "\e907";
+}
+.icon-plus-accordion:before {
+  content: "\e904";
+  color: #fff;
+}
+.icon-cancel-accordion:before {
+  content: "\e905";
+  color: #fff;
+}
+.icon-cancel-plan:before {
+  content: "\e902";
+  color: #ff8282;
+}
+.icon-right-plan:before {
+  content: "\e903";
+  color: #b1f293;
+}
+.icon-meta-save-money:before {
+  content: "\e900";
+  color: #b1f293;
+}
+.icon-create-portfolio:before {
+  content: "\e901";
+  color: #b1f293;
+}
