@@ -1,0 +1,118 @@
+<div [ngClass]="{'shrink-expand-sidebar-class': toggle}">
+  <div class="logo-sidebar">
+    <img style="max-width: 80%" src="/assets/meta-station.png" />
+  </div>
+
+  <div class="flex flex-column navbarr sidebar-icons">
+
+    <button type="button" *ngIf="this.userRole === 'pro'" routerLink="/app/home" class="flex align-items-center"
+      [ngClass]="{
+        active: activeButton === 'btn1',
+        'justify-content-start': spanStatus,
+        'justify-content-center': spanStatus == false
+      }" (click)="setActiveButton('btn1')">
+
+      <img src="../../../assets/home.svg" style="margin: 0px 20px; font-size: 16px" /><span
+        *ngIf="spanStatus">Home</span>
+    </button>
+
+    <button type="button" *ngIf="this.userRole === 'pro'" routerLink="/app/dashboard" class="flex align-items-center"
+      [ngClass]="{
+        active: activeButton === 'btn2',
+        'justify-content-start': spanStatus,
+        'justify-content-center': spanStatus == false
+      }" (click)="setActiveButton('btn2')">
+      <img src="../../../assets/Dashboard Icon.svg" style="margin: 0px 20px; font-size: 16px" /><span
+        *ngIf="spanStatus">Dashboard</span>
+    </button>
+
+    <div class="dropdown" style="width: 100%">
+      <button class="dropbtn" *ngIf="this.userRole === 'pro'" class="flex align-items-center" style="width: 100%"
+        [ngClass]="{
+          active: activeButton === 'btn3',
+          'justify-content-start': spanStatus,
+          'justify-content-center': spanStatus == false
+        }" (click)="setActiveButton('btn3')" (click)="hide('mark')">
+        <img src="../../../assets/MarketPlace Icon.svg" style="margin: 0px 20px; font-size: 16px" />
+        <span *ngIf="spanStatus">Marketplace</span><span class="arrow" *ngIf="spanStatus">&#9660;</span>
+      </button>
+      <div class="dropdown-content" *ngIf="showpop">
+        <a routerLink="./marketplace/main-signle" (click)="this.showpop = false"><svg xmlns="http://www.w3.org/2000/svg"
+            width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M3.261 2.18833C3.598 1.91433 4.09 2.03433 4.305 2.41133C4.502 2.75533 4.395 3.18833 4.095 3.44633C3.43732 4.00924 2.90947 4.70803 2.5478 5.49455C2.18613 6.28107 1.99924 7.13664 2 8.00233C1.99924 8.86802 2.18613 9.72359 2.5478 10.5101C2.90947 11.2966 3.43732 11.9954 4.095 12.5583C4.395 12.8163 4.502 13.2483 4.305 13.5933C4.09 13.9703 3.598 14.0903 3.261 13.8163C2.3976 13.1134 1.70177 12.2268 1.22416 11.221C0.746545 10.2153 0.499159 9.11571 0.500002 8.00233C0.499159 6.88895 0.746545 5.78938 1.22416 4.78364C1.70177 3.7779 2.3976 2.89129 3.261 2.18833ZM11.695 2.41133C11.498 2.75533 11.605 3.18833 11.905 3.44633C12.5627 4.00924 13.0905 4.70803 13.4522 5.49455C13.8139 6.28107 14.0008 7.13664 14 8.00233C14.0008 8.86802 13.8139 9.72359 13.4522 10.5101C13.0905 11.2966 12.5627 11.9954 11.905 12.5583C11.605 12.8163 11.498 13.2483 11.695 13.5933C11.91 13.9703 12.402 14.0903 12.739 13.8163C13.6024 13.1134 14.2982 12.2268 14.7758 11.221C15.2535 10.2153 15.5008 9.11571 15.5 8.00233C15.5008 6.88895 15.2535 5.78938 14.7758 4.78364C14.2982 3.7779 13.6024 2.89129 12.739 2.18833C12.402 1.91433 11.91 2.03433 11.695 2.41133ZM4.759 4.88033C5.074 4.55333 5.596 4.67033 5.821 5.06433C6.011 5.39433 5.918 5.80833 5.677 6.10433C5.23925 6.64001 5.00008 7.31053 5 8.00233C5 8.72233 5.254 9.38333 5.677 9.90133C5.918 10.1963 6.01 10.6093 5.821 10.9413C5.596 11.3343 5.074 11.4513 4.759 11.1243C3.95124 10.2857 3.49996 9.16669 3.5 8.00233C3.5 6.78933 3.98 5.68933 4.76 4.88033M10.18 5.06433C9.99 5.39433 10.082 5.80833 10.324 6.10433C10.746 6.62033 11 7.28233 11 8.00233C11 8.72233 10.746 9.38333 10.323 9.90133C10.081 10.1963 9.99 10.6093 10.179 10.9413C10.404 11.3343 10.926 11.4513 11.241 11.1243C12.0506 10.2869 12.5021 9.16709 12.5 8.00233C12.5 6.78933 12.02 5.68933 11.24 4.88033C10.926 4.55333 10.404 4.67033 10.179 5.06433M8 9.50233C8.39783 9.50233 8.77936 9.34429 9.06066 9.06299C9.34197 8.78169 9.5 8.40015 9.5 8.00233C9.5 7.6045 9.34197 7.22297 9.06066 6.94167C8.77936 6.66036 8.39783 6.50233 8 6.50233C7.60218 6.50233 7.22065 6.66036 6.93934 6.94167C6.65804 7.22297 6.5 7.6045 6.5 8.00233C6.5 8.40015 6.65804 8.78169 6.93934 9.06299C7.22065 9.34429 7.60218 9.50233 8 9.50233Z"
+              fill="white" />
+          </svg> <span>Signal provider</span></a>
+        <a routerLink="./marketplace/fundmain" (click)="this.showpop = false"><svg xmlns="http://www.w3.org/2000/svg"
+            width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path
+              d="M4.40986 14.5298L7.81186 11.1278L10.6409 13.9568L13.7979 10.7998L12.0049 9.00681H17.0049V14.0068L15.2119 12.2138L10.6409 16.7848L7.81186 13.9568L5.33786 16.4308C6.46127 18.1217 8.18548 19.3222 10.1611 19.7892C12.1367 20.2561 14.2159 19.9545 15.9775 18.9455C17.739 17.9365 19.0511 16.2956 19.6478 14.3552C20.2445 12.4149 20.0813 10.3202 19.1911 8.49575C18.301 6.67127 16.7505 5.25344 14.8539 4.52956C12.9573 3.80567 10.8565 3.82988 8.97705 4.59728C7.09764 5.36468 5.58026 6.81787 4.73239 8.66237C3.88452 10.5069 3.76958 12.6047 4.41086 14.5308M2.87386 16.0888L2.86386 16.0788L2.86786 16.0748C2.29879 14.7945 2.00511 13.4089 2.00586 12.0078C2.00586 6.48481 6.48286 2.00781 12.0059 2.00781C17.5289 2.00781 22.0059 6.48481 22.0059 12.0078C22.0059 17.5308 17.5289 22.0078 12.0059 22.0078C7.93586 22.0078 4.43586 19.5778 2.87386 16.0888Z"
+              fill="white" />
+          </svg> <span>Fund mange</span></a>
+        <a routerLink="./marketplace/main-trading" (click)="this.showpop = false"><svg
+            xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path
+              d="M6 11C6 8.172 6 6.757 6.879 5.879C7.757 5 9.172 5 12 5H15C17.828 5 19.243 5 20.121 5.879C21 6.757 21 8.172 21 11V16C21 18.828 21 20.243 20.121 21.121C19.243 22 17.828 22 15 22H12C9.172 22 7.757 22 6.879 21.121C6 20.243 6 18.828 6 16V11Z"
+              stroke="white" stroke-width="1.5" />
+            <path opacity="0.5"
+              d="M6 19C5.20435 19 4.44129 18.6839 3.87868 18.1213C3.31607 17.5587 3 16.7956 3 16V10C3 6.229 3 4.343 4.172 3.172C5.343 2 7.229 2 11 2H15C15.7956 2 16.5587 2.31607 17.1213 2.87868C17.6839 3.44129 18 4.20435 18 5"
+              stroke="white" stroke-width="1.5" />
+          </svg> <span>Copy trading</span></a>
+      </div>
+    </div>
+
+    <button pButton pTooltip="Trade Panel" tooltipPosition="right" type="button"
+      *ngIf="userRole === 'pro' || userRole === 'basic'" routerLink="/app/panel" class="flex align-items-center"
+      [ngClass]="{
+        active: activeButton === 'btn4',
+        'justify-content-start': spanStatus,
+        'justify-content-center': spanStatus == false
+      }" (click)="setActiveButton('btn4')">
+      <!-- <img
+        src="../../../assets/Panel Icon.svg"
+        style="margin: 0px 20px; font-size: 16px"
+      /> -->
+      <i class="fa-solid fa-table-columns" style="margin: 0px 20px; font-size: 24px"></i>
+      <span *ngIf="spanStatus">Panel</span>
+    </button>
+
+    <button pButton pTooltip="Wallet" tooltipPosition="right" type="button"
+      *ngIf="userRole === 'pro' || userRole === 'basic'" routerLink="/app/wallets" class="flex align-items-center"
+      [ngClass]="{
+        active: activeButton === 'btn5',
+        'justify-content-start': spanStatus,
+        'justify-content-center': spanStatus == false
+      }" (click)="setActiveButton('btn5')">
+      <!-- <img
+        src="../../../assets/Wallet Icon.svg"
+        style="margin: 0px 20px; font-size: 16px"
+      /> -->
+      <i class="fa-solid fa-wallet" style="margin: 0px 20px; font-size: 24px"></i>
+      <span *ngIf="spanStatus">Wallet</span>
+    </button>
+
+    <!-- <div class="dropdown" style="width: 100%">
+      <button
+      *ngIf="userRole === 'pro' || userRole === 'basic'"
+      pButton pTooltip="History" tooltipPosition="right"
+        class="dropbtn flex align-items-center"
+        style="width: 100%"
+        [ngClass]="{
+          active: activeButton === 'btn6',
+          'justify-content-start': spanStatus,
+          'justify-content-center': !spanStatus
+        }"
+        (click)="setActiveButton('btn6'); hide('his')"
+      >
+        <img src="../../../assets/MarketPlace Icon.svg" style="margin: 0px 20px; font-size: 16px" />
+        <i class="fa-solid fa-clock-rotate-left" style="margin: 0px 20px; font-size: 24px"></i>
+        <span *ngIf="spanStatus">History</span>
+        <span class="arrow" *ngIf="spanStatus">&#9660;</span>
+      </button>
+      <div class="dropdown-content" *ngIf="showpopHistory">
+        <button pButton pTooltip="Deposit" tooltipPosition="right" (click)="this.showpopHistory = false; navigate('deposit')"><i class="fa-solid fa-arrow-right-to-bracket"></i></button>
+        <button pButton pTooltip="Withdraw" tooltipPosition="right" (click)="this.showpopHistory = false; navigate('withdraw')"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
+      </div>
+    </div> -->
+  </div>
+</div>

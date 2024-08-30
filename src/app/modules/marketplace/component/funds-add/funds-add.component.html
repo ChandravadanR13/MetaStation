@@ -1,0 +1,310 @@
+
+<div class="card">
+    <div class="card-header">
+      <p><i class="pi pi-arrow-left"  style="font-size: 1rem;margin-right: 10px;margin-top: 3px;" (click)="backToPrevious()"></i>
+        Nomiks Stable</p>
+    </div>
+    <div class="grid flex px-3">
+
+        <div class="col-12 md:col-3">
+          <label class="form-label">Rank</label>
+          <i class="pi pi-info-circle" pTooltip="Information" tooltipPosition="right"
+            style="margin-top: 12px;"></i>
+          <input class="form-input" type="text" style="width: 100%" pInputText />
+        </div>
+
+        <div class="col-12 md:col-3">
+          <label class="form-label">Name</label>
+      <i class="pi pi-info-circle" pTooltip="Information" tooltipPosition="right"
+      style="margin-top: 12px;"></i>
+      <input class="form-input" type="text" style="width: 100%" pInputText />
+        </div>
+
+        <div class="col-12 md:col-3">
+          <label class="form-label">Subscriber Count</label>
+      <i class="pi pi-info-circle" pTooltip="Information" tooltipPosition="right"
+      style="margin-top: 12px;"></i>
+      <input class="form-input" type="text" style="width: 100%" pInputText />
+        </div>
+        
+        <div class="col-12 md:col-3">
+          <label class="form-label">Rewards</label>
+          <i class="pi pi-info-circle" pTooltip="Information" tooltipPosition="right"
+          style="margin-top: 12px;" ></i>
+          <input class="form-input" type="text" style="width: 100%" pInputText />
+        </div>
+    </div>
+
+    <!-- First row End -->
+    <div class="grid flex px-3">
+
+      <div class="col-12 md:col-3">
+        <label class="form-label">Ticket Size</label>
+        <i class="pi pi-info-circle" pTooltip="Information" tooltipPosition="right"
+          style="margin-top: 12px;"></i>
+        <input class="form-input" type="text" style="width: 100%" pInputText />
+      </div>
+
+      <div class="col-12 md:col-3">
+        <label class="form-label">AUM (Fund Size)</label>
+    <i class="pi pi-info-circle" pTooltip="Information" tooltipPosition="right"
+    style="margin-top: 12px;"></i>
+    <input class="form-input" type="text" style="width: 100%" pInputText />
+      </div>
+
+      <div class="col-12 md:col-3">
+        <label class="form-label">Risk</label>
+    <i class="pi pi-info-circle" pTooltip="Information" tooltipPosition="right"
+    style="margin-top: 12px;"></i>
+    <input class="form-input" type="text" style="width: 100%" pInputText />
+      </div>
+      
+      <div class="col-12 md:col-3">
+        <label class="form-label">KYC </label>
+        <i class="pi pi-info-circle" pTooltip="Information" tooltipPosition="right"
+        style="margin-top: 12px;" ></i>
+        <p-dropdown [options]="commonOptions" optionLabel="name" style="width: 100%;"></p-dropdown>
+      </div>
+  </div>
+  <!-- Second row End -->
+  <div class="grid flex px-3">
+
+    <div class="col-12 md:col-3">
+      <label class="form-label">Master Account</label>
+      <i class="pi pi-info-circle" pTooltip="Information" tooltipPosition="right"
+        style="margin-top: 12px;"></i>
+      <input class="form-input" type="text" style="width: 100%" pInputText />
+    </div>
+
+    <div class="col-12 md:col-3">
+      <label class="form-label">Broker</label>
+  <i class="pi pi-info-circle" pTooltip="Information" tooltipPosition="right"
+  style="margin-top: 12px;"></i>
+  <input class="form-input" type="text" style="width: 100%" pInputText />
+    </div>
+
+    <div class="col-12 md:col-3">
+      <label class="form-label"> Strategy</label>
+  <i class="pi pi-info-circle" pTooltip="Information" tooltipPosition="right"
+  style="margin-top: 12px;"></i>
+  <input class="form-input" type="text" style="width: 100%" pInputText />
+  <!-- <p-dropdown [options]="commonOptions" optionLabel="name" style="width: 100%;"></p-dropdown> -->
+
+    </div>
+    
+    <div class="col-12 md:col-3">
+      <label class="form-label">Market  </label>
+      <i class="pi pi-info-circle" pTooltip="Information" tooltipPosition="right"
+      style="margin-top: 12px;" ></i>
+      <p-dropdown [options]="commonOptions" optionLabel="name" style="width: 100%;"></p-dropdown>
+    </div>
+</div>
+     <!-- Third row End -->
+     <div class="grid flex px-3">
+
+      <div class="col-12 md:col-3">
+        <label class="form-label">Deposite rule</label>
+        <i class="pi pi-info-circle" pTooltip="Information" tooltipPosition="right"
+          style="margin-top: 12px;"></i>
+        <input class="form-input" type="text" style="width: 100%" pInputText />
+      </div>
+
+      <div class="col-12 md:col-3">
+        <label class="form-label">Access</label>
+    <i class="pi pi-info-circle" pTooltip="Information" tooltipPosition="right"
+    style="margin-top: 12px;"></i>
+    <input class="form-input" type="text" style="width: 100%" pInputText />
+      </div>
+
+      <div class="col-12 md:col-3">
+        <label class="form-label">Payout Team</label>
+    <i class="pi pi-info-circle" pTooltip="Information" tooltipPosition="right"
+    style="margin-top: 12px;"></i>
+   
+    <div class="grid flex">
+      <div class="col-6 md:col-6">
+        <input class="form-input" type="text" style="width: 100%" pInputText />
+      </div>
+     <div class="col-6 md:col-6">
+        <input class="form-input" type="text" style="width: 100%" pInputText />
+     </div>
+   </div>
+
+</div>
+
+      <div class="col-12 md:col-3">
+        <label class="form-label">Payout Currency</label>
+    <i class="pi pi-info-circle" pTooltip="Information" tooltipPosition="right"
+    style="margin-top: 12px;"></i>
+    <input class="form-input" type="text" style="width: 100%" pInputText />
+      </div>
+
+     </div>
+     <!-- Fourth row End -->
+     <div class="grid flex px-3">
+
+        <div class="col-12 md:col-3">
+          <label class="form-label">Assets</label>
+          <i class="pi pi-info-circle" pTooltip="Information" tooltipPosition="right"
+            style="margin-top: 12px;"></i>
+          <input class="form-input" type="text" style="width: 100%" pInputText />
+        </div>
+        </div>
+</div>
+<!-- chart start -->
+
+<div class="card">
+    <div class="card-header">
+      <p>Profit</p>
+    </div>
+    <div class="chart-container">
+      <div class="legend-container">
+        <div class="btn-group">
+          <button class="first" [ngClass]="id === 1 ? 'first active' : ''" (click)="onCLickedButton(1)">1D</button>
+          <button [ngClass]="id === 2 ? 'active' : ''" (click)="onCLickedButton(2)">1W</button>
+          <button [ngClass]="id === 3 ? 'active' : ''" (click)="onCLickedButton(3)">1M</button>
+          <button [ngClass]="id === 4 ? 'active' : ''" (click)="onCLickedButton(4)">6M</button>
+          <button [ngClass]="id === 5 ? 'last active' : ''" class="last" (click)="onCLickedButton(5)">1Y</button>
+        </div>
+      </div>
+      <div class="main-chart-container">
+        <div class="chart-container">
+          <canvas id="MyChart6">{{ chart }}</canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<!-- Last Card Start -->
+<div class="card">
+    <div class="card-header">
+        <h3>Promotional Discount</h3>
+      </div>
+  
+      <!-- start of first row -->
+        <div class="grid flex px-3 mt-2">
+     
+          <div class="col-12 md:col-3">
+           <div class="flex">
+             <div class="flex flex-column gap-2" style="width: 100%;">
+                 <label htmlFor="username">Entry Fee</label>
+                 <input pInputText id="username" aria-describedby="username-help"/>
+             </div>
+         </div>
+          </div>
+      
+      
+          <div class="col-12 md:col-3">
+           <div class="flex ">
+             <div class="flex flex-column gap-2" style="width: 100%;">
+                 <label htmlFor="username">Exit Fees</label>
+                 <input pInputText id="username" aria-describedby="username-help" />
+             </div>
+         </div>
+          </div>
+  
+          <div class="col-12 md:col-3">
+            <div class="flex ">
+              <div class="flex flex-column gap-2" style="width: 100%;">
+                  <label htmlFor="username">Management Fees</label>
+                  <input pInputText id="username" aria-describedby="username-help" />
+              </div>
+          </div>
+           </div>
+           <div class="col-12 md:col-3">
+            <div class="flex ">
+              <div class="flex flex-column gap-2" style="width: 100%;">
+                  <label htmlFor="username">Performance Fees</label>
+                  <input pInputText id="username" aria-describedby="username-help" />
+              </div>
+          </div>
+           </div>
+      
+        </div>
+        <!-- end of first row -->
+  
+        <!-- start second row -->
+  
+        <div class="grid flex px-3 mt-2">
+     
+          <div class="col-12 md:col-3">
+           <div class="flex">
+             <div class="flex flex-column gap-2" style="width: 100%;">
+                 <label htmlFor="username">Upfront Fees</label>
+                 <input pInputText id="username" aria-describedby="username-help"/>
+             </div>
+         </div>
+          </div>
+  
+          <div class="col-12 md:col-3">
+            <div class="flex">
+              <div class="flex flex-column gap-2" style="width: 100%;">
+                  <label htmlFor="username">Backend Purposes</label>
+                  <input pInputText id="username" aria-describedby="username-help"/>
+              </div>
+          </div>
+           </div>
+  
+           <div class="col-12 md:col-3">
+            <div class="flex">
+              <div class="flex flex-column gap-2" style="width: 100%;">
+                  <label htmlFor="username">Custom Charges</label>
+                  <input pInputText id="username" aria-describedby="username-help"/>
+              </div>
+          </div>
+           </div>
+  
+           <div class="col-12 md:col-3">
+            <div class="flex">
+              <div class="flex flex-column gap-2" style="width: 100%;">
+                  <label htmlFor="username">Depository Charges</label>
+                  <input pInputText id="username" aria-describedby="username-help"/>
+              </div>
+          </div>
+           </div>
+  
+        </div>
+        <!-- end of second row -->
+  
+        <!-- //start of third row -->
+  
+        <div class="grid flex px-3 mt-2">
+     
+          <div class="col-12 md:col-3">
+           <div class="flex">
+             <div class="flex flex-column gap-2" style="width: 100%;">
+                 <label htmlFor="username">Exit load within contract period</label>
+                 <p-dropdown [options]="cities" optionLabel="name" [style]="{'width':'100%'}"></p-dropdown>
+             </div>
+         </div>
+          </div>
+  
+          <div class="col-12 md:col-3">
+            <div class="flex">
+              <div class="flex flex-column gap-2" style="width: 100%;">
+                  <label htmlFor="username">Exit load within contract period</label>
+                  <p-dropdown [options]="cities" optionLabel="name" [style]="{'width':'100%'}"></p-dropdown>
+              </div>
+          </div>
+           </div>
+  
+           <div class="col-12 md:col-3">
+            <div class="flex">
+              <div class="flex flex-column gap-2" style="width: 100%;">
+                  <label>Brokerage Charges</label>
+                  <p-dropdown [options]="cities" optionLabel="name" [style]="{'width':'100%'}"></p-dropdown>
+              </div>
+          </div>
+           </div>
+  
+        </div>
+  
+        <!-- //end of third row -->
+   
+  </div>
+
+  <div class="flex justify-content-end py-2 mt-4">
+    <p-button label="Save"></p-button>
+</div>
+

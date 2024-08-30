@@ -1,0 +1,176 @@
+.side-bar-container {
+  background: linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.07),
+      rgba(255, 255, 255, 0.07)
+    ),
+    linear-gradient(
+      179.83deg,
+      rgba(255, 255, 255, 0.1) -7.73%,
+      rgba(12, 25, 58, 0.1) 119.55%
+    );
+}
+
+:host ::ng-deep {
+  
+}
+
+
+.logo-sidebar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+}
+
+.navbarr button{
+  margin: 20px 0px 0px;
+  height: 45px;
+  background-color:transparent;
+  color: #fff;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  font-family: "Euclid Circular A";
+  font-weight: 100;
+  padding:0;
+}
+.navbarr button:hover
+{
+  background-color: #3C71FB;
+}
+.navbarr button.active {
+  background-color: #3C71FB; /* Change this to your desired active color */
+  color: #fff; /* Change this to your desired text color for active state */
+}
+.navbarr{
+  width: 100%;
+  text-align: center;
+}
+
+
+.dropbtn {
+  background-color: #3498db;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Style the arrow */
+.arrow {
+  margin-left: 5px;
+  font-size: 12px;
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+  display: block;
+  position: absolute;
+  background-color: #3c71fb;
+  width: 100%;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: rgb(255, 255, 255);
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  width: 100%;
+  font-size: 16px;
+  font-family: "Euclid Circular A";
+}
+
+/* Change color on hover */
+.dropdown-content a:hover {
+  background-color: #2c5cd6;
+  color: #ffff;
+}
+
+@media screen and (max-width: 1183px) {
+  .navbarr button span{
+    display: none;
+  }
+  .dropdown-content a {
+   
+    font-size: 12px;
+    
+  }
+ 
+}
+@media screen and (min-width: 1762px) {
+  .navbarr button img{
+    width: 30px;
+    // margin-left: 50px !important;
+  }
+  .navbarr button span{
+    // font-size: 28px;
+    font-size: 24px;
+   
+  }
+  
+.navbarr button{
+  margin: 10px 0px;
+  height: 60px;
+ 
+}
+.dropdown-content a {
+  font-size: 22px;
+}
+.arrow {
+  margin-left: 10px !important;
+  font-size: 20px !important;
+}
+
+ 
+ 
+}
+@media screen and (min-width: 2000px) {
+  .navbarr button img{
+    width: 30px;
+    margin-left: 50px !important;
+  }
+  .navbarr button span{
+    // font-size: 28px;
+    font-size: 24px;
+    margin-left:50px;
+  }
+  
+.navbarr button{
+  margin: 10px 0px;
+  height: 60px;
+ 
+}
+.dropdown-content a {
+  font-size: 22px;
+}
+.arrow {
+  margin-left: 10px !important;
+  font-size: 20px !important;
+}
+
+ 
+ 
+}
+
+
+

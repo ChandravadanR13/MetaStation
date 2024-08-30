@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>MetaStation</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" href="src/styles.css">
+    <style>
+
+.card.trading-view-sell-buy-block {
+    display: flex !important;
+    gap: 6px !important;
+  }
+
+  .selling-buy-block{background-color: #1f2b4e;width: 100%;}
+  
+  .tradingview-widget-container {
+    flex: 0 0 75%
+  }
+  
+  .card.trading-view-sell-buy-block > div:nth-child(2) {
+    flex: 0 0 25%
+  }
+  
+  .selling-buy-block-head {
+    display: flex;
+    justify-content: space-between;
+    padding: 2px 10px;
+  }
+  
+  .selling-block-body-inner, .buy-block-body-inner {
+    display: flex;
+    padding: 2px 10px;
+    justify-content: space-between;
+  }
+
+  .sell-color{color: red;}
+  .buy-color-color{color: rgb(3, 209, 3);}
+  
+  .selling-buy-block-head span{
+    font-size: 13px;
+  }
+  
+  .selling-block-body, .buy-block-body {
+    height: 180px;
+    overflow: auto;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+
+
+  .mid-block-buy-sell-part {
+    /* height: 20px; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #242323;
+    border-top: 1px solid #3c455e;
+    margin: 5px 0;
+}
+
+span.mid-block-buy-sell-part-inner {
+    font-size: 13px;
+    color: #02c502;
+    display: inline-block;
+    padding: 5px 0;
+    font-weight: 500;
+}
+
+.right-content-tne-oslxtp .p-tabview-panels .p-tabview-panels{
+    height: 81vh !important;
+    overflow: auto;
+}
+
+.selling-block-body::-webkit-scrollbar, .buy-block-body::-webkit-scrollbar, .right-content-tne-oslxtp .p-tabview-panels .p-tabview-panels::-webkit-scrollbar {
+    width: 2px;
+  }
+  /* Track */
+  .selling-block-body::-webkit-scrollbar-track, .buy-block-body::-webkit-scrollbar-track, .right-content-tne-oslxtp .p-tabview-panels .p-tabview-panels::-webkit-scrollbar-track {
+    background: #000; 
+  }
+   
+  /* Handle */
+  .selling-block-body::-webkit-scrollbar-thumb, .buy-block-body::-webkit-scrollbar-thumb, .right-content-tne-oslxtp .p-tabview-panels .p-tabview-panels::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+
+  .order-form-book-bottom .p-datatable > .p-datatable-wrapper {
+    height: 170px !important;
+    overflow: auto;
+}
+
+.order-form-book .p-datatable > .p-datatable-wrapper thead{
+  position: sticky;
+    top: 0;
+    z-index: 99;
+    background: #506284;
+}
+.card.socket-running-top {
+    padding-bottom: 0px;
+    margin: 0px;
+    display: flex;
+    margin-top: 5px;
+    gap: 15px;
+}
+
+.card.socket-running-top > div {
+    display: flex;
+    flex-direction: column;
+    padding: 5px 10px;
+    gap: 0px;
+    font-size: 14px;
+    width:120px
+}
+
+.card.socket-running-top > div label {
+    display: inline-block;
+    width: 100%;
+    margin-top: 0px !important;
+}
+
+.card.trading-view-sell-buy-block {
+    margin-top: 5px;
+}
+
+.card.socket-running-top > div:first-child {
+    font-size: 20px;
+    color: #02c502;
+    font-weight: 600;
+    letter-spacing: 0.6px;
+}
+
+.card.socket-running-top > div div {
+    display: flex;
+    gap: 10px;
+}
+
+.card.socket-running-top > div label {
+    color: #ccc;
+}
+    </style>
+</head>
+<body>
+  <app-root></app-root>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-element-bundle.min.js"></script>
+</body>
+
+</html>

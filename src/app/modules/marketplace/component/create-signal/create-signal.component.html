@@ -1,0 +1,671 @@
+<form [formGroup]="createsignalForm" (ngSubmit)="createsignal()">
+  <div class="card">
+    <div class="card-header">
+      <p>
+        <i
+          class="pi pi-arrow-left"
+          style="font-size: 1rem; margin-right: 10px; margin-top: 3px"
+          (click)="backToPrevious()"
+        ></i>
+        Create Signal Provider product
+      </p>
+    </div>
+    <div class="grid flex px-3">
+      <div class="col-12 md:col-3">
+        <label class="form-label">Rank</label>
+        <i
+          class="pi pi-info-circle"
+          pTooltip="Information"
+          tooltipPosition="right"
+          style="margin-top: 12px"
+        ></i>
+        <input
+          class="form-input"
+          type="text"
+          style="width: 100%"
+          pInputText
+          formControlName="rank"
+        />
+        <div
+          *ngIf="
+            createsignalForm.get('rank')?.invalid &&
+            createsignalForm.get('rank')?.touched
+          "
+          style="color: red"
+        >
+          Rank is required.
+        </div>
+      </div>
+
+      <div class="col-12 md:col-3">
+        <label class="form-label">Name</label>
+        <i
+          class="pi pi-info-circle"
+          pTooltip="Information"
+          tooltipPosition="right"
+          style="margin-top: 12px"
+        ></i>
+        <input
+          class="form-input"
+          type="text"
+          style="width: 100%"
+          pInputText
+          formControlName="name"
+        />
+        <div
+          *ngIf="
+            createsignalForm.get('name')?.invalid &&
+            createsignalForm.get('name')?.touched
+          "
+          style="color: red"
+        >
+          Name is required.
+        </div>
+      </div>
+
+      <div class="col-12 md:col-3">
+        <label class="form-label">Rewards</label>
+        <i
+          class="pi pi-info-circle"
+          pTooltip="Information"
+          tooltipPosition="right"
+          style="margin-top: 12px"
+        ></i>
+        <input
+          class="form-input"
+          type="text"
+          style="width: 100%"
+          pInputText
+          formControlName="rewards"
+        />
+        <div
+          *ngIf="
+            createsignalForm.get('rewards')?.invalid &&
+            createsignalForm.get('rewards')?.touched
+          "
+          style="color: red"
+        >
+          Rewards is required.
+        </div>
+      </div>
+
+      <div class="col-12 md:col-3">
+        <label class="form-label">Avg Monthly Performance</label>
+        <i
+          class="pi pi-info-circle"
+          pTooltip="Information"
+          tooltipPosition="right"
+          style="margin-top: 12px"
+        ></i>
+        <input
+          class="form-input"
+          type="text"
+          style="width: 100%"
+          pInputText
+          formControlName="avg_monthly_performance"
+        />
+        <div
+          *ngIf="
+            createsignalForm.get('avg_monthly_performance')?.invalid &&
+            createsignalForm.get('avg_monthly_performance')?.touched
+          "
+          style="color: red"
+        >
+        Avg Monthly Performance is required.
+        </div>
+      </div>
+    </div>
+
+    <!-- First row End -->
+    <div class="grid flex px-3">
+      <div class="col-12 md:col-3">
+        <label class="form-label">KYC</label>
+        <i
+          class="pi pi-info-circle"
+          pTooltip="Information"
+          tooltipPosition="right"
+          style="margin-top: 12px"
+        ></i>
+        <input
+          class="form-input"
+          type="text"
+          style="width: 100%"
+          pInputText
+          formControlName="kyc"
+        />
+        <div
+          *ngIf="
+            createsignalForm.get('kyc')?.invalid &&
+            createsignalForm.get('kyc')?.touched
+          "
+          style="color: red"
+        >
+        KYC is required.
+        </div>
+      </div>
+
+      <div class="col-12 md:col-3">
+        <label class="form-label">Risk</label>
+        <i
+          class="pi pi-info-circle"
+          pTooltip="Information"
+          tooltipPosition="right"
+          style="margin-top: 12px"
+        ></i>
+        <input
+          class="form-input"
+          type="text"
+          style="width: 100%"
+          pInputText
+          formControlName="risk"
+        />
+        <div
+          *ngIf="
+            createsignalForm.get('risk')?.invalid &&
+            createsignalForm.get('risk')?.touched
+          "
+          style="color: red"
+        >
+        Risk is required.
+        </div>
+      </div>
+
+      <div class="col-12 md:col-3">
+        <label class="form-label">Subscriber Count</label>
+        <i
+          class="pi pi-info-circle"
+          pTooltip="Information"
+          tooltipPosition="right"
+          style="margin-top: 12px"
+        ></i>
+        <input
+          class="form-input"
+          type="text"
+          style="width: 100%"
+          pInputText
+          formControlName="sub_count"
+        />
+        <div
+          *ngIf="
+            createsignalForm.get('sub_count')?.invalid &&
+            createsignalForm.get('sub_count')?.touched
+          "
+          style="color: red"
+        >
+        Subscriber Count is required.
+        </div>
+      </div>
+
+      <div class="col-12 md:col-3">
+        <label class="form-label">Market </label>
+        <i
+          class="pi pi-info-circle"
+          pTooltip="Information"
+          tooltipPosition="right"
+          style="margin-top: 12px"
+        ></i>
+        <!-- <p-dropdown
+          [options]="commonOptions"
+          optionLabel="name"
+          style="width: 100%"
+          formControlName="market"
+        ></p-dropdown> -->
+        <select formControlName="market" style="width: 100%" class="p-inputtext">
+          <option value="spot_market">Spot market</option>
+          <option value="future_market">Future market</option>
+          <option value="margin_market">Margin market</option>
+        </select>
+        <div
+          *ngIf="
+            createsignalForm.get('market')?.invalid &&
+            createsignalForm.get('market')?.touched
+          "
+          style="color: red"
+        >
+        Market is required.
+        </div>
+      </div>
+    </div>
+    <!-- Second row End -->
+    <div class="grid flex px-3">
+      <div class="col-12 md:col-3">
+        <label class="form-label">Master Bot</label>
+        <i
+          class="pi pi-info-circle"
+          pTooltip="Information"
+          tooltipPosition="right"
+          style="margin-top: 12px"
+        ></i>
+        <input
+          class="form-input"
+          type="text"
+          style="width: 100%"
+          pInputText
+          formControlName="master_bot"
+        />
+        <div
+          *ngIf="
+            createsignalForm.get('master_bot')?.invalid &&
+            createsignalForm.get('master_bot')?.touched
+          "
+          style="color: red"
+        >
+        Master Bot is required.
+        </div>
+      </div>
+
+      <div class="col-12 md:col-3">
+        <label class="form-label">Broker</label>
+        <i
+          class="pi pi-info-circle"
+          pTooltip="Information"
+          tooltipPosition="right"
+          style="margin-top: 12px"
+        ></i>
+        <input
+          class="form-input"
+          type="text"
+          style="width: 100%"
+          pInputText
+          formControlName="broker"
+        />
+        <div
+          *ngIf="
+            createsignalForm.get('broker')?.invalid &&
+            createsignalForm.get('broker')?.touched
+          "
+          style="color: red"
+        >
+        Broker is required.
+        </div>
+      </div>
+
+      <div class="col-12 md:col-3">
+        <label class="form-label"> Strategy</label>
+        <i
+          class="pi pi-info-circle"
+          pTooltip="Information"
+          tooltipPosition="right"
+          style="margin-top: 12px"
+        ></i>
+        <!-- <p-dropdown
+          [options]="commonOptions"
+          optionLabel="name"
+          style="width: 100%"
+          formControlName="strategy"
+        ></p-dropdown> -->
+        <select formControlName="strategy" style="width: 100%" class="p-inputtext">
+          <option value="spot_market">Spot market</option>
+          <option value="future_market">Future market</option>
+          <option value="margin_market">Margin market</option>
+        </select>
+        <div
+          *ngIf="
+            createsignalForm.get('strategy')?.invalid &&
+            createsignalForm.get('strategy')?.touched
+          "
+          style="color: red"
+        >
+        Strategy is required.
+        </div>
+      </div>
+
+      <div class="col-12 md:col-3">
+        <label class="form-label">Access </label>
+        <i
+          class="pi pi-info-circle"
+          pTooltip="Information"
+          tooltipPosition="right"
+          style="margin-top: 12px"
+        ></i>
+        <!-- <p-dropdown
+          [options]="commonOptions"
+          optionLabel="name"
+          style="width: 100%"
+          formControlName="access"
+        ></p-dropdown> -->
+        <select formControlName="access" style="width: 100%" class="p-inputtext">
+          <option value="spot_market">Spot market</option>
+          <option value="future_market">Future market</option>
+          <option value="margin_market">Margin market</option>
+        </select>
+        <div
+          *ngIf="
+            createsignalForm.get('access')?.invalid &&
+            createsignalForm.get('access')?.touched
+          "
+          style="color: red"
+        >
+        Access is required.
+        </div>
+      </div>
+    </div>
+    <!-- Third row End -->
+    <div class="grid flex px-3">
+      <div class="col-12 md:col-3">
+        <label class="form-label">Assets</label>
+        <i
+          class="pi pi-info-circle"
+          pTooltip="Information"
+          tooltipPosition="right"
+          style="margin-top: 12px"
+        ></i>
+        <input
+          class="form-input"
+          type="text"
+          style="width: 100%"
+          pInputText
+          formControlName="assets"
+        />
+        <div
+          *ngIf="
+            createsignalForm.get('assets')?.invalid &&
+            createsignalForm.get('assets')?.touched
+          "
+          style="color: red"
+        >
+        Assets is required.
+        </div>
+      </div>
+
+      <div class="col-12 md:col-3">
+        <label class="form-label">Telegram Public Group link </label>
+        <i
+          class="pi pi-info-circle"
+          pTooltip="Information"
+          tooltipPosition="right"
+          style="margin-top: 12px"
+        ></i>
+        <input
+          class="form-input"
+          type="text"
+          style="width: 100%"
+          pInputText
+          formControlName="tel_public_link"
+        />
+        <div
+          *ngIf="
+            createsignalForm.get('tel_public_link')?.invalid &&
+            createsignalForm.get('tel_public_link')?.touched
+          "
+          style="color: red"
+        >
+        Telegram Public Group link.
+        </div>
+      </div>
+
+      <div class="col-12 md:col-3">
+        <label class="form-label">Telegram Signal Group link</label>
+        <i
+          class="pi pi-info-circle"
+          pTooltip="Information"
+          tooltipPosition="right"
+          style="margin-top: 12px"
+        ></i>
+        <input
+          class="form-input"
+          type="text"
+          style="width: 100%"
+          pInputText
+          formControlName="tel_signal_link"
+        />
+        <div
+          *ngIf="
+            createsignalForm.get('tel_signal_link')?.invalid &&
+            createsignalForm.get('tel_signal_link')?.touched
+          "
+          style="color: red"
+        >
+        Telegram Signal Group link is required.
+        </div>
+      </div>
+    </div>
+    <div class="flex justify-content-end">
+      <button pButton label="save" class="my-5 pr-5"></button>
+      <!-- <p-button label="save" class="my-5 pr-5"></p-button> -->
+    </div>
+  </div>
+</form>
+
+<!------ Create Signal End ------>
+
+<div class="card">
+  <div class="card-header">
+    <p>Profit</p>
+  </div>
+  <div class="chart-container">
+    <div class="legend-container">
+      <div class="btn-group">
+        <button
+          class="first"
+          [ngClass]="id === 1 ? 'first active' : ''"
+          (click)="onCLickedButton(1)"
+        >
+          1D
+        </button>
+        <button
+          [ngClass]="id === 2 ? 'active' : ''"
+          (click)="onCLickedButton(2)"
+        >
+          1W
+        </button>
+        <button
+          [ngClass]="id === 3 ? 'active' : ''"
+          (click)="onCLickedButton(3)"
+        >
+          1M
+        </button>
+        <button
+          [ngClass]="id === 4 ? 'active' : ''"
+          (click)="onCLickedButton(4)"
+        >
+          6M
+        </button>
+        <button
+          [ngClass]="id === 5 ? 'last active' : ''"
+          class="last"
+          (click)="onCLickedButton(5)"
+        >
+          1Y
+        </button>
+      </div>
+    </div>
+    <div class="main-chart-container">
+      <div class="chart-container">
+        <canvas id="MyChart6">{{ chart }}</canvas>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Subscription start here -->
+<div class="card">
+  <div class="card-header">
+    <p>Subscription Plans</p>
+    <button class="add-subscription-Button" (click)="openSubscriptionDilaog()">
+      Add Subscription
+    </button>
+  </div>
+
+  <div
+    class="swiper flex flex-wrap flex-column md:flex-row card-container indigo-container"
+  >
+    <div class="plan-card my-3" (click)="openSubscriptionDilaog()">
+      <div class="plan-card-header">Bronze</div>
+      <div class="plan-card-subscription">
+        <label
+          >$30<span class="plan-card-subscription-span">/ 1 Months</span></label
+        >
+      </div>
+      <div class="plan-card-bottom">
+        <label>Free additional - 0 days</label>
+      </div>
+    </div>
+
+    <div class="plan-card mt-3" (click)="openSubscriptionDilaog()">
+      <div class="plan-card-header">Bronze</div>
+      <div class="plan-card-subscription">
+        <label
+          >$30<span class="plan-card-subscription-span">/ 1 Months</span></label
+        >
+      </div>
+      <div class="plan-card-bottom">
+        <label>Free additional - 0 days</label>
+      </div>
+    </div>
+
+    <div class="plan-card mt-3" (click)="openSubscriptionDilaog()">
+      <div class="plan-card-header">Bronze</div>
+      <div class="plan-card-subscription">
+        <label
+          >$30<span class="plan-card-subscription-span">/ 1 Months</span></label
+        >
+      </div>
+      <div class="plan-card-bottom">
+        <label>Free additional - 0 days</label>
+      </div>
+    </div>
+
+    <div class="plan-card mt-3" (click)="openSubscriptionDilaog()">
+      <div class="plan-card-header">Bronze</div>
+      <div class="plan-card-subscription">
+        <label
+          >$30<span class="plan-card-subscription-span">/ 1 Months</span></label
+        >
+      </div>
+      <div class="plan-card-bottom">
+        <label>Free additional - 0 days</label>
+      </div>
+    </div>
+
+    <div class="plan-card" (click)="openSubscriptionDilaog()">
+      <div class="plan-card-header">Bronze</div>
+      <div class="plan-card-subscription">
+        <label
+          >$30<span class="plan-card-subscription-span">/ 1 Months</span></label
+        >
+      </div>
+      <div class="plan-card-bottom">
+        <label>Free additional - 0 days</label>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p-dialog header="Header" [(visible)]="visible">
+  <ng-template pTemplate="header">
+    <span class="text-xl font-bold">Add Subscription</span>
+    <span>
+      <p-button
+        class="add-plan-btn"
+        (click)="visible = false"
+        label="Add Plan"
+      ></p-button>
+    </span>
+  </ng-template>
+  <div class="plans-table-contianer">
+    <p-table [value]="subscriptionPlans">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Tiers</th>
+          <th>Months</th>
+          <th>Free additional months</th>
+          <th>Fees</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-subscriptionPlans let-index>
+        <tr>
+          <td>{{ subscriptionPlans.tiers }}</td>
+          <td>{{ subscriptionPlans.months }}</td>
+          <td>{{ subscriptionPlans.freeAdditionalMonths }}</td>
+          <td>
+            <div
+              class="flex flex-row justify-content-between align-items-center"
+            >
+              <label>{{ subscriptionPlans.fees }} </label>
+              <span
+                ><img
+                  src="../../../../../assets/delete.svg"
+                  (click)="deltePlan(index)"
+                />
+              </span>
+            </div>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+
+  <div class="card" style="padding-bottom: 2px; margin-top: 22px">
+    <div class="grid flex flex-row justify-content-around p-4">
+      <div class="col-12 md:col-3">
+        <label class="form-label">Tiers</label>
+        <input class="form-input" type="text" style="width: 100%" pInputText />
+      </div>
+      <div class="col-12 md:col-3">
+        <label class="form-label">Months</label>
+
+        <input class="form-input" type="text" style="width: 100%" pInputText />
+      </div>
+      <div class="col-12 md:col-3">
+        <label class="form-label">Free additional months</label>
+        <input class="form-input" type="text" style="width: 100%" pInputText />
+      </div>
+      <div class="col-12 md:col-3">
+        <label class="form-label">Fees</label>
+        <input class="form-input" type="text" style="width: 100%" pInputText />
+      </div>
+    </div>
+  </div>
+  <ng-template pTemplate="footer">
+    <p-button (click)="visible = false" label="Save"></p-button>
+  </ng-template>
+</p-dialog>
+
+<!-- Promotional Discount section -->
+<div class="card">
+  <div class="card-header">
+    <p>Promotional Discount</p>
+  </div>
+  <div class="grid px-2" style="width: 100%">
+    <div class="col-12 sm:col-3 px-3">
+      <label class="form-label">From Date</label><br />
+      <p-calendar
+        [(ngModel)]="date"
+        [showIcon]="true"
+        [style]="{ width: '100%' }"
+      ></p-calendar>
+    </div>
+    <div class="col-12 sm:col-3 px-3">
+      <label class="form-label">To Date</label><br />
+      <p-calendar
+        [(ngModel)]="date"
+        [showIcon]="true"
+        [style]="{ width: '100%' }"
+      ></p-calendar>
+    </div>
+    <div class="col-12 sm:col-3 px-3">
+      <label class="form-label">Discount</label><br />
+      <p-calendar
+        [(ngModel)]="date"
+        [showIcon]="true"
+        [style]="{ width: '100%' }"
+      ></p-calendar>
+    </div>
+    <div class="col-12 sm:col-3 px-3">
+      <label class="form-label">Description</label><br />
+      <p-calendar
+        [(ngModel)]="date"
+        [showIcon]="true"
+        [style]="{ width: '100%' }"
+      ></p-calendar>
+    </div>
+  </div>
+  <div class="flex justify-content-end">
+    <p-button label="save" class="my-5 pr-5"></p-button>
+  </div>
+</div>
+
+<!-- <div class="card flex justify-content-end">
+  <p-button label="save" class="my-5 pr-3"></p-button>
+</div> -->

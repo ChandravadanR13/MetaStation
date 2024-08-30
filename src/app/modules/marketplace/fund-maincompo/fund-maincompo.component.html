@@ -1,0 +1,66 @@
+<div class="card">
+    <div class="card-header">
+      <span class="flex align-items-center">
+        <img style="margin: 8px" src="../../../../../assets/fund-manager.svg" />
+        Fund Manager
+      </span>
+      <span style="position: absolute; right: 3%; top: 15%"
+        ><p-button
+          label="Add New" [routerLink]="['/app/marketplace/funds-add']"
+      
+        ></p-button
+      ></span>
+    </div>
+    <div class="common-table-style">
+    <p-table
+      [value]="summury"
+      [tableStyle]="{ 'min-width': '50rem' }"
+      [rows]="3"
+      [showFirstLastIcon]="false"
+      [paginator]="true"
+    >
+      <ng-template pTemplate="header">
+        <tr>
+          <th class="signal-provider-table-head">Rank<p-sortIcon></p-sortIcon></th>
+          <th class="signal-provider-table-head">Account name<p-sortIcon icon="pi pi-fw pi-sort"></p-sortIcon></th>
+          <!-- <th>Balance <p-sortIcon></p-sortIcon></th> -->
+          <th class="signal-provider-table-head">Market <p-sortIcon></p-sortIcon></th>
+          <th class="signal-provider-table-head">Broker <p-sortIcon></p-sortIcon></th>
+          <th class="signal-provider-table-head">Assets <p-sortIcon></p-sortIcon></th>
+          <th class="signal-provider-table-head">Strategy <p-sortIcon></p-sortIcon></th>
+          <th class="signal-provider-table-head">Avg Performance<p-sortIcon></p-sortIcon></th>
+          <th class="signal-provider-table-head">Access <p-sortIcon></p-sortIcon></th>
+          <th class="signal-provider-table-head">KYC <p-sortIcon></p-sortIcon></th>
+          <th class="signal-provider-table-head">Rewards <p-sortIcon></p-sortIcon></th>
+          <th class="signal-provider-table-head">Risks <p-sortIcon></p-sortIcon></th>
+          <th class="signal-provider-table-head">Subcriber Count <p-sortIcon></p-sortIcon></th>
+          <th class="signal-provider-table-head">Subcriber Fees <p-sortIcon></p-sortIcon></th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-tableData>
+        <tr [routerLink]="['/app/marketplace/fund-manager-details']">
+          <td>{{ tableData.rank }}</td>
+          <td>{{ tableData.telegramusername }}</td>
+          <td>{{ tableData.market }}</td>
+
+          <td>
+            <div>
+              <img style="width: 20px" src="../../../../../assets/bnb.png" />
+            </div>
+          </td>
+          <td>{{ tableData.Assets }}</td>
+          <td>{{ tableData.Strategy }}</td>
+          <td>{{ tableData.AvgPerformance }}</td>
+          <td>{{ tableData.Access }}</td>
+          <td>{{ tableData.kyc }}</td>
+          <td>{{ tableData.Rewards }}</td>
+          <td>{{ tableData.Risks }}</td>
+          <td>{{ tableData.Subscribercount }}</td>
+          <td>{{ tableData.Subcriberfess }}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+    </div>
+  </div>
+
+  <!-- Funds End-->

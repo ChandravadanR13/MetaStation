@@ -1,0 +1,439 @@
+/* You can add global styles to this file, and also import other style files */
+
+@font-face {
+  font-family: "Euclid Circular A";
+  src: url("./assets/fonts/euclid-circular-a-cufonfonts/Euclid Circular A Medium.ttf");
+}
+
+@font-face {
+  font-family: "Euclid Circular A - light";
+  src: url("./assets/fonts/euclid-circular-a-cufonfonts/Euclid Circular A Light.ttf");
+}
+
+/* You can add global styles to this file, and also import other style files */
+body {
+  padding: 0;
+  margin: 0;
+  background: linear-gradient(251.36deg, #0f1a3a 0.25%, #1d2c57 115.1%);
+  color: #ffffff;
+  font-size: 62.5%;
+  font-family: "Euclid Circular A";
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+button:hover {
+  cursor: pointer !important;
+}
+
+.container {
+  padding: 0px 0px;
+}
+
+.card {
+  margin-top: 10px;
+  background: linear-gradient(94.92deg,
+      rgba(144, 162, 208, 0.1) 3.22%,
+      rgba(219, 220, 224, 0.1) 50.78%,
+      rgba(80, 106, 172, 0.1) 102.75%);
+  border-radius: 10px;
+  width: 100%;
+  padding-bottom: 30px;
+  position: relative !important;
+}
+
+.card-header {
+  padding: 24px 20px;
+  font-family: "Euclid Circular A";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 140%;
+  position: relative;
+}
+
+.card-header p {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.card-header-icon {
+  margin: 0px 10px;
+}
+
+// .grid-padd {
+
+// }
+
+.form-label {
+  margin: 10px 4px;
+  font-family: "Euclid Circular A - light";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 0.9rem;
+  line-height: 140%;
+  color: #ffffff;
+}
+
+.form-input {
+  margin: 10px 0px;
+  width: 100%;
+}
+
+:host::ng-deep {
+  .p-inputtext {
+    margin: 10px 0px;
+    width: 100%;
+  }
+}
+
+.filter-tab-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.chart-container {
+  height: 365px;
+  position: relative;
+}
+
+.legend-container {
+  position: absolute;
+  top: -43px;
+  right: 23px;
+}
+
+.btn-group button {
+  background-color: rgba(16, 22, 46, 0.73);
+  /* Green background */
+  border: none;
+  /* Green border */
+  color: white;
+  /* White text */
+  padding: 13px 24px;
+  /* Some padding */
+  cursor: pointer;
+  /* Pointer/hand icon */
+  float: left;
+  /* Float the buttons side by side */
+  font-family: "Euclid Circular A";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 0.9rem;
+  line-height: 140%;
+  color: #ffffff;
+  opacity: 0.6;
+}
+
+.first {
+  border-radius: 8px 0px 0px 8px;
+}
+
+.last {
+  border-radius: 0px 8px 8px 0px;
+}
+
+.active {
+  opacity: 1 !important;
+}
+
+/* Clear floats (clearfix hack) */
+.btn-group:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.btn-group button:not(:last-child) {
+  border-right: none;
+  /* Prevent double borders */
+}
+
+/* Add a background color on hover */
+.btn-group button:hover {
+  background-color: #3c71fb;
+  opacity: 1;
+}
+
+
+
+.info-view {
+  background: linear-gradient(94.92deg,
+      rgba(217, 217, 217, 0.1) 3.22%,
+      rgba(85, 110, 173, 0.1) 102.75%);
+  border-radius: 6px;
+}
+
+:host ::ng-deep {
+  .p-highlight {
+    outline: none;
+  }
+}
+
+
+// .p-inputtext{border: none !important;}
+// .p-inputtext:hover{border: none !important;box-shadow: none !important;}
+.toast-top-right {
+  font-size: 14px !important;
+}
+
+th.signal-provider-table-head {
+  white-space: nowrap;
+  color: #fff;
+  border-right: 1px solid #545759 !important;
+  color: #fff !important;
+  // background: #121d3a !important;
+  box-shadow: 33px 4px 16px rgba(31, 31, 31, 0.16) !important;
+  background-color: rgba(255, 255, 255, 0.09) !important;
+}
+
+.grid.sub-admin-panel div#whole-trade-panel-id {
+  height: 95vh;
+  overflow: auto;
+}
+
+.grid.sub-admin-panel div#whole-trade-panel-id::-webkit-scrollbar {
+  width: 0px !important;
+}
+
+.common-table-style .p-datatable>.p-datatable-wrapper::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 5px !important;
+}
+
+/* Track */
+.common-table-style .p-datatable>.p-datatable-wrapper::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track {
+  background: #f1f1f1 !important;
+}
+
+/* Handle */
+.common-table-style .p-datatable>.p-datatable-wrapper::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb {
+  background: #888 !important;
+}
+
+.common-table-style .p-datatable .p-datatable-tbody>tr {
+  background: transparent;
+  color: #ffff;
+  transition: box-shadow 0.2s;
+}
+
+.common-table-style .p-paginator {
+  background: transparent;
+  color: #bcbcbc !important;
+  border: none;
+  border-width: 0;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  justify-content: flex-end !important;
+}
+
+.common-table-style .p-paginator .p-paginator-pages .p-paginator-page {
+  border: 0 none;
+  color: #6c757d;
+  min-width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 0px;
+}
+
+.common-table-style .p-paginator .p-paginator-first,
+.common-table-style .p-paginator .p-paginator-prev,
+.common-table-style .p-paginator .p-paginator-next,
+.common-table-style .p-paginator .p-paginator-last {
+  background-color: transparent;
+  border: 0 none;
+  color: #6c757d;
+  min-width: 1.5rem;
+  height: 1.5rem;
+  margin: 0.143rem;
+  transition: box-shadow 0.2s;
+  border-radius: 0px;
+}
+
+.common-table-style .p-paginator .p-paginator-pages .p-paginator-page.p-highlight,
+.common-table-style .p-paginator .p-paginator-pages .p-paginator-page:hover {
+  background: #1D4ED8;
+  color: #fff;
+}
+
+.p-menu .p-menuitem-link:not(.p-disabled):hover .p-menuitem-icon {
+  color: #6c757d !important;
+}
+
+.p-button:hover {
+  color: #ffffff;
+  background: #80dbd3 !important;
+  border: 1px solid #81dbd4 !important;
+}
+
+.p-paginator .p-paginator-pages .p-paginator-page:not(.p-highlight):hover,
+.common-table-style .p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
+  background: #3c71fb !important;
+  border-color: transparent !important;
+  color: #fff !important;
+  opacity: 1 !important;
+  border-radius: 5px !important;
+}
+
+//loading
+
+#loading {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 9999;
+  margin: -75px 0 0 -75px;
+  border: 10px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 10px solid #3498db;
+  width: 80px;
+  height: 80px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.side-bar-container {
+  padding-right: 0px !important;
+  width: 5% !important;
+}
+
+.main-content-right {
+  width: 95% !important;
+}
+
+.logo-sidebar img {
+  width: auto;
+}
+
+.side-bar-container .flex.flex-column.navbarr button span {
+  opacity: 0;
+  transition: all 0.2s ease-in-out;
+}
+
+.side-bar-container.toggled-class .flex.flex-column.navbarr button span,
+.side-bar-container.toggled-class .flex.flex-column.navbarr .dropdown-content span {
+  opacity: 1 !important;
+  transition: all 0.2s ease-in-out;
+}
+
+.side-bar-container .flex.flex-column.navbarr button span.arrow {
+  display: inline-block;
+  position: relative;
+  left: -2px;
+  font-size: 11px !important;
+}
+
+.side-bar-container .flex.flex-column.navbarr button {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  height: auto;
+  padding: 5px 0;
+}
+
+.side-bar-container .flex.flex-column.navbarr button img {
+  width: 30px;
+}
+
+.side-bar-container .flex.flex-column.navbarr button:hover {
+  background: transparent !important;
+}
+
+.side-bar-container .flex.flex-column.navbarr button:hover i,
+.side-bar-container .dropdown-content a:hover i {
+  color: #1dfdda;
+}
+
+.side-bar-container .flex.flex-column.navbarr button.active i {
+  color: #1dfdda;
+}
+
+.side-bar-container .flex.flex-column.navbarr button.active {
+  background: transparent !important;
+}
+
+.side-bar-container .dropdown-content {
+  position: relative !important;
+  background-color: transparent !important;
+  width: 100%;
+  min-width: auto !important;
+  box-shadow: none !important;
+}
+
+.side-bar-container .dropdown-content button {
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+.side-bar-container .dropdown-content button {
+  background: transparent !important;
+  padding: 12px 16px !important;
+  margin-top: 5px !important;
+}
+
+.sidebar-icons button:hover,
+.side-bar-container .dropdown-content button:hover {
+  border: none !important;
+}
+
+.side-bar-container.toggled-class {
+  width: 15% !important;
+  transition: all 0.2s ease-in-out;
+}
+
+.main-content-right.toggled-class {
+  width: 85% !important;
+  transition: all 0.2s ease-in-out;
+}
+
+.main-content-right,
+.side-bar-container {
+  transition: all 0.2s ease-in-out;
+}
+
+.side-bar-container .flex.flex-column.navbarr .dropdown-content span {
+  opacity: 0;
+  white-space: nowrap;
+}
+
+.side-bar-container .flex.flex-column.navbarr .dropdown-content a {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.side-bar-container .flex.flex-column.navbarr .dropdown-content a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.side-bar-container .flex.flex-column.navbarr button span.arrow {
+  opacity: 1;
+}
+
+
+@media (max-width:991.98px) {
+
+  .overlayer1.header-custom img.logo {
+    width: 140px !important;
+  }
+
+  .overlayer1.header-custom button#myBtn {
+    width: 100px;
+  }
+
+}

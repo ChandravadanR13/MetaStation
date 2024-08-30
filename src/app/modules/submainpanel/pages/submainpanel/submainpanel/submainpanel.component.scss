@@ -1,0 +1,795 @@
+
+#btn{
+    // background-color: transparent;
+    border-radius: 4px;
+    border: none ;
+    outline: none;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.05);
+      padding: 5px;
+      height: 30px;
+      font-size: 10px;
+}
+#btn2{
+  border-radius: 4px;
+  border: none ;
+  outline: none;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.05);
+    padding: 5px;
+    height: 30px;
+    font-size: 10px;
+}
+#btn3{
+  border-radius: 4px;
+  border: none ;
+  outline: none;
+  color: #fff;
+    padding: 5px;
+    height: 30px;
+    font-size: 12px;
+}
+.chart{
+    width: 100%;
+  
+}
+#chart {
+    max-width: 650px;
+    background-color: #1b3362;
+    color: #000;
+    
+  }
+.demo1{
+  width:100%;
+  height: 40px;
+  background-color:#31456d;
+ 
+  margin-top: -46px;
+}
+
+
+// legend css start
+
+.legend-container {
+    width: 150px;
+   
+  }
+
+  .btn-group button {
+    width: 10px;
+    background: rgba(255, 255, 255, 0.05);
+}
+.Searchbar{
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  color: #fff;
+}
+.Searchbar:focus
+{
+  outline: none;
+}
+
+
+:host ::ng-deep{
+ 
+   .p-dropdown {
+      width: 100%;
+      margin: 10px 0px;
+      height: 40px;
+      color: #ffffff;
+      background: #2e4060;
+      border: 1px solid #5c6276;
+      border-radius: 8px;
+      
+    }
+    .cas .p-dropdown .p-dropdown-item	
+    {
+      font-size: 12px;
+      padding: 5px;
+    }
+    .p-dropdown > .p-inputtext {
+      margin: 0px;
+    }
+
+    .p-dropdown > .p-inputtext:hover {
+      background: transparent;
+      border: none;
+    }
+
+    .p-dropdown-items-wrapper {
+      color: #ffffff !important;
+      background: #2e4060;
+    }
+
+    .p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-highlight {
+      color: black;
+    }
+
+    .p-dropdown-panel .p-dropdown-items .p-dropdown-item {
+      color: #ffffff;
+      
+    }
+     .p-dropdown .p-dropdown-label{
+        color: #ffff;
+        font-size: 10px;
+    }
+    .p-dropdown .p-dropdown-trigger{
+       width: 25px;
+    }
+
+  .p-tabview .p-tabview-nav{
+    width: 100% !important;
+    background-color: #2a3f65;
+    border: none;
+  }
+  .p-tabview .p-tabview-panels {
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    
+  }
+  .p-tabview .p-tabview-nav li {
+    width: 100%;
+  }
+
+  .p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link {
+    background: #3c71fb;
+    opacity: 0.99;
+    box-shadow: 4px 0px 4px rgba(0, 0, 0, 0.12);
+    color: #ffffff;
+    border-radius: 0px 0px 0px 0px;
+  }
+
+  .p-tabview .p-tabview-nav li .p-tabview-nav-link {
+    background: #2a3f65;
+    opacity: 0.99;
+    // box-shadow: 4px 0px 4px rgba(0, 0, 0, 0.12);
+    // border-width: 0 0 2px 0;
+    color: #707688;
+    // padding: 15px 40px;
+    font-weight: 700;
+    border-top-right-radius: 6px;
+    border-top-left-radius: 6px;
+    transition: box-shadow 0.2s;
+    margin: 0 0 0px 0;
+    font-family: "Euclid Circular A";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1rem;
+    border-radius: 0px 0px 0px 0px;
+    
+  }
+  .innertab .p-tabview .p-tabview-nav{
+    border-bottom: none !important;
+  }
+  .innertab .p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link{
+    border-bottom: 1px solid #fff !important;
+    color: #ffffff;
+    box-shadow: none;
+  }
+  .innertab .p-tabview .p-tabview-nav li .p-tabview-nav-link {
+     background-color:transparent !important;
+     color: #a2aaba;
+     padding: 14px;
+     font-weight: 100;
+     font-size: 14px;
+     border-bottom: 1px solid #a2aaba;
+  }
+  .innertab2 .p-tabview .p-tabview-nav{
+    border-bottom: none !important;
+    background-color: #1b3362;
+  }
+  .innertab2 .p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link{
+    border-bottom: 1px solid #fff !important;
+    color: #ffffff;
+    box-shadow: none;
+  }
+  .innertab2 .p-tabview .p-tabview-nav li .p-tabview-nav-link {
+     background-color:transparent !important;
+     color: #a2aaba;
+     padding: 14px;
+     font-weight: 100;
+     font-size: 14px;
+     border-bottom: 1px solid #a2aaba;
+  }
+  .innertab2 .p-tabview .p-tabview-nav li {
+    width: 10% !important;
+  }
+  .signaltable .p-datatable	{
+    width: 100%;
+    margin-top: -15px;
+    margin-left: -13px;
+    background-color: #c6cfe215;
+   //  border: none;
+ }
+  .p-calendar-w-btn .p-inputtext {
+    border-top-right-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+  }
+
+  .p-calendar-w-btn .p-datepicker-trigger {
+    height: 10px;
+    position: absolute;
+    right: 5px;
+    top: 20px;
+  }
+
+  .p-datepicker:not(.p-datepicker-inline) {
+    background: #2a3f65;
+    color: #ffffff;
+    border: 0 none;
+    box-shadow: 0 2px 12px 0 rgb(0 0 0 / 10%);
+  }
+
+  .p-tabview .p-tabview-panels {
+    padding: 0;
+  }
+  .p-datatable ::-webkit-scrollbar {
+    width:5px;
+    height: 5px; /* width of the scrollbar */
+  }
+  .p-datatable ::-webkit-scrollbar-thumb {
+    // background-color:transparent;
+    background-color: #3C71FB;
+    border-radius: 10px; /* roundness of the scrollbar handle */
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #3C71FB; /* color of the scrollbar handle on hover */
+  }
+
+
+  .p-datatable .p-datatable-thead > tr > th {
+    text-align: left;
+    // padding: 1rem 1rem;
+    padding: 5px 5px;
+    border: none;
+    border-width: 0 0 0 0;
+    font-weight: 700;
+    color: #ebebeb;
+    // background: linear-gradient(94.92deg, rgba(144, 162, 208, 0.1) 3.22%, rgba(219, 220, 224, 0.1) 50.78%, rgba(80, 106, 172, 0.1) 102.75%);
+    box-shadow: 33px 4px 16px rgba(31, 31, 31, 0.16);
+    background-color: rgb(255, 255, 255, 0.09);
+    transition: box-shadow 0.2s;
+    font-family: "Euclid Circular A";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.9rem;
+    line-height: 140%;
+    position: relative;
+  }
+
+  .p-datatable .p-datatable-tbody > tr {
+    background: transparent;
+    border-radius: 10px;
+    transition: box-shadow 0.2s;
+    color: #ffffff;
+    font-family: "Euclid Circular A - light";
+    font-style: normal;
+    // font-weight: 500;
+    font-size: 0.9rem;
+    line-height: 140%;
+  }
+
+  .p-datatable-table {
+    // background: linear-gradient(94.92deg, rgba(144, 162, 208, 0.1) 3.22%, rgba(219, 220, 224, 0.1) 50.78%, rgba(80, 106, 172, 0.1) 102.75%);
+    // box-shadow: 33px 4px 16px rgba(31, 31, 31, 0.16);
+    border-spacing: 0px;
+    width: 100%;
+    font-family: "Euclid Circular A";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.9rem;
+    line-height: 140%;
+  }
+
+  .p-datatable .p-datatable-tbody > tr > td {
+    color: #ffffff;
+    font-family: "Euclid Circular A";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.8rem;
+    line-height: 140%;
+    border: 1px solid rgba(255, 255, 255, 0.29);
+    border-width: 0 0 1px 0;
+    background-color:#1b3362;
+    padding: 5px 5px;
+  }
+  .cardtable .p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link {
+    
+    border-radius:14px 14px 0px 0px !important; 
+  }
+  .p-inputtext {
+    width:100%;
+  }
+  
+  .p-button {
+    width:100% !important;
+  }
+  // #longshort .p-button {
+  //   width:100% !important;
+  //   background-color: transparent;
+  //   border: 2px solid #007bff;
+  //   font-size: 14px;
+  // }
+  // #longshort .p-button.active {
+  //   background-color: #007bff !important; /* Change this to your desired active color */
+  //   color: #fff !important; 
+  //   border: none !important;/* Change this to your desired text color for active state */
+  // }
+
+  #longshort button {
+    width: 100%;
+    height: 40px;
+    background-color: transparent !important; /* Change this to your desired active color */
+    color: #fff !important; 
+    border-radius: 6px;
+    border: 2px solid #007bff;
+    font-size: 14px;
+  }
+  #longshort button.active {
+    background-color: #007bff !important; /* Change this to your desired active color */
+    color: #fff !important; 
+    border: none !important;/* Change this to your desired text color for active state */
+  }
+  .p-tooltip .p-tooltip-text {
+    font-size: 10px !important;
+}
+ 
+
+}
+
+:host ::ng-deep .p-inputnumber {
+ height: 40px;
+width: 100%;
+}
+
+:host ::ng-deep .p-inputnumber 
+  .p-inputnumber-input:enabled:focus,
+:host ::ng-deep .p-inputnumber 
+  .p-inputnumber-input{
+  box-shadow: none;
+  
+}
+
+label{
+  font-size: 14px;
+  width:50%;
+}
+
+
+.cancellation{
+  border: 1px solid #a2aaba;
+  border-radius: 10px;
+  height: 50px;
+}
+/* styles.css */
+
+/* Style the container to position elements */
+.container {
+  position: relative;
+}
+
+/* Create the line using a pseudo-element */
+.line::before {
+  content: "";
+  width: 100%;
+  height: 2px; /* Adjust the line height as needed */
+  background-color: #5c6276;/* Change the line color as needed */
+  position: absolute;
+  top: 50%; /* Position it vertically in the middle of the container */
+  left: 0;
+}
+
+/* Style the rectangle box */
+.rectangle {
+  width: 20px; /* Adjust the rectangle width as needed */
+  height: 5px; /* Adjust the rectangle height as needed */
+  background-color: #f00; /* Change the rectangle color as needed */
+  position: absolute;
+  top: 50%; /* Position it vertically in the middle of the line */
+  left: 50%; /* Position it horizontally in the middle of the container */
+  transform: translate(-50%, -50%); /* Center the rectangle */
+}
+
+/* Style the icons */
+.icon {
+  position: absolute;
+  width: 24px; /* Adjust the icon width as needed */
+  height: 24px; /* Adjust the icon height as needed */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px; /* Adjust the icon size as needed */
+}
+
+.icon-start {
+  top: 60%; /* Adjust the distance below the line */
+  left: 0;
+}
+
+.icon-end {
+  top: 40%; /* Adjust the distance above the line */
+  right: 0;
+}
+.hovered-ngfor-row {
+  background-color: rgba(0, 199, 91, 0.12); /* Change the background color as desired */
+  cursor: pointer; /* Change the cursor style on hover if needed */
+}
+
+#tradingview_bac65{
+  width: 100% !important;
+} 
+.outmm p{
+  width: 20px;
+  height: 20px;
+  // background-color: red;
+  text-align: center;
+  cursor: pointer;
+}
+.outmm p.active {
+ 
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 2px;
+background: #43516F;
+box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.10) inset, 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.percentbtn button{
+  border-radius: 6px;
+border: 1px solid rgba(255, 255, 255, 0.20);
+background-color: transparent;
+color: #fff;
+width: 40px;
+height: 36px;
+cursor: pointer;
+
+}
+
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  input[type='range'] {
+    // overflow: hidden;
+    width:50%;
+    -webkit-appearance: none;
+    height: 4px !important;
+    border-radius: 0.1px;
+   background: rgba(16, 1, 1, 0.10);
+    box-shadow: 0px 0.5px 0px 0px rgba(0, 0, 0, 0.25) inset, 0px -0.5px 0px 0px rgba(0, 0, 0, 0.25) inset, 0px 1px 1px 0px rgba(255, 255, 255, 0.20), 0px -1px 1px 0px rgba(0, 0, 0, 0.25);
+  }
+  
+  input[type='range']::-webkit-slider-runnable-track {
+    height: 10px;
+    -webkit-appearance: none;
+    // color: #13bba4;
+    margin-top: -4px;
+    
+  }
+  
+  input[type='range']::-webkit-slider-thumb {
+    width: 15px;
+    -webkit-appearance: none;
+    height: 15px;
+    cursor: pointer;
+    border-radius: 2px;
+background: #43516F;
+box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.10) inset, 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  }
+
+}
+/** FF*/
+// input[type="range"]::-moz-range-progress {
+// background-color: #43e5f7; 
+// }
+// input[type="range"]::-moz-range-track {  
+// background-color: #9a905d;
+// }
+// /* IE*/
+// input[type="range"]::-ms-fill-lower {
+// background-color: #43e5f7; 
+// }
+// input[type="range"]::-ms-fill-upper {  
+// background-color: #9a905d;
+// }
+
+// Rang End here
+
+.componentsBox .content {
+  margin-top: -5px;
+}
+.m5 {
+  margin: 0 5px;
+}
+
+.switch {
+   display: inline-block;
+}
+.switch input {
+   display: none;
+}
+.switch small {
+   display: inline-block;
+   width: 43px;
+   height: 18px;
+   background: #455a64;
+/*      border-radius: 30px; */
+   position: relative;
+   cursor: pointer;
+}
+.switch small:after {
+   content: "R";
+   position: absolute;
+   color: #fff;
+   font-size: 11px;
+   font-weight: 600;
+   width: 100%;
+   left: 0px;
+   text-align: right;
+   padding: 0 6px;
+   box-sizing: border-box;
+   line-height: 18px;
+}
+.switch small:before {
+   content: "";
+   position: absolute;
+   width: 12px;
+   height: 12px;
+   background: #fff;
+/*      border-radius: 50%; */
+   top: 3px;
+   left: 3px;
+   transition: .3s;
+   box-shadow: -3px 0 3px rgba(0,0,0,0.1);
+}
+.switch input:checked ~ small {
+   background: #3a4141;
+   transition: .3s;
+}
+.switch input:checked ~ small:before {
+   transform: translate(25px, 0px);
+   transition: .3s;
+}
+.switch input:checked ~ small:after {
+   content: "V";
+   text-align: left;
+}
+
+
+
+
+input,
+label {
+    cursor: pointer;
+    
+}
+
+label,
+small {
+    margin-top: 0.1em;
+    font-size: 12px;
+}
+
+input[type="radio"] {
+    height: 12px;
+    width: 12px;
+    margin-right: 4px;
+    line-height: 12px;
+}
+
+#accent {
+    accent-color: var(--checked-color);
+    
+}
+
+.custom-radio {
+    /* hiding browser el */
+    appearance: none;
+    /* Safari support */
+    -webkit-appearance: none;
+    border: 0.2rem solid #fff;
+    background-color: var(--bg-color);
+    border-radius: 50%;
+}
+
+/* keyboard navigation focus appearance */
+.custom-radio:focus-visible {
+    outline-offset: 0;
+}
+
+#box-shadow {
+    box-shadow: 0 0 0 1px var(--color);
+}
+
+#box-shadow:hover {
+    border-width: 0;
+}
+
+#box-shadow:checked {
+    box-shadow: 0 0 0 1px var(--checked-color);
+    background-color: var(--checked-color);
+    border-width: 0.2rem;
+}
+
+#outline {
+    outline: 1px solid var(--color);
+}
+
+#outline:hover {
+    outline-color: var(--checked-color);
+}
+
+#outline:checked {
+    outline-color: var(--checked-color);
+    background-color: var(--checked-color);
+
+    animation: outline-checked;
+    animation-duration: 0.1s;
+    animation-iteration-count: 4;
+    animation-direction: alternate;
+    animation-timing-function: linear;
+}
+
+@keyframes outline-checked {
+    0% {
+        outline-offset: 0;
+    }
+
+    100% {
+        outline-offset: -0.2rem;
+    }
+}
+//  Rdio End Here
+.underline-input {
+  width: 95%;
+}
+
+input {
+  border: none;
+  outline: none;
+  padding: 5px 0;
+  font-size: 16px; /* Adjust the font size as needed */
+  background-color: transparent;
+  color:white;
+  font-size: smaller;
+}
+
+.underline {
+  width: 95%;
+  height: 1px; /* Adjust the line height as needed */
+  background-color: #4A597A; /* Adjust the line color as needed */
+}
+
+.underline2{
+  width: 20%;
+  height: 1px; /* Adjust the line height as needed */
+  background-color: #7a4a4a; /* Adjust the line color as needed */
+}
+.underline-input2 {
+  width: 20%;
+}
+
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+
+.switch input
+{
+  display: none;
+}
+
+.switch 
+{
+  display: inline-block;
+  width: 30px; 
+  height: 15px; 
+  // margin-top: -25px !important;
+  transform: translateY(50%) !important;
+  position: relative;
+  margin-left: 5px;
+}
+
+.slider
+{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 30px;
+  box-shadow: 0 0 0 2px #777, 0 0 4px #777;
+  cursor: pointer;
+  border: 4px solid transparent;
+  overflow: hidden;
+  transition: 0.2s;
+}
+
+.slider:before
+{
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: #777;
+  border-radius: 30px;
+  transform: translateX(-10px) !important ; 
+  transition: 0.2s;
+}
+
+input:checked + .slider:before
+{
+  transform: translateX(10px) !important ; 
+  background-color: limeGreen;
+}
+
+input:checked + .slider
+{
+  box-shadow: 0 0 0 2px limeGreen, 0 0 8px limeGreen;
+}
+
+
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  // border-bottom: 1px dotted black;
+}
+//tooltip start here
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color:rgba(2, 2, 20, 0.808);
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px ;
+font-size: 10px;
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+.spinner-container {
+  position: absolute !important;
+  top: 50%;
+  left: 50%;
+}
+
+div.p-tabview-panel {
+  position: relative !important;
+}
+
+.order-form-book .p-datatable>.p-datatable-wrapper {
+  height: 165px !important;
+  overflow: auto;
+}
+
+
+
+
+

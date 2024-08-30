@@ -1,0 +1,281 @@
+<div>
+  <div class="card">
+    <div class="card-header">
+      <p>
+        <img
+          class="card-header-icon"
+          src="../../../../../assets/Dashboard Icon.svg"
+        />
+        Dashboard
+      </p>
+    </div>
+   
+
+    <div class="outerdiv">
+      <p-tabView >
+        <p-tabPanel header="Summary" [closable]="false">
+          <p-table [value]="summury" [tableStyle]="{ 'min-width': '50rem' }">
+            <ng-template pTemplate="header">
+              <tr>
+                <th>Account name</th>
+                <th >Balance <p-sortIcon></p-sortIcon></th>
+                <!-- <th pSortableColumn="Balance">Balance <p-sortIcon field="Balance"></p-sortIcon></th> -->
+                <th>Market <p-sortIcon></p-sortIcon></th>
+                <th>Broker <p-sortIcon></p-sortIcon></th>
+                <th>Assets <p-sortIcon></p-sortIcon></th>
+                <th>Network <p-sortIcon></p-sortIcon></th>
+                <th>Subscriber count <p-sortIcon></p-sortIcon></th>
+                <th>Rank <p-sortIcon></p-sortIcon></th>
+                <th>Account Created Date <p-sortIcon></p-sortIcon></th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-tableData>
+              <tr [routerLink]="['./summaryclick']">
+               
+                <td class="text-center">{{ tableData.telegramusername }}</td>
+                <td class="text-center">{{ tableData.balance }}</td>
+                <td class="text-center">{{ tableData.market }}</td>
+
+                <td class="text-center">
+                  <div>
+                    <img style="width:20px" src="../../../../../assets/bnb.png" />
+                    <img style="width:20px; margin-left: 4px" src="../../../../../assets/bnb.png" />
+                  </div>
+                </td>
+                <td class="text-center">{{ tableData.Assets }}</td>
+                <td  class="text-center">{{ tableData.Network }}</td>
+                <td class="text-center">{{ tableData.Subscribercount }}</td>
+                <td class="text-center">{{ tableData.rank }}</td>
+                <td class="text-center">{{ tableData.accountCreatedDate }}</td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </p-tabPanel>
+
+        <p-tabPanel header="Portolio Management" [closable]="false">
+          <app-portfolio-management></app-portfolio-management>
+        </p-tabPanel>
+
+        <p-tabPanel header="Trade Copier" [closable]="false">
+
+        </p-tabPanel>
+
+        <p-tabPanel header="Bots" [closable]="false">
+          <app-bots></app-bots>
+        </p-tabPanel>
+
+        <p-tabPanel header="Accounts" [closable]="false">
+          <app-account></app-account>
+        </p-tabPanel>
+
+        <p-tabPanel header="Subscribe Management" [closable]="false">
+          <div class="col-12 flex align-items-center">
+            <div class="col-12 md:col-2">
+              <!-- <label class="form-label">Number of real orders</label> -->
+              <!-- <i
+                class="pi pi-info-circle"
+                pTooltip="Information"
+                tooltipPosition="right"
+                style="margin-left: 4px; font-size: 15px"
+              ></i> -->
+              <p-dropdown
+                [options]="commonOptions"
+                optionLabel="name"
+              ></p-dropdown>
+            </div>
+          </div>
+          <p-table [value]="tableData" style="overflow: hidden;">
+            <ng-template pTemplate="header">
+              <tr>
+                <th>Account name <p-sortIcon></p-sortIcon></th>
+                <th>Email <p-sortIcon></p-sortIcon></th>
+                <th>Telegram user name <p-sortIcon></p-sortIcon></th>
+                <th>Remaining subscription <p-sortIcon></p-sortIcon></th>
+                <th>Date of subscription <p-sortIcon></p-sortIcon></th>
+                <th>Amount <p-sortIcon></p-sortIcon></th>
+                <th>Action</th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-tableData>
+              <tr>
+                <td>{{ tableData.account }}</td>
+                <td>${{ tableData.email }}</td>
+                <td>{{ tableData.telegramusername }}</td>
+                <td>${{ tableData.remainingsubscription }}</td>
+                <td>{{ tableData.dateofsubscription }}</td>
+                <td>${{ tableData.samount }}</td>
+                <td class="flex flex-row align-items-center justify-content-between">
+                  <span class="toggle-lbl">Connected</span>
+                  <label class="switch">
+                    <input type="checkbox" />
+                    <span class="slider round"></span>
+                  </label>
+                </td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </p-tabPanel>
+
+        <p-tabPanel header="My Products" [closable]="false">
+          <div style="padding: 10px">
+            <p-accordion class="w-full">
+              <p-accordionTab>
+                <ng-template pTemplate="header">
+                    <div class="flex align-items-center">
+                        <span class="vertical-align-middle">Ethereum Bear 2X</span>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="content">
+                  <div class=" grid flex align-items-center">
+                    <div class="col-12 md:col-2">
+                      <label class="form-label">Discount %</label>
+                      <i
+                        class="pi pi-info-circle"
+                        pTooltip="Information"
+                        tooltipPosition="right"
+                        style="margin-left: 4px; font-size: 15px"
+                      ></i><br>
+                      <input pInputText>
+                    </div>
+                    <div class="col-12 md:col-2">
+                      <label class="form-label">Start Date</label>
+                      <i
+                        class="pi pi-info-circle"
+                        pTooltip="Information"
+                        tooltipPosition="right"
+                        style="margin-left: 4px; font-size: 15px"
+                      ></i><br>
+                      <p-calendar [style]="{'width':'100%'}"></p-calendar>
+                    </div>
+                    <div class="col-12 md:col-6">
+                      <div>
+                        <label class="form-label">Description</label>
+                        <i
+                          class="pi pi-info-circle"
+                          pTooltip="Information"
+                          tooltipPosition="right"
+                          style="margin-left: 4px; font-size: 15px"
+                        ></i>
+                      </div>
+                      <div>
+                        <input pInputText>
+                      </div>
+                    </div>
+                    <div class="col-12 md:col-2">
+                      <label class="form-label">&nbsp;</label>
+                      <button class="save-btn">Save</button>
+                    </div>
+                  </div>
+                </ng-template>
+            </p-accordionTab>
+
+            <p-accordionTab>
+              <ng-template pTemplate="header">
+                  <div class="flex align-items-center">
+                      <span class="vertical-align-middle">Guttastemning</span>
+                  </div>
+              </ng-template>
+              <ng-template pTemplate="content">
+                <div class="grid flex align-items-center">
+                  <div class="col-12 md:col-2">
+                    <label class="form-label">Discount %</label>
+                    <i
+                      class="pi pi-info-circle"
+                      pTooltip="Information"
+                      tooltipPosition="right"
+                      style="margin-left: 4px; font-size: 15px"
+                    ></i>
+                    <input pInputText>
+                  </div>
+                  <div class="col-12 md:col-2">
+                    <label class="form-label">Start Date</label>
+                    <i
+                      class="pi pi-info-circle"
+                      pTooltip="Information"
+                      tooltipPosition="right"
+                      style="margin-left: 4px; font-size: 15px"
+                    ></i>
+                    <p-calendar [style]="{'width':'100%'}"></p-calendar>
+                  </div>
+                  <div class="col-12 md:col-6">
+                    <div>
+                      <label class="form-label">Description</label>
+                      <i
+                        class="pi pi-info-circle"
+                        pTooltip="Information"
+                        tooltipPosition="right"
+                        style="margin-left: 4px; font-size: 15px"
+                      ></i>
+                    </div>
+                    <div>
+                      <input pInputText>
+                    </div>
+                  </div>
+                  <div class="col-12 md:col-2">
+                    <label class="form-label">&nbsp;</label>
+                    <button class="save-btn">Save</button>
+                  </div>
+                </div>
+              </ng-template>
+          </p-accordionTab>
+
+          <p-accordionTab>
+            <ng-template pTemplate="header">
+                <div class="flex align-items-center">
+                    <span class="vertical-align-middle">Pendulam flow</span>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="content">
+              <div class="grid flex align-items-center">
+                <div class="col-12 md:col-2">
+                  <label class="form-label">Discount %</label>
+                  <i
+                    class="pi pi-info-circle"
+                    pTooltip="Information"
+                    tooltipPosition="right"
+                    style="margin-left: 4px; font-size: 15px"
+                  ></i>
+                  <input pInputText>
+                </div>
+                <div class="col-12 md:col-2">
+                  <label class="form-label">Start Date</label>
+                  <i
+                    class="pi pi-info-circle"
+                    pTooltip="Information"
+                    tooltipPosition="right"
+                    style="margin-left: 4px; font-size: 15px"
+                  ></i>
+                  <p-calendar [style]="{'width':'100%'}"></p-calendar>
+                </div>
+                <div class="col-12 md:col-6">
+                  <div>
+                    <label class="form-label">Description</label>
+                    <i
+                      class="pi pi-info-circle"
+                      pTooltip="Information"
+                      tooltipPosition="right"
+                      style="margin-left: 4px; font-size: 15px"
+                    ></i>
+                  </div>
+                  <div>
+                    <input pInputText>
+                  </div>
+                </div>
+                <div class="col-12 md:col-2">
+                  <label class="form-label">&nbsp;</label>
+                  <button class="save-btn">Save</button>
+                </div>
+              </div>
+            </ng-template>
+        </p-accordionTab>
+            </p-accordion>
+          </div>
+
+        </p-tabPanel>
+
+        <p-tabPanel header="Statics" [closable]="false"><app-static></app-static></p-tabPanel>
+      </p-tabView>
+    </div>
+
+  </div>
+</div>

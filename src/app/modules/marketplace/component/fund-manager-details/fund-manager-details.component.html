@@ -1,0 +1,132 @@
+
+
+<div class="card flex flex-column md:flex-row align-items-center p-4">
+  
+  <div>
+    <h1 style="font-size: 40px;font-family: 'Euclid Circular A';font-weight: 100;"> SNX Debt Mirror</h1>
+  </div>
+
+  <div class="flex align-items-center ml-3">
+    <img src="../../../../../assets/mini-user.png" />
+    <label class="fund-man-lbl ml-3">Jitendra Sharma</label>
+  </div>
+
+</div>
+
+
+
+<div class="grid">
+  <div class="col-12 md:col-8" >
+    <div class="card reletive-elm " style="height: 70vh;">
+      <div class="legend-container">
+        <div class="btn-group">
+          <button class="first" [ngClass]="id === 1 ? 'first active' : ''" (click)="onCLickedButton(1)">1D</button>
+          <button [ngClass]="id === 2 ? 'active' : ''" (click)="onCLickedButton(2)">1W</button>
+          <button [ngClass]="id === 3 ? 'active' : ''" (click)="onCLickedButton(3)">1M</button>
+          <button [ngClass]="id === 4 ? 'active' : ''" (click)="onCLickedButton(4)">6M</button>
+          <button [ngClass]="id === 5 ? 'last active' : ''" class="last" (click)="onCLickedButton(5)">1Y</button>
+        </div>
+      </div>
+      <div class="main-chart-container">
+        <div class="chart-container">
+          <canvas id="MyChart6">{{ chart }}</canvas>
+        </div>
+      </div>
+      <div class="chart-bottom-legend p-4 flex justify-content-around align-items-center">
+        <div class="flex flex-column align-items-center">
+          <label class="bottom-leg-lb" >
+            Value Managed
+          </label>
+          <label class="bottom-leg-value ">
+            350$
+          </label>
+        </div>
+        <div class="flex flex-column align-items-center">
+          <label class="bottom-leg-lb">
+           3 Months Return
+          </label>
+          <label class="bottom-leg-value green">
+            <i class="pi pi-arrow-up" ></i> <label class="ml-1">10.2%</label>
+          </label>
+        </div>
+        <div class="flex flex-column align-items-center">
+          <label class="bottom-leg-lb">
+            Risk Factor
+          </label>
+          <label class="bottom-leg-value red">
+            4/5
+          </label>
+        </div>
+        <div class="flex flex-column align-items-center">
+          <label class="bottom-leg-lb">
+            Rewards
+          </label>
+          <label class="bottom-leg-value ">
+            20.39%
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-12 md:col-4">
+    <div class="card">
+      <p class="card-head-fund-man p-4">Your Share</p>
+      <div class="grid p-3">
+        <div class="col-6">
+          <label class="form-label">Your Balance</label>
+          <input class="form-input" type="text" style="width: 100%" pInputText />
+        </div>
+        <div class="col-6">
+          <label class="form-label">Profit/Loss</label>
+          <input class="form-input" type="text" style="width: 100%" pInputText />
+        </div>
+      </div>
+      <p class="fund-man-lbl p-3 pl-4" style="font-size: 0.8rem;opacity: 0.6;">
+        Assets to invest with:
+      </p>
+      <span class="flex align-items-center ml-4" style="width: 60%;">
+        <img src="../../../../../assets/mini-user.png" />
+        <label class="fund-man-lbl ml-1" style="font-size: 0.8rem;">USDC</label>
+      </span>
+      <p class="fund-man-lbl p-3 pl-3 mt-3" style="font-size: 1rem;">
+        Fees Structure
+      </p>
+      <div class="grid pl-3 pr-3 flex align-items-center">
+        <div class="col-5 m-1 flex flex-column" style="background: #191733; border-radius: 4px;">
+          <label class="fund-man-lbl pl-0 ml-0" style="font-size: 0.8rem;opacity: 0.6;">Payout Terms</label>
+          <label class="fund-man-lbl pl-0 ml-0 pt-2" style="font-size: 1.4rem;">6 Months</label>
+        </div>
+        <div class="col-5 m-1 flex flex-column" style="background: #191733; border-radius: 4px;">
+          <label class="fund-man-lbl pl-0 ml-0" style="font-size: 0.8rem;opacity: 0.6;">Payout Currency</label>
+          <label class="fund-man-lbl pl-0 ml-0 pt-2" style="font-size: 1.4rem;">USDC</label>
+        </div>
+      </div>
+
+      <div class="flex justify-content-around align-items-center mt-3">
+        <div class="flex flex-column">
+          <label class="fund-man-lbl" style="font-size: 0.8rem;opacity: 0.6;">Entry</label>
+          <label class="fund-man-lbl" style="font-size: 1.2rem;">0%</label>
+        </div>
+        <div class="flex flex-column">
+          <label class="fund-man-lbl" style="font-size: 0.8rem;opacity: 0.6;">Exit</label>
+          <label class="fund-man-lbl" style="font-size: 1.2rem;">0%</label>
+        </div>
+        <div class="flex flex-column">
+          <label class="fund-man-lbl" style="font-size: 0.8rem;opacity: 0.6;">Performace</label>
+          <label class="fund-man-lbl" style="font-size: 1.2rem;">0%</label>
+        </div>
+        <div class="flex flex-column">
+          <label class="fund-man-lbl" style="font-size: 0.8rem;opacity: 0.6;">Management</label>
+          <label class="fund-man-lbl" style="font-size: 1.2rem;">0%</label>
+        </div>
+      </div>
+
+      <div class="mt-3 grid col-12 flex justify-content-center">
+        <button class="subs-btn">Subcribe</button>
+      </div>
+    </div>
+  </div>
+
+</div>

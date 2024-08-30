@@ -1,0 +1,50 @@
+<div class="card">
+  <div
+    class="card-header card-header flex justify-content-between"
+    style="
+      width: 100%;
+      overflow: hidden;
+      overflow-x: auto;
+      margin-bottom: 10px;
+      overflow-x: auto;">
+  </div>
+ <div class="common-table-style">
+  <p-table
+    [value]="deposit"
+    [tableStyle]="{ 'min-width': '50rem' }"
+    [rows]="3"
+    [showFirstLastIcon]="false"
+    [paginator]="true"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th class="signal-provider-table-head">Coin</th>
+        <th class="signal-provider-table-head">Chain</th>
+        <th class="signal-provider-table-head">TX ID</th>
+        <th class="signal-provider-table-head">Address</th>
+        <th class="signal-provider-table-head">Value</th>
+        <th class="signal-provider-table-head">Fee</th>
+        <th class="signal-provider-table-head">Status</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-tableData>
+      <ng-container *ngIf="tableData && tableData.length > 0; else noRecords">
+        <tr>
+          <td>{{ tableData.coin }}</td>
+          <td>{{ tableData.chain }}</td>
+          <td>{{ tableData.txID }}</td>
+          <td>{{ tableData.toAddress }}</td>
+          <td>{{ tableData.amount }}</td>
+          <td>{{ tableData.withdrawFee }}</td>
+          <td>{{ tableData.status }}</td>
+        </tr>
+      </ng-container>
+      <ng-template #noRecords>
+        <tr>
+          <td colspan="7">No records found</td>
+        </tr>
+      </ng-template>
+    </ng-template>    
+  </p-table>
+</div>
+</div>

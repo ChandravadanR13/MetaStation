@@ -1,0 +1,474 @@
+
+:host::ng-deep {
+    .p-inputtext {
+      margin: 10px 0px;
+      width: 100%;
+      font-family: "Euclid Circular A";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 0.9rem;
+      line-height: 140%;
+  
+      color: #ffffff;
+      background: #2e4060;
+      border: 1px solid #5c6276;
+      border-radius: 8px;
+    }
+  
+    .p-inputtext:hover {
+      border: 1px solid #3c71fb;
+      box-shadow: 0px 2px 8px 4px rgba(15, 168, 255, 0.17);
+      border-radius: 8px;
+    }
+  
+    .p-inputtext:enabled:focus {
+      border: 1px solid #3c71fb;
+      box-shadow: 0px 2px 8px 4px rgba(15, 168, 255, 0.17);
+      border-radius: 8px;
+      font-size: 0.9rem;
+    }
+  
+    .p-dropdown {
+      width: 100%;
+      margin: 10px 0px;
+      height: 46px;
+      color: #ffffff;
+      background: #2e4060;
+      border: 1px solid #5c6276;
+      border-radius: 8px;
+    }
+  
+    // .p-dropdown:enabled:focus{
+    //     border: 1px solid #3C71FB;
+    //     box-shadow: 0px 2px 8px 4px rgba(15, 168, 255, 0.17);
+    //     border-radius: 8px;
+    // }
+  
+    .p-dropdown > .p-inputtext {
+      margin: 0px;
+    }
+  
+    .p-dropdown > .p-inputtext:hover {
+      background: transparent;
+      border: none;
+    }
+  
+    // .p-dropdown:hover {
+    //     border: 1px solid #3C71FB;
+    //     box-shadow: 0px 2px 8px 4px rgba(15, 168, 255, 0.17);
+    //     border-radius: 8px;
+    // }
+  
+    .p-dropdown-items-wrapper {
+      color: #ffffff;
+      background: #2e4060;
+    }
+  
+    .p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-highlight {
+      color: black;
+    }
+  
+    .p-dropdown-panel .p-dropdown-items .p-dropdown-item {
+      color: #ffffff;
+    }
+  
+    .p-tabview .p-tabview-nav {
+      background: transparent;
+      border: none;
+      border-width: 0 0 2px 0;
+    }
+  
+    .p-tabview .p-tabview-panels {
+      background: transparent;
+      border: none;
+      color: #ffffff;
+    }
+  
+    .p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link {
+      background: #3c71fb;
+      opacity: 0.99;
+      box-shadow: 4px 0px 4px rgba(0, 0, 0, 0.12);
+      color: #ffffff;
+      border-radius: 0px 0px 0px 0px;
+    }
+  
+    .p-tabview .p-tabview-nav li .p-tabview-nav-link {
+      background: #2a3f65;
+      opacity: 0.99;
+      box-shadow: 4px 0px 4px rgba(0, 0, 0, 0.12);
+      border-width: 0 0 2px 0;
+      color: #707688;
+      padding: 20px 40px;
+      font-weight: 700;
+      border-top-right-radius: 6px;
+      border-top-left-radius: 6px;
+      transition: box-shadow 0.2s;
+      margin: 0 0 -2px 0;
+      font-family: "Euclid Circular A";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 1rem;
+      border-radius: 0px 0px 0px 0px;
+      line-height: 140%;
+    }
+  
+    .p-calendar-w-btn .p-inputtext {
+      border-top-right-radius: 0px !important;
+      border-bottom-right-radius: 0px !important;
+    }
+  
+    .p-calendar-w-btn .p-datepicker-trigger {
+      height: 10px;
+      position: absolute;
+      right: 5px;
+      top: 20px;
+    }
+  
+    .p-datepicker:not(.p-datepicker-inline) {
+      background: #2a3f65;
+      color: #ffffff;
+      border: 0 none;
+      box-shadow: 0 2px 12px 0 rgb(0 0 0 / 10%);
+    }
+  
+    .p-tabview .p-tabview-panels {
+      padding: 0;
+    }
+  
+    .p-calendar .p-button {
+      background: transparent;
+      border: none;
+    }
+  
+    .p-datepicker table td > span.p-highlight {
+      background: #3c71fb;
+      color: #ffffff;
+    }
+  
+    .p-datepicker .p-datepicker-header .p-datepicker-prev,
+    .p-datepicker .p-datepicker-header .p-datepicker-next {
+      color: #ffffff;
+    }
+  
+    .p-datepicker .p-datepicker-header .p-datepicker-title .p-datepicker-year,
+    .p-datepicker .p-datepicker-header .p-datepicker-title .p-datepicker-month {
+      color: #ffffff;
+    }
+  
+    .p-datepicker:not(.p-datepicker-inline) .p-datepicker-header {
+      background: #2a3f65;
+      color: #ffffff;
+    }
+  
+    .p-button:enabled:hover {
+      background: transparent;
+      color: #ffffff;
+      border-color: rgba(0, 0, 0, 0.12);
+    }
+  
+    .p-multiselect-panel .p-multiselect-header {
+      padding: 0.75rem 1.25rem;
+      border-bottom: 1px solid transparent;
+      background: #2a3f65;
+      color: #ffffff;
+      margin: 0;
+      border-top-right-radius: 6px;
+      border-top-left-radius: 6px;
+    }
+  
+    .p-multiselect {
+      color: #ffffff;
+      background: #2e4060;
+      border: 1px solid #5c6276;
+      width: 100%;
+      margin: 10px 0px;
+    }
+  
+    .p-multiselect-panel .p-multiselect-items {
+      padding: 0 0;
+    }
+  
+    .p-multiselect-panel .p-multiselect-items .p-multiselect-item {
+      background: #0f1a3a;
+      // border: 0.5px solid #3c71fb;
+      color: #ffffff;
+    }
+  
+    .p-checkbox .p-checkbox-box {
+      background: #111b38;
+      border: 1px solid #5c6276;
+    }
+  
+    .p-checkbox .p-checkbox-box.p-highlight {
+      background: #3c71fb;
+      border: 1px solid #3c71fb;
+    }
+  
+    .top-Filters {
+      background: #1f2c4d;
+      border-radius: 8px;
+      color: #ffffff;
+    }
+  
+    .p-datatable .p-datatable-thead > tr > th {
+      text-align: left;
+      padding: 1rem 1rem;
+      border: none;
+      border-width: 0 0 0 0;
+      font-weight: 700;
+      color: #ebebeb;
+      // background: linear-gradient(94.92deg, rgba(144, 162, 208, 0.1) 3.22%, rgba(219, 220, 224, 0.1) 50.78%, rgba(80, 106, 172, 0.1) 102.75%);
+      box-shadow: 33px 4px 16px rgba(31, 31, 31, 0.16);
+      background-color: rgb(255, 255, 255, 0.09);
+      transition: box-shadow 0.2s;
+      font-family: "Euclid Circular A";
+      font-style: normal;
+      font-weight: 500;
+      font-size: 0.9rem;
+      line-height: 140%;
+      position: relative;
+    }
+  
+    .p-datatable .p-datatable-tbody > tr {
+      background: transparent;
+      border-radius: 10px;
+      transition: box-shadow 0.2s;
+      color: #ffffff;
+      font-family: "Euclid Circular A - light";
+      font-style: normal;
+      // font-weight: 500;
+      font-size: 0.9rem;
+      line-height: 140%;
+    }
+  
+    .p-datatable-table {
+      // background: linear-gradient(94.92deg, rgba(144, 162, 208, 0.1) 3.22%, rgba(219, 220, 224, 0.1) 50.78%, rgba(80, 106, 172, 0.1) 102.75%);
+      // box-shadow: 33px 4px 16px rgba(31, 31, 31, 0.16);
+      border-spacing: 0px;
+      width: 100%;
+      font-family: "Euclid Circular A";
+      font-style: normal;
+      font-weight: 500;
+      font-size: 0.9rem;
+      line-height: 140%;
+    }
+  
+    .p-datatable .p-datatable-tbody > tr > td {
+      color: #ffffff;
+      font-family: "Euclid Circular A";
+      font-style: normal;
+      font-weight: 500;
+      font-size: 0.8rem;
+      line-height: 140%;
+      border: 1px solid rgba(255, 255, 255, 0.29);
+      border-width: 0 0 1px 0;
+    }
+  
+    .p-datatable .p-datatable-tbody {
+      tr:hover {
+        border: 1px solid #3c71fb;
+        box-shadow: 0px 2px 8px 4px rgba(15, 168, 255, 0.17);
+        border-radius: 8px;
+        font-size: 0.9rem;
+        cursor: pointer;
+      }
+    }
+  
+    .p-inputswitch {
+      width: 40px;
+      height: 11px;
+    }
+  
+    .p-inputswitch.p-inputswitch-checked .p-inputswitch-slider {
+      background: rgba(0, 199, 91, 0.24);
+    }
+  
+    .p-inputswitch.p-inputswitch-checked:not(.p-disabled):hover
+      .p-inputswitch-slider {
+      background: rgba(0, 199, 91, 0.24);
+    }
+  
+    .p-inputswitch.p-inputswitch-checked .p-inputswitch-slider:before {
+      background: #00c75b;
+    }
+  
+    .p-accordion {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.1);
+    }
+  
+    .p-accordion .p-accordion-header .p-accordion-header-link {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      font-family: "Euclid Circular A";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 1rem;
+      line-height: 140%;
+    }
+  
+    .p-accordion
+      .p-accordion-header:not(.p-disabled).p-highlight
+      .p-accordion-header-link {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      font-family: "Euclid Circular A";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 1rem;
+      line-height: 140%;
+    }
+  
+    .p-accordion .p-accordion-content {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      font-family: "Euclid Circular A";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 1rem;
+      line-height: 140%;
+    }
+  
+    .p-accordion .p-accordion-header .p-icon {
+      margin-top: -8px;
+      position: absolute;
+      right: 0.5em;
+      top: 50%;
+    }
+  
+    .p-datatable .p-paginator {
+      display: flex;
+      align-items: center;
+      justify-content: end;
+      flex-wrap: wrap;
+      background: transparent;
+      color: #ffffff;
+      border: solid #e9ecef;
+      border-width: 0;
+      padding: 10px;
+      border-radius: 6px;
+    }
+  
+    .p-datatable .p-paginator .p-paginator-pages .p-paginator-page {
+      background-color: transparent;
+      border: 0 none;
+      min-width: 25px;
+      height: 25px;
+      margin: 0.143rem;
+      transition: box-shadow 0.2s;
+      border-radius: 0%;
+      color: #ffffff;
+      opacity: 0.6;
+    }
+  
+    .p-datatable .p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
+      color: #ffffff;
+      background: #3c71fb;
+      border: none;
+      border-radius: 5px;
+      opacity: 1;
+    }
+  
+    .p-paginator .p-paginator-first,
+    .p-paginator .p-paginator-prev,
+    .p-paginator .p-paginator-next,
+    .p-paginator .p-paginator-last {
+      background-color: transparent;
+      border: 0 none;
+      color: #6c757d;
+      min-width: 25px;
+      height: 25px;
+      margin: 0.143rem;
+      transition: box-shadow 0.2s;
+      border-radius: 0;
+    }
+  
+    .p-datatable
+      .p-paginator
+      .p-paginator-first:not(.p-disabled):not(.p-highlight):hover,
+    .p-paginator .p-paginator-prev:not(.p-disabled):not(.p-highlight):hover,
+    .p-paginator .p-paginator-next:not(.p-disabled):not(.p-highlight):hover,
+    .p-paginator .p-paginator-last:not(.p-disabled):not(.p-highlight):hover {
+      background: transparent;
+      border-color: transparent;
+      border: 0px;
+      color: #343a40;
+    }
+  
+    .p-dropdown {
+      width: 100%;
+      margin: 10px 0px;
+      height: 46px;
+      color: #ffffff;
+      background: #2e4060;
+      border: 1px solid #5c6276;
+      border-radius: 8px;
+    }
+  
+    .p-overlaypanel .p-overlaypanel-content {
+      background: linear-gradient(90.88deg, #162e58 -7.31%, #1a3463 99.28%);
+      padding: 0;
+      border-radius: 14px;
+    }
+    .p-overlaypanel {
+      z-index: 1001;
+      transform-origin: center top;
+      top: 60px;
+      // left: 1184.98px !important;
+      --overlayArrowLeft: 466px !important;
+      transform: translateY(0px);
+      opacity: 1;
+      max-width: 100%;
+      padding: 10px;
+      border: 2px solid #3c71fb;
+      border-radius: 16px;
+      background: linear-gradient(90.88deg, #162e58 -7.31%, #1a3463 99.28%);
+  
+    }
+  }
+  
+  .hor-divider {
+    height: 2px;
+    width: 90%;
+    border: 2px solid #ffffff;
+  }
+  
+  .search-bar-top {
+    height: 44px;
+    // width: 28rem;
+    border-radius: 24px;
+    background: linear-gradient(
+      83deg,
+      rgba(217, 217, 217, 0.1) 0%,
+      rgba(85, 110, 173, 0.1) 100%
+    );
+    outline: none;
+    border: none;
+    padding: 6px 49px;
+    font-family: "Euclid Circular A";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.9rem;
+    line-height: 140%;
+  
+    color: #ffffff;
+  }
+  .search-bar-icon {
+    position: absolute;
+    right: 14rem;
+  }
+  
+  .filter-icon {
+    height: 3rem;
+    width: 3rem;
+    background: rgb(14, 19, 43);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  

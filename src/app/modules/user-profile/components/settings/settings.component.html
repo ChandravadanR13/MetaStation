@@ -1,0 +1,671 @@
+<!-- <div class="maindiv">
+  <div class="tabbar"> -->
+<!-- <button class="tablinks" (click)="openTab($event, 'resetprofile')" id="defaultOpen">Reset Profile</button>
+    <button class="tablinks" (click)="openTab($event, 'twofactor')">Two Factor Authentication</button>
+    <button class="tablinks" (click)="openTab($event, 'notification')">Notification Preferences</button> -->
+<!-- </div> -->
+<!-- <div class="sidedata"> -->
+<!-- reset profile details -->
+<!-- <div id="resetprofile" class="tabcontent">
+      <h1 class="resettxt">Reset Profile Details</h1>
+      <form action="" class="reset_profil_form">
+        <div class="d_flex">
+          <div class="inputbox">
+            <label for="name" class="input_label">Name</label>
+            <input type="text" name="" id="name" class="input" placeholder="Enter your name" />
+          </div>
+          <div class="inputbox">
+            <label for="email" class="input_label">Email </label>
+            <input type="email" name="" id="email" class="input" placeholder="Enter email" />
+          </div>
+          <div class="inputbox">
+            <label for="content" class="input_label">Contact Number </label>
+            <input type="text" name="" id="Contact" class="input" placeholder="Enter Phone no" />
+          </div>
+          <div class="inputbox">
+            <label for="password" class="input_label">Password</label>
+            <input type="password" name="" id="password" class="input" placeholder="Enter password" />
+          </div>
+        </div>
+        <div class="d_flex justify_end mt_5">
+          <p value="Save" class="submit_button" id="otpbutton">Save</p>
+        </div>
+      </form>
+    </div> -->
+<!-- otp verification modal start -->
+<!-- <div class="modal" id="otpModal" style="display: none">
+      <div class="modal_content relative">
+        <img src="img/close.svg" alt="" class="closeicon" id="optclose" />
+        <div class="circle"></div>
+        <h1 class="modaltxt1 mt_3">OTP Verification</h1>
+        <h2 class="modaltext2">Enter the verification code we just sent you on your registered mobile number 98******67</h2>
+        <div class="otp_input_fields">
+          <input type="number" class="otp__digit otp__field__1" />
+          <input type="number" class="otp__digit otp__field__2" />
+          <input type="number" class="otp__digit otp__field__3" />
+          <input type="number" class="otp__digit otp__field__4" />
+          <input type="number" class="otp__digit otp__field__5" />
+          <input type="number" class="otp__digit otp__field__6" />
+        </div>
+        <button class="otp_submit">Submit</button>
+        <h3 class="resentxt">Didn't receive the OTP? <span class="resenttxtcolor">Resend OTP</span></h3>
+      </div>
+    </div> -->
+<!-- update successfully -->
+<!-- <div class="modal" id="succmodal" style="display: none">
+      <div class="modal_content relative">
+        <img src="img/close.svg" alt="" class="closeicon" id="succclose" />
+        <img src="img/profilesucc.svg" alt="" class="updatesuccimg" />
+        <h1 class="modaltxt1 mt_3">Profile Updated Successfully</h1>
+        <h2 class="modaltext2">Security details has been updated successfully</h2>
+
+        <button class="otp_submit">Done</button>
+      </div>
+    </div> -->
+<!-- two factor authentication -->
+<!-- <div id="twofactor" class="tabcontent">
+      <h1 class="resettxt">Two Factor Authentication</h1>
+      <form action="">
+        <div class="checkbox">
+          <label class="check_cont">
+            Mobile SMS enabled on 730*******
+            <input type="radio" checked="checked" name="radio" />
+            <span class="checkmark"></span>
+          </label>
+        </div>
+        <div class="checkbox">
+          <label class="check_cont">
+            Google Authentication
+            <input type="radio" checked="checked" name="radio" />
+            <span class="checkmark"></span>
+          </label>
+        </div>
+        <div class="checkbox">
+          <label class="check_cont">
+            None
+            <input type="radio" checked="checked" name="radio" />
+            <span class="checkmark"></span>
+          </label>
+        </div>
+        <div class="d_flex justify_end mt_5">
+          <p value="Save" class="submit_button" id="twoSave">Save</p>
+        </div>
+      </form>
+    </div> -->
+<!-- two factor modal start -->
+<!-- <div class="secmodal" id="secmodal" style="display: none">
+      <div class="secmodalcontent">
+        <img src="img/close.svg" alt="" class="closeicon" id="twoClose" />
+        <h1 class="modaltxt1 px_2">Security Verification</h1>
+        <div class="two_tab">
+          <button class="two_tablinks" id="twoDefault" onclick="openTwoTab(event, 'textMessage')">textMessage</button>
+          <button class="two_tablinks" onclick="openTwoTab(event, 'authenticationApp')">Paris</button>
+        </div> -->
+<!-- Tab content -->
+<!-- <div id="textMessage" class="two_tabcontent">
+          <h2 class="twotxt1">Enter OTP sent to your mobile</h2>
+          <div class="two_otp_input_fields">
+            <input type="number" class="two_otp__digit otp__field__1" />
+            <input type="number" class="two_otp__digit otp__field__2" />
+            <input type="number" class="two_otp__digit otp__field__3" />
+            <input type="number" class="two_otp__digit otp__field__4" />
+            <input type="number" class="two_otp__digit otp__field__5" />
+            <input type="number" class="two_otp__digit otp__field__6" />
+          </div>
+          <h2 class="twotxt2">Enter the 6 digit code sent to *******364</h2>
+          <div class="d_flex justify_center">
+            <button class="two_submit">Submit</button>
+            <h3 class="resentxt">Didn't receive the OTP? <span class="resenttxtcolor">Resend OTP</span></h3>
+          </div>
+        </div>
+
+        <div id="authenticationApp" class="two_tabcontent">
+          <div class="authbox">
+            <div class="authtxtbox">
+              <h2 class="authtxt1"><span class="authtxt1big">Step 1</span>: Scan the QR code below or manually enter the secret key in to your authenticator app.</h2>
+              <h2 class="authtxt1 mt_2"><span class="authtxt1big">Step 2</span>: Enter the 6-digit code you see in your authenticator app</h2>
+            </div>
+            <div class="authqrbox">
+              <div class="qrbox"></div>
+            </div>
+          </div>
+          <div class="two_otp_input_fields mt_2">
+            <input type="number" class="auth_otp__digit otp__field__1" />
+            <input type="number" class="auth_otp__digit otp__field__2" />
+            <input type="number" class="auth_otp__digit otp__field__3" />
+            <input type="number" class="auth_otp__digit otp__field__4" />
+            <input type="number" class="auth_otp__digit otp__field__5" />
+            <input type="number" class="auth_otp__digit otp__field__6" />
+          </div>
+          <h2 class="twotxt2">Enter the 6 digit code sent to *******364</h2>
+          <div class="d_flex justify_center">
+            <button class="two_submit">Submit</button>
+            <h3 class="resentxt">Didn't receive the OTP? <span class="resenttxtcolor">Resend OTP</span></h3>
+          </div>
+        </div>
+      </div>
+    </div> -->
+<!-- notification preference -->
+<!-- <div id="notification" class="tabcontent">
+      <h1 class="resettxt">Notification Preferences</h1>
+      <p class="collapsible mt_3">Social Media Notifications</p>
+      <div class="content">
+        <div class="infocheck">
+          <p class="notitxt1">Personal Notification</p>
+          <label class="switch">
+            <input type="checkbox" />
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <div class="infocheck">
+          <p class="notitxt1">Login alerts for new device</p>
+          <label class="switch">
+            <input type="checkbox" />
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <div class="infocheck">
+          <p class="notitxt1">Signal message alerts</p>
+          <label class="switch">
+            <input type="checkbox" />
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <div class="infocheck">
+          <p class="notitxt1">Executed trades alerts</p>
+          <label class="switch">
+            <input type="checkbox" />
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <div class="infocheck">
+          <p class="notitxt1">Inbox message alerts</p>
+          <label class="switch">
+            <input type="checkbox" />
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <div class="infocheck">
+          <p class="notitxt1">Security alerts</p>
+          <label class="switch">
+            <input type="checkbox" />
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <div class="infocheck">
+          <p class="notitxt1">Promotional Discount alerts</p>
+          <label class="switch">
+            <input type="checkbox" />
+            <span class="slider round"></span>
+          </label>
+        </div>
+      </div>
+      <p class="collapsible mt_2">Email Notification</p>
+      <div class="content">
+        <div class="infocheck">
+          <p class="notitxt1">Personal Notification</p>
+          <label class="switch">
+            <input type="checkbox" />
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <div class="infocheck">
+          <p class="notitxt1">Login alerts for new device</p>
+          <label class="switch">
+            <input type="checkbox" />
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <div class="infocheck">
+          <p class="notitxt1">Inbox message alerts</p>
+          <label class="switch">
+            <input type="checkbox" />
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <div class="infocheck">
+          <p class="notitxt1">Blog Posts</p>
+          <label class="switch">
+            <input type="checkbox" />
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <div class="infocheck">
+          <p class="notitxt1">Security alerts</p>
+          <label class="switch">
+            <input type="checkbox" />
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <div class="infocheck">
+          <p class="notitxt1">Promotional Discount alerts</p>
+          <label class="switch">
+            <input type="checkbox" />
+            <span class="slider round"></span>
+          </label>
+        </div>
+      </div>
+      <p class="collapsible mt_2">SMS Notifications</p>
+      <div class="content">
+        <div class="infocheck">
+          <p class="notitxt1">Blog Posts</p>
+          <label class="switch">
+            <input type="checkbox" />
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <div class="infocheck">
+          <p class="notitxt1">Security alerts</p>
+          <label class="switch">
+            <input type="checkbox" />
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <div class="infocheck">
+          <p class="notitxt1">Promotional Discount alerts</p>
+          <label class="switch">
+            <input type="checkbox" />
+            <span class="slider round"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+<div class="pl-2 pt-3">
+  <div class="card grid p-2">
+    <div class="col-12 sm:col-4 p-5  button-section">
+      <!-- <div class="section-click pl-4" (click)="section = 0">Reset Profile</div> -->
+      <div class="section-click pl-4" (click)="section = 1">
+        Two Factor Aunthentication
+      </div>
+      <div class="section-click pl-4" (click)="section = 2">
+        Notification Preferance
+      </div>
+    </div>
+
+    <div class="col-12 sm:col-8 settings-section">
+
+      <!-- <form [formGroup]="resetprofileForm" (ngSubmit)="submitForm()">
+        <p class="alert alert-danger" [hidden]="!isError">{{ isError }}</p>
+        <div class="grid" *ngIf="section === 0">
+          <div class="col-12 section-header">Reset Profile Details</div>
+          <div class="col-12 sm:col-4 form">
+            <label class="form-label">Name</label>
+            <input
+              class="form-input"
+              type="text"
+              style="width: 100%"
+              pInputText
+              formControlName="name"
+            />
+          </div>
+          <div class="col-12 sm:col-4 form">
+            <label class="form-label">Email</label>
+            <input
+              class="form-input"
+              type="text"
+              style="width: 100%"
+              pInputText
+              formControlName="email"
+              [(ngModel)]="resetForm.email"
+            />
+          </div>
+          <div class="col-12 sm:col-4 form">
+            <label class="form-label">Contact Number</label>
+            <input
+              class="form-input"
+              type="text"
+              style="width: 100%"
+              pInputText
+              formControlName="phone_number"
+            />
+          </div>
+           <div class="col-12 sm:col-4 form">
+          <label class="form-label">password</label>
+          <input
+            class="form-input"
+            type="password"
+            style="width: 100%"
+            pInputText
+          />
+        </div> 
+          <div
+            *ngIf="
+              resetprofileForm.errors && resetprofileForm.errors['atLeastOne']
+            "
+            class="error-message"
+          >
+            At least one option is required.
+          </div>
+
+          <div
+            class="col-12 sm:col-12 flex justify-content-end align-items-center"
+          >
+            <p-button
+              type="submit"
+              label="Save"
+              [disabled]="resetprofileForm.invalid"
+            ></p-button>
+          </div>
+        </div>
+      </form> -->
+    
+      <form #twoFa="ngForm" (ngSubmit)="twoFaSubmit()">
+        <div class="grid" *ngIf="section === 1">
+          <div class="col-12 section-header">Two Factor Authentication</div>
+          <div class="col-11">
+            <div class="checkbox">
+              <label class="check_cont"   style="font-family: 'Euclid Circular A';">
+                Email Verification  
+                <input type="radio" *ngIf="type !== 'email_otp'" checked="checked" name="type" value="email" [(ngModel)]="twoFaForm.twofa" />                
+                <span  class="checkmark"  ></span>
+                <span *ngIf="type === 'email_otp'" class="verified-text">Activated</span>
+              </label>
+            </div>
+            <div class="spinner-container" *ngIf="loading.isLoading | async">
+              <div class="d-flex justify-content-center">
+                <div class="spinner-border" role="status">
+                  <span class="sr-only" id="loading"></span>
+                </div>
+              </div>
+              <!-- <i class="fas fa-spinner fa-spin"></i> -->
+            </div>
+            <div class="checkbox">
+              <label class="check_cont" style="font-family: 'Euclid Circular A';">
+                Google Authentication
+                <input type="radio" *ngIf="type !== 'google_otp'" checked="checked" name="type" value="google" [(ngModel)]="twoFaForm.twofa" />
+                <span  class="checkmark"></span>
+                <span *ngIf="type === 'google_otp'" class="verified-text">Activated</span>
+              </label>
+            </div>
+            <div class="checkbox">
+              <label class="check_cont"  style="font-family: 'Euclid Circular A';">
+                None
+                <input type="radio" *ngIf="isDisabled" checked="checked" name="type" value="none" [(ngModel)]="twoFaForm.twofa" />
+                <span   class="checkmark" ></span>
+              </label>
+            </div>
+            <div class="d_flex justify_end mt_3">
+              <p-button label="Save" [disabled]="!twoFaForm.twofa" type="submit"></p-button>
+            </div>
+          </div>
+        </div>
+      </form>
+      
+      <div class="grid" *ngIf="section === 2">
+        <div class="col-12 section-header mb-3">Notification Preferences</div>
+        <div  class="col-12">
+        <p-accordion [activeIndex]="0">
+          <p-accordionTab header="Social Media Notifications">
+            <div class="grid">
+              <div class="notification-tabss col-12 flex p-0">
+                <div class="p-3 opacity-60" [ngClass]="noti === 0 ? 'p-3 single-notif-active opacity-100': 'p-3 opacity-60'" (click)="changeNoti(0)">Telegram Notification</div>
+                <div class="p-3 opacity-60" [ngClass]="noti === 1 ? 'p-3 single-notif-active opacity-100': 'p-3 opacity-60'" (click)="changeNoti(1)">Discord Notification</div>
+                <div class="p-3 opacity-60" [ngClass]="noti === 2 ? 'p-3 single-notif-active opacity-100': 'p-3 opacity-60'" (click)="changeNoti(2)">Whatsapp Notification</div>
+              </div>
+              <div class="col-12" *ngIf="noti === 0" >
+                <div class="flex justify-content-between p-2" *ngFor="let tel of tele">
+                  <label>
+                    {{tel.label}}
+                  </label>
+                  <label class="switch">
+                    <input type="checkbox"  [(ngModel)]="tel.active" value="tel.code"  (change)="notifiClick(tel, 'telegram')" />
+                    <span class="slider round"></span>
+                  </label>
+                </div>
+              </div>
+              <div class="col-12" *ngIf="noti === 1">
+                <div class="flex justify-content-between p-2" *ngFor="let cod of dis">
+                  <label>
+                    {{cod.label}}
+                  </label>
+                  <label class="switch">
+                    <input type="checkbox"  [(ngModel)]="cod.active" value="cod.code"  (change)="notifiClick(cod, 'discord')"/>
+                    <span class="slider round"></span>
+                  </label>
+                </div>
+              </div>
+              <div class="col-12" *ngIf="noti === 2">
+                  <div class="flex justify-content-between p-2" *ngFor="let item of whats">
+                    <label>
+                      {{item.label}}
+                    </label>
+                    <label class="switch">
+                      <input type="checkbox" [(ngModel)]="item.active"  value="item.checked" (change)="notifiClick(item, 'whatsapp')"  [checked]="item.active"/>
+                      <span class="slider round"></span>
+                    </label>
+                </div>
+              </div>
+            </div>
+          </p-accordionTab>
+          <div class="spinner-container" *ngIf="loading.isLoading | async">
+            <div class="d-flex justify-content-center">
+              <div class="spinner-border" role="status">
+                <span class="sr-only" id="loading"></span>
+              </div>
+            </div>
+            <i class="fas fa-spinner fa-spin"></i>
+          </div>
+          <p-accordionTab header="Email Notification" class="mt-2">
+            <div class="flex justify-content-between p-2" *ngFor="let email of emaillist">
+              <label>
+                {{email.label}}
+              </label>
+              <label class="switch">
+                <input type="checkbox" [(ngModel)]="email.active" value="email.code"  (change)="notifiClick(email, 'email')"/>
+                <span class="slider round"></span>
+              </label>
+            </div>
+          </p-accordionTab>
+          <p-accordionTab header="SMS Notifications" class="mt-2">
+            <div class="flex justify-content-between p-2" *ngFor="let sms of smslist">
+              <label>
+                {{sms.label}}
+              </label>
+              <label class="switch">
+                <input type="checkbox" [(ngModel)]="sms.active" value="sms.code" (change)="notifiClick(sms, 'sms')"/>
+                <span class="slider round"></span>
+              </label>
+            </div>
+          </p-accordionTab>
+        </p-accordion>
+      </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+  <!-- Modal 1 -->
+
+  <div id="myModal" class="modal text-center">
+   
+  <div class="modal-content">
+    <span class="close" (click)="closeModel()">&times;</span>
+    <div class="grid" *ngIf="activeIndex === 1">
+      <form #twoOTP="ngForm" (ngSubmit)="twoFaotp()">
+        <div class="col-12 p-3">
+         
+           <!-- <img src="../../../assets/circal.png"> -->
+           <div class="alert alert-danger" [hidden]="!error">{{error}} </div>
+           <h3>OTP Verification</h3>
+           <!-- <p>Enter the verification code we just sent you on your registered mobile number </p> -->
+           <div class="otp">
+            <!-- <ng-otp-input inputStyles="{ backgroundColor: 'transperent'}"  [config]="config"></ng-otp-input> -->
+            <input class="form-input" type="text" name="OTP" [(ngModel)]="twoFaForm.OTP" pInputText />
+           </div>
+           <p-button label="Submit" type="submit"  [style]="{'width':'100%'}"></p-button>
+           <!-- <h5>Didn't receive the OTP?<a> Resend OTP</a></h5> -->
+          </div>
+        </form>
+      </div>
+
+      <div class="grid" *ngIf="activeIndex === 2">
+        <div class="col-12 p-3">
+           <img src="../../../assets/succes.svg">
+            <h2 style="font-family: 'Euclid Circular A';
+            font-size: 26px;color: #fff;font-weight: 100;">Profile Updated Successfully</h2>
+            <p style="font-family: 'Euclid Circular A';
+            font-size: 14px;color: #707688;">Security details has been updated successfully</p>
+            <p-button label="Done" (click)="closeModel()" (click)="submit()" [style]="{'width':'100%'}"></p-button>
+          </div>
+      </div>
+
+  </div>
+
+  
+</div>
+
+
+<!-- Modal 2 -->
+<div id="myModal2" class="modal">
+  <div class="modal-content">
+    <span class="close" (click)="closeModel2()">&times;</span>
+     <div class="grid my-2">
+      <div class="alert alert-danger" [hidden]="!error">{{error}} </div>
+         <h2 style="font-family: 'Euclid Circular A';
+         font-size: 26px;color: #fff;font-weight: 100;margin: 10px 0px;">Security Verification</h2>
+         <div class="tab" style="width: 100%;">
+          <p-tabView style="width: 100%;"> 
+
+            <!-- <p-tabPanel header="Text Message" [headerStyle]="{'width':'50%'}">
+                <p style="margin-top:25px;">Enter OTP sent to your mobile</p>
+                <div class="otp">
+                  <ng-otp-input inputStyles="{ backgroundColor: 'transperent'}"  [config]="config"></ng-otp-input>
+                 </div>
+                 <h6 style="font-family:'Euclid Circular A';font-weight: 100;color: #707688;font-size: 18px;margin: 0px 0px 20px 0px;">Enter the 6 digit code sent to *******364</h6>
+                 <p-button label="Submit" (click)="submit()" [style]="{'width':'100%'}"></p-button>
+                 <h5 class="text-center">Didn't receive the OTP?<a> Resend OTP</a></h5>
+            </p-tabPanel>
+             -->
+            <!-- First Tabpanel end -->
+       
+            <p-tabPanel header="Authenticatior App" [headerStyle]="{'width':'100%'}">
+
+              <div class="grid col-12 QR-Code-security-verification-outer" *ngIf="isShown">
+                  <div class="col-6 md:col-9">
+                    <p style="color: #fff;font-family:'Euclid Circular A';font-weight: 100;font-size: 16px;margin:0px">
+                      Step 1: Scan the QR code below or manually enter the secret key in to your authenticator app.
+                    </p>
+                  </div>
+
+                  <div class="col-6 md:col-3">
+                    <div class="QR-Code-security-verification"><img [src]="profileForm.qrCode" alt="QR Code" style="max-width: 100%;" /></div>
+                  </div>
+
+              </div>
+
+              <p style="margin-top:10px;color: #fff;">
+                Step 2: Enter the 6-digit code you see in your authenticator app
+              </p>
+              <form #twogoogleOTP="ngForm" (ngSubmit)="twoFaotp()">
+              <div class="otp otp-fill-box">
+                <!-- <ng-otp-input inputStyles="{ backgroundColor: 'transperent'}"  [config]="config"></ng-otp-input> -->
+                <input class="form-input" type="text" name="OTP" [(ngModel)]="twoFaForm.OTP" pInputText />
+               </div>
+               <div class="spinner-container" *ngIf="loading.isLoading | async">
+                <div class="d-flex justify-content-center">
+                  <div class="spinner-border" role="status">
+                    <span class="sr-only" id="loading"></span>
+                  </div>
+                </div>
+                <i class="fas fa-spinner fa-spin"></i>
+              </div>
+               <!-- <h6 style="font-family:'Euclid Circular A';font-weight: 100;color: #707688;font-size: 18px;margin: 0px 0px 20px 0px;">Enter the 6 digit code sent to *******364</h6> -->
+               <p-button label="Submit" (click)="closeModel2()" type="submit" [style]="{'width':'100%'}"></p-button>
+              </form>
+               <!-- <h5 class="text-center">Didn't receive the email? <a>Click to resend</a></h5> -->
+            </p-tabPanel>
+ 
+
+           </p-tabView>
+         </div>
+     </div>
+
+  </div>
+  
+  
+</div>
+
+<div id="myModal3" class="modal text-center">
+   
+  <div class="modal-content">
+    <span class="close" (click)="closeModel3()">&times;</span>
+    <div class="grid" >
+      <form #twoOTP="ngForm" (ngSubmit)="twoFaotpnew()">
+        <div class="col-12 p-3">
+         
+           <!-- <img src="../../../assets/circal.png"> -->
+           <div class="alert alert-danger" [hidden]="!error">{{error}} </div>
+           <h3>OTP Verification</h3>
+           <p>Enter the verification code we just sent you on your Email Address </p>
+           <div class="otp">
+            <!-- <ng-otp-input inputStyles="{ backgroundColor: 'transperent'}"  [config]="config"></ng-otp-input> -->
+            <input class="form-input" type="text" name="OTP" [(ngModel)]="twoFaForm.OTP" pInputText />
+           </div>
+           <p-button label="Submit" type="submit"  [style]="{'width':'100%'}"></p-button>
+           <!-- <h5>Didn't receive the OTP?<a> Resend OTP</a></h5> -->
+          </div>
+        </form>
+      </div>
+
+      <div class="grid" *ngIf="activeIndex === 2">
+        <div class="col-12 p-3">
+           <img src="../../../assets/succes.svg">
+            <h2 style="font-family: 'Euclid Circular A';
+            font-size: 26px;color: #fff;font-weight: 100;">Profile Updated Successfully</h2>
+            <p style="font-family: 'Euclid Circular A';
+            font-size: 14px;color: #707688;">Security details has been updated successfully</p>
+            <p-button label="Done"  (click)="closeModel3()" [style]="{'width':'100%'}"></p-button>
+          </div>
+      </div>
+
+  </div>
+
+  
+</div>
+
+<div id="myModal4" class="modal text-center">
+   
+  <div class="modal-content">
+    <span class="close" (click)="closeModel4()">&times;</span>
+    <div class="grid" >
+      <form #twoOTP="ngForm" (ngSubmit)="twoFaotpnew()">
+        <div class="col-12 p-3">
+         
+           <!-- <img src="../../../assets/circal.png"> -->
+           <div class="alert alert-danger" [hidden]="!error">{{error}} </div>
+           <h3>OTP Verification</h3>
+           <p>Enter the verification code we just sent you on your registered mobile number </p>
+           <div class="otp">
+            <!-- <ng-otp-input inputStyles="{ backgroundColor: 'transperent'}"  [config]="config"></ng-otp-input> -->
+            <input class="form-input" type="text" name="OTP" [(ngModel)]="twoFaForm.OTP" pInputText />
+           </div>
+           <p-button label="Submit" type="submit"  [style]="{'width':'100%'}"></p-button>
+           <!-- <h5>Didn't receive the OTP?<a> Resend OTP</a></h5> -->
+          </div>
+        </form>
+      </div>
+
+      <div class="grid" *ngIf="activeIndex === 2">
+        <div class="col-12 p-3">
+           <img src="../../../assets/succes.svg">
+            <h2 style="font-family: 'Euclid Circular A';
+            font-size: 26px;color: #fff;font-weight: 100;">Profile Updated Successfully</h2>
+            <p style="font-family: 'Euclid Circular A';
+            font-size: 14px;color: #707688;">Security details has been updated successfully</p>
+            <p-button label="Done" (click)="submit()" (click)="closeModel4()" [style]="{'width':'100%'}"></p-button>
+          </div>
+      </div>
+
+  </div>
+
+  
+</div>
+
+
+
+      

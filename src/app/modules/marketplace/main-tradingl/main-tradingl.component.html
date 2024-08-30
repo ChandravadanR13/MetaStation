@@ -1,0 +1,65 @@
+<div class="card">
+    <div class="card-header">
+      <span class="flex align-items-center">
+        <img style="margin: 8px" src="../../../../../assets/copy-trading.svg" />
+        Copy Trading
+      </span>
+      <span style="position: absolute; right: 3%; top: 15%"
+        ><p-button
+          label="Add New"  [routerLink]="['/app/marketplace/copy-trading']"
+        ></p-button
+      ></span>
+    </div>
+
+    <div class="common-table-style">
+    <p-table
+      [value]="summury"
+      [tableStyle]="{ 'min-width': '50rem' }"
+      [rows]="3"
+      [showFirstLastIcon]="false"
+      [paginator]="true"
+    >
+      <ng-template pTemplate="header">
+        <tr>
+          <th class="signal-provider-table-head">Rank<p-sortIcon></p-sortIcon></th>
+          <th class="signal-provider-table-head">Account name<p-sortIcon icon="pi pi-fw pi-sort"></p-sortIcon></th>
+          <th class="signal-provider-table-head">Market <p-sortIcon></p-sortIcon></th>
+          <th class="signal-provider-table-head">Broker <p-sortIcon></p-sortIcon></th>
+          <th class="signal-provider-table-head">Assets <p-sortIcon></p-sortIcon></th>
+          <th class="signal-provider-table-head">1D <p-sortIcon></p-sortIcon></th>
+          <th class="signal-provider-table-head">1W <p-sortIcon></p-sortIcon></th>
+          <th class="signal-provider-table-head">1M <p-sortIcon></p-sortIcon></th>
+          <th class="signal-provider-table-head">1Y <p-sortIcon></p-sortIcon></th>
+          <th class="signal-provider-table-head">Total <p-sortIcon></p-sortIcon></th>
+          <th class="signal-provider-table-head">Rewards <p-sortIcon></p-sortIcon></th>
+          <th class="signal-provider-table-head">Risks <p-sortIcon></p-sortIcon></th>
+          <th class="signal-provider-table-head">Subcriber Count <p-sortIcon></p-sortIcon></th>
+          <th class="signal-provider-table-head">Subcriber Fees <p-sortIcon></p-sortIcon></th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-tableData>
+        <tr (click)="onClickAction()">
+          <td>{{ tableData.rank }}</td>
+          <td>{{ tableData.telegramusername }}</td>
+          <td>{{ tableData.market }}</td>
+
+          <td>
+            <div>
+              <img style="width: 20px" src="../../../../../assets/bnb.png" />
+            </div>
+          </td>
+          <td>{{ tableData.Assets }}</td>
+          <td>{{ tableData.d }}</td>
+          <td>{{ tableData.w }}</td>
+          <td>{{ tableData.m }}</td>
+          <td>{{ tableData.y }}</td>
+          <td>{{ tableData.Rewards }}</td>
+          <td>{{ tableData.Subscribercount }}</td>
+          <td>{{ tableData.Risks }}</td>
+          <td>{{ tableData.Subscribercount }}</td>
+          <td>{{ tableData.Subcriberfess }}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+  </div>

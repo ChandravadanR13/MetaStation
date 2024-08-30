@@ -1,0 +1,678 @@
+
+    <div class="card">
+      <div class="card-header">
+        <!-- <i class="pi pi-arrow-left mr-2" style="font-size: 1rem"></i> -->
+        <i class="pi pi-arrow-left mr-2" style="font-size: 1rem" (click)="backToPrevious()"></i>
+        <span style="font-size: 20px;">Jitendra Sharma</span>
+      </div>
+    
+      <div class="grid flex ">
+    
+        <div class="col-12 md:col-2">
+          <div class="flex">
+            <div class="flex flex-column gap-2" style="width: 100%;">
+              <p-dropdown [options]="cities" optionLabel="name" [style]="{'width':'100%'}"></p-dropdown>
+            </div>
+          </div>
+        </div>
+    
+        <div class="col-12 md:col-2">
+          <div class="flex">
+            <div class="flex flex-column gap-2" style="width: 100%;">
+              <p-dropdown [options]="cities" optionLabel="name" [style]="{'width':'100%'}"></p-dropdown>
+            </div>
+          </div>
+        </div>
+    
+        <div class="col-12 md:col-4">
+          <div class="flex align-items-center">
+            <p-calendar [showIcon]="true"></p-calendar>
+            <span class="px-2" style="font-size: 16px;font-family: 'Euclid Circular A';">To</span>
+            <p-calendar [showIcon]="true"></p-calendar>
+          </div>
+        </div>
+    
+    
+      </div>
+    
+      <!-- tab view start here -->
+    
+      <p-tabView id="closableTabView">
+        <!-- first panel start -->
+        <p-tabPanel header="Hook 75754" [selected]="false">
+          <div class="card-header">
+            <h3>Profit Distribution</h3>
+          </div>
+    
+          <!-- start of first row -->
+          <div class="grid flex px-4">
+    
+            <div class="col-12 md:col-3">
+              <div class=" flex">
+                <div class="flex flex-column gap-2" style="width: 100%;">
+                  <label htmlFor="name">Name</label>
+                  <input pInputText id="name" aria-describedby="username-help" />
+                </div>
+              </div>
+            </div>
+    
+    
+            <div class="col-12 md:col-3">
+              <div class=" flex ">
+                <div class="flex flex-column gap-2" style="width: 100%;">
+                  <label htmlFor="rewards">Rewards</label>
+                  <input pInputText id="rewards" aria-describedby="username-help" />
+                </div>
+              </div>
+            </div>
+    
+            <div class="col-12 md:col-3">
+              <div class=" flex ">
+                <div class="flex flex-column gap-2" style="width: 100%;">
+                  <label htmlFor="risk">Risk</label>
+                  <input pInputText id="risk" aria-describedby="username-help" />
+                </div>
+              </div>
+            </div>
+            <div class="col-12 md:col-3">
+              <div class=" flex ">
+                <div class="flex flex-column gap-2" style="width: 100%;">
+                  <label htmlFor="rank">Rank</label>
+                  <input pInputText id="rank" aria-describedby="username-help" />
+                </div>
+              </div>
+            </div>
+    
+          </div>
+          <!-- end of first row -->
+    
+          <!-- start second row -->
+    
+          <div class="grid flex px-4 ">
+    
+            <div class="col-12 md:col-3">
+              <div class=" flex">
+                <div class="flex flex-column gap-2" style="width: 100%;">
+                  <label htmlFor="assets">Assets</label>
+                  <input pInputText id="assets" aria-describedby="username-help" />
+                </div>
+              </div>
+            </div>
+    
+            <div class="col-12 md:col-3">
+              <div class=" flex">
+                <div class="flex flex-column gap-2" style="width: 100%;">
+                  <label htmlFor="active_days">Active Days</label>
+                  <input pInputText id="active_days" aria-describedby="username-help" />
+                </div>
+              </div>
+            </div>
+    
+            <div class="col-12 md:col-3">
+              <div class=" flex">
+                <div class="flex flex-column gap-2" style="width: 100%;">
+                  <label htmlFor="market">Market</label>
+                  <input pInputText id="market" aria-describedby="username-help" />
+                </div>
+              </div>
+            </div>
+    
+            <div class="col-12 md:col-3">
+              <div class=" flex">
+                <div class="flex flex-column gap-2" style="width: 100%;">
+                  <label htmlFor="subscriber_count">Subscriber Count</label>
+                  <input pInputText id="subscriber_count" aria-describedby="username-help" />
+                </div>
+              </div>
+            </div>
+    
+          </div>
+          <!-- end of second row -->
+    
+          <!-- //start of third row -->
+    
+          <div class="grid flex px-4">
+    
+            <div class="col-12 md:col-3">
+              <div class=" flex">
+                <div class="flex flex-column gap-2" style="width: 100%;">
+                  <label htmlFor="rating">Rating</label>
+                  <p-dropdown [options]="cities" optionLabel="rating" [style]="{'width':'100%'}"></p-dropdown>
+                </div>
+              </div>
+            </div>
+    
+            <div class="col-12 md:col-3">
+              <div class=" flex">
+                <div class="flex flex-column gap-2" style="width: 100%;">
+                  <label htmlFor="balance">Balance</label>
+                  <p-dropdown [options]="cities" optionLabel="name" [style]="{'width':'100%'}"></p-dropdown>
+                </div>
+              </div>
+            </div>
+    
+            <div class="col-12 md:col-3">
+              <div class=" flex">
+                <div class="flex flex-column gap-2" style="width: 100%;">
+                  <label htmlFor="Broker">Broker</label>
+                  <p-dropdown [options]="cities" optionLabel="name" [style]="{'width':'100%'}"></p-dropdown>
+                </div>
+              </div>
+            </div>
+    
+            <div class="col-12 md:col-3">
+              <div class=" flex">
+                <div class="flex flex-column gap-2" style="width: 100%;">
+                  <label htmlFor="Network">Network</label>
+                  <p-dropdown [options]="cities" optionLabel="name" [style]="{'width':'100%'}"></p-dropdown>
+                </div>
+              </div>
+            </div>
+    
+          </div>
+        </p-tabPanel>
+        <!-- first panel end -->
+    
+        <!-- second panel start -->
+        <p-tabPanel header="Hook 75754" [closable]="true">
+          <div class="card-header">
+            <h3>Profit Distribution</h3>
+          </div>
+    
+          <!-- start of first row -->
+          <div class="grid flex px-4">
+    
+            <div class="col-12 md:col-3">
+              <div class=" flex">
+                <div class="flex flex-column gap-2" style="width: 100%;">
+                  <label htmlFor="name">Name</label>
+                  <input pInputText id="name" aria-describedby="username-help" />
+                </div>
+              </div>
+            </div>
+    
+    
+            <div class="col-12 md:col-3">
+              <div class=" flex ">
+                <div class="flex flex-column gap-2" style="width: 100%;">
+                  <label htmlFor="rewards">Rewards</label>
+                  <input pInputText id="rewards" aria-describedby="username-help" />
+                </div>
+              </div>
+            </div>
+    
+            <div class="col-12 md:col-3">
+              <div class=" flex ">
+                <div class="flex flex-column gap-2" style="width: 100%;">
+                  <label htmlFor="risk">Risk</label>
+                  <input pInputText id="risk" aria-describedby="username-help" />
+                </div>
+              </div>
+            </div>
+            <div class="col-12 md:col-3">
+              <div class=" flex ">
+                <div class="flex flex-column gap-2" style="width: 100%;">
+                  <label htmlFor="rank">Rank</label>
+                  <input pInputText id="rank" aria-describedby="username-help" />
+                </div>
+              </div>
+            </div>
+    
+          </div>
+          <!-- end of first row -->
+    
+          <!-- start second row -->
+    
+          <div class="grid flex px-4">
+    
+            <div class="col-12 md:col-3">
+              <div class=" flex">
+                <div class="flex flex-column gap-2" style="width: 100%;">
+                  <label htmlFor="assets">Assets</label>
+                  <input pInputText id="assets" aria-describedby="username-help" />
+                </div>
+              </div>
+            </div>
+    
+            <div class="col-12 md:col-3">
+              <div class=" flex">
+                <div class="flex flex-column gap-2" style="width: 100%;">
+                  <label htmlFor="active_days">Active Days</label>
+                  <input pInputText id="active_days" aria-describedby="username-help" />
+                </div>
+              </div>
+            </div>
+    
+            <div class="col-12 md:col-3">
+              <div class=" flex">
+                <div class="flex flex-column gap-2" style="width: 100%;">
+                  <label htmlFor="market">Market</label>
+                  <input pInputText id="market" aria-describedby="username-help" />
+                </div>
+              </div>
+            </div>
+    
+            <div class="col-12 md:col-3">
+              <div class=" flex">
+                <div class="flex flex-column gap-2" style="width: 100%;">
+                  <label htmlFor="subscriber_count">Subscriber Count</label>
+                  <input pInputText id="subscriber_count" aria-describedby="username-help" />
+                </div>
+              </div>
+            </div>
+    
+          </div>
+          <!-- end of second row -->
+    
+          <!-- //start of third row -->
+    
+          <div class="grid flex px-4">
+    
+            <div class="col-12 md:col-3">
+              <div class=" flex">
+                <div class="flex flex-column gap-2" style="width: 100%;">
+                  <label htmlFor="rating">Rating</label>
+                  <p-dropdown [options]="cities" optionLabel="rating" [style]="{'width':'100%'}"></p-dropdown>
+                </div>
+              </div>
+            </div>
+    
+            <div class="col-12 md:col-3">
+              <div class=" flex">
+                <div class="flex flex-column gap-2" style="width: 100%;">
+                  <label htmlFor="balance">Balance</label>
+                  <p-dropdown [options]="cities" optionLabel="name" [style]="{'width':'100%'}"></p-dropdown>
+                </div>
+              </div>
+            </div>
+    
+            <div class="col-12 md:col-3">
+              <div class=" flex">
+                <div class="flex flex-column gap-2" style="width: 100%;">
+                  <label htmlFor="Broker">Broker</label>
+                  <p-dropdown [options]="cities" optionLabel="name" [style]="{'width':'100%'}"></p-dropdown>
+                </div>
+              </div>
+            </div>
+    
+            <div class="col-12 md:col-3">
+              <div class=" flex">
+                <div class="flex flex-column gap-2" style="width: 100%;">
+                  <label htmlFor="Network">Network</label>
+                  <p-dropdown [options]="cities" optionLabel="name" [style]="{'width':'100%'}"></p-dropdown>
+                </div>
+              </div>
+            </div>
+    
+          </div>
+        </p-tabPanel>
+        <!-- second panel end -->
+    
+        <!-- third panel start -->
+        <p-tabPanel header="Hook 75754" [closable]="true">
+          <div class="card-header">
+            <h3>Profit Distribution</h3>
+          </div>
+    
+          <!-- start of first row -->
+          <div class="grid flex px-4">
+    
+            <div class="col-12 md:col-3">
+              <div class=" flex">
+                <div class="flex flex-column gap-2" style="width: 100%;">
+                  <label htmlFor="name">Name</label>
+                  <input pInputText id="name" aria-describedby="username-help" />
+                </div>
+              </div>
+            </div>
+    
+    
+            <div class="col-12 md:col-3">
+              <div class=" flex ">
+                <div class="flex flex-column gap-2" style="width: 100%;">
+                  <label htmlFor="rewards">Rewards</label>
+                  <input pInputText id="rewards" aria-describedby="username-help" />
+                </div>
+              </div>
+            </div>
+    
+            <div class="col-12 md:col-3">
+              <div class=" flex ">
+                <div class="flex flex-column gap-2" style="width: 100%;">
+                  <label htmlFor="risk">Risk</label>
+                  <input pInputText id="risk" aria-describedby="username-help" />
+                </div>
+              </div>
+            </div>
+            <div class="col-12 md:col-3">
+              <div class=" flex ">
+                <div class="flex flex-column gap-2" style="width: 100%;">
+                  <label htmlFor="rank">Rank</label>
+                  <input pInputText id="rank" aria-describedby="username-help" />
+                </div>
+              </div>
+            </div>
+    
+          </div>
+          <!-- end of first row -->
+    
+          <!-- start second row -->
+    
+          <div class="grid flex px-4">
+    
+            <div class="col-12 md:col-3">
+              <div class=" flex">
+                <div class="flex flex-column gap-2" style="width: 100%;">
+                  <label htmlFor="assets">Assets</label>
+                  <input pInputText id="assets" aria-describedby="username-help" />
+                </div>
+              </div>
+            </div>
+    
+            <div class="col-12 md:col-3">
+              <div class=" flex">
+                <div class="flex flex-column gap-2" style="width: 100%;">
+                  <label htmlFor="active_days">Active Days</label>
+                  <input pInputText id="active_days" aria-describedby="username-help" />
+                </div>
+              </div>
+            </div>
+    
+            <div class="col-12 md:col-3">
+              <div class=" flex">
+                <div class="flex flex-column gap-2" style="width: 100%;">
+                  <label htmlFor="market">Market</label>
+                  <input pInputText id="market" aria-describedby="username-help" />
+                </div>
+              </div>
+            </div>
+    
+            <div class="col-12 md:col-3">
+              <div class=" flex">
+                <div class="flex flex-column gap-2" style="width: 100%;">
+                  <label htmlFor="subscriber_count">Subscriber Count</label>
+                  <input pInputText id="subscriber_count" aria-describedby="username-help" />
+                </div>
+              </div>
+            </div>
+    
+          </div>
+          <!-- end of second row -->
+    
+          <!-- //start of third row -->
+    
+          <div class="grid flex px-4">
+    
+            <div class="col-12 md:col-3">
+              <div class=" flex">
+                <div class="flex flex-column gap-2" style="width: 100%;">
+                  <label htmlFor="rating">Rating</label>
+                  <p-dropdown [options]="cities" optionLabel="rating" [style]="{'width':'100%'}"></p-dropdown>
+                </div>
+              </div>
+            </div>
+    
+            <div class="col-12 md:col-3">
+              <div class=" flex">
+                <div class="flex flex-column gap-2" style="width: 100%;">
+                  <label htmlFor="balance">Balance</label>
+                  <p-dropdown [options]="cities" optionLabel="name" [style]="{'width':'100%'}"></p-dropdown>
+                </div>
+              </div>
+            </div>
+    
+            <div class="col-12 md:col-3">
+              <div class=" flex">
+                <div class="flex flex-column gap-2" style="width: 100%;">
+                  <label htmlFor="Broker">Broker</label>
+                  <p-dropdown [options]="cities" optionLabel="name" [style]="{'width':'100%'}"></p-dropdown>
+                </div>
+              </div>
+            </div>
+    
+            <div class="col-12 md:col-3">
+              <div class=" flex">
+                <div class="flex flex-column gap-2" style="width: 100%;">
+                  <label htmlFor="Network">Network</label>
+                  <p-dropdown [options]="cities" optionLabel="name" [style]="{'width':'100%'}"></p-dropdown>
+                </div>
+              </div>
+            </div>
+    
+          </div>
+        </p-tabPanel>
+        <!-- third panel end -->
+    
+        <!-- forth panel start -->
+        <p-tabPanel header="Hook 75754" [closable]="true">
+    
+          <div class="card-header">
+            <h3>Profit Distribution</h3>
+          </div>
+    
+          <!-- start of first row -->
+          <div class="grid flex px-4">
+    
+            <div class="col-12 md:col-3">
+              <div class=" flex">
+                <div class="flex flex-column gap-2" style="width: 100%;">
+                  <label htmlFor="name">Name</label>
+                  <input pInputText id="name" aria-describedby="username-help" />
+                </div>
+              </div>
+            </div>
+    
+    
+            <div class="col-12 md:col-3">
+              <div class=" flex ">
+                <div class="flex flex-column gap-2" style="width: 100%;">
+                  <label htmlFor="rewards">Rewards</label>
+                  <input pInputText id="rewards" aria-describedby="username-help" />
+                </div>
+              </div>
+            </div>
+    
+            <div class="col-12 md:col-3">
+              <div class=" flex ">
+                <div class="flex flex-column gap-2" style="width: 100%;">
+                  <label htmlFor="risk">Risk</label>
+                  <input pInputText id="risk" aria-describedby="username-help" />
+                </div>
+              </div>
+            </div>
+            <div class="col-12 md:col-3">
+              <div class=" flex ">
+                <div class="flex flex-column gap-2" style="width: 100%;">
+                  <label htmlFor="rank">Rank</label>
+                  <input pInputText id="rank" aria-describedby="username-help" />
+                </div>
+              </div>
+            </div>
+    
+          </div>
+          <!-- end of first row -->
+    
+          <!-- start second row -->
+    
+          <div class="grid flex px-4">
+    
+            <div class="col-12 md:col-3">
+              <div class=" flex">
+                <div class="flex flex-column gap-2" style="width: 100%;">
+                  <label htmlFor="assets">Assets</label>
+                  <input pInputText id="assets" aria-describedby="username-help" />
+                </div>
+              </div>
+            </div>
+    
+            <div class="col-12 md:col-3">
+              <div class=" flex">
+                <div class="flex flex-column gap-2" style="width: 100%;">
+                  <label htmlFor="active_days">Active Days</label>
+                  <input pInputText id="active_days" aria-describedby="username-help" />
+                </div>
+              </div>
+            </div>
+    
+            <div class="col-12 md:col-3">
+              <div class=" flex">
+                <div class="flex flex-column gap-2" style="width: 100%;">
+                  <label htmlFor="market">Market</label>
+                  <input pInputText id="market" aria-describedby="username-help" />
+                </div>
+              </div>
+            </div>
+    
+            <div class="col-12 md:col-3">
+              <div class=" flex">
+                <div class="flex flex-column gap-2" style="width: 100%;">
+                  <label htmlFor="subscriber_count">Subscriber Count</label>
+                  <input pInputText id="subscriber_count" aria-describedby="username-help" />
+                </div>
+              </div>
+            </div>
+    
+          </div>
+          <!-- end of second row -->
+    
+          <!-- //start of third row -->
+    
+          <div class="grid flex px-4">
+    
+            <div class="col-12 md:col-3">
+              <div class=" flex">
+                <div class="flex flex-column gap-2" style="width: 100%;">
+                  <label htmlFor="rating">Rating</label>
+                  <p-dropdown [options]="cities" optionLabel="rating" [style]="{'width':'100%'}"></p-dropdown>
+                </div>
+              </div>
+            </div>
+    
+            <div class="col-12 md:col-3">
+              <div class=" flex">
+                <div class="flex flex-column gap-2" style="width: 100%;">
+                  <label htmlFor="balance">Balance</label>
+                  <p-dropdown [options]="cities" optionLabel="name" [style]="{'width':'100%'}"></p-dropdown>
+                </div>
+              </div>
+            </div>
+    
+            <div class="col-12 md:col-3">
+              <div class=" flex">
+                <div class="flex flex-column gap-2" style="width: 100%;">
+                  <label htmlFor="Broker">Broker</label>
+                  <p-dropdown [options]="cities" optionLabel="name" [style]="{'width':'100%'}"></p-dropdown>
+                </div>
+              </div>
+            </div>
+    
+            <div class="col-12 md:col-3">
+              <div class=" flex">
+                <div class="flex flex-column gap-2" style="width: 100%;">
+                  <label htmlFor="Network">Network</label>
+                  <p-dropdown [options]="cities" optionLabel="name" [style]="{'width':'100%'}"></p-dropdown>
+                </div>
+              </div>
+            </div>
+    
+          </div>
+    
+          <!-- //end of third row -->
+    
+          <!-- forth panel end -->
+        </p-tabPanel>
+      </p-tabView>
+    </div>
+    <!-- tab view end here -->
+
+
+<!-- chart start -->
+<div class="card">
+    <div class="card-header">
+      <p>Profit</p>
+    </div>
+    <div class="chart-container">
+      <div class="legend-container">
+        <div class="btn-group">
+          <button class="first" [ngClass]="id === 1 ? 'first active' : ''" (click)="onCLickedButton(1)">1D</button>
+          <button [ngClass]="id === 2 ? 'active' : ''" (click)="onCLickedButton(2)">1W</button>
+          <button [ngClass]="id === 3 ? 'active' : ''" (click)="onCLickedButton(3)">1M</button>
+          <button [ngClass]="id === 4 ? 'active' : ''" (click)="onCLickedButton(4)">6M</button>
+          <button [ngClass]="id === 5 ? 'last active' : ''" class="last" (click)="onCLickedButton(5)">1Y</button>
+        </div>
+      </div>
+      <div class="main-chart-container">
+        <div class="chart-container">
+          <canvas id="MyChart6">{{ chart }}</canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- chart End -->
+
+<!-- Portfolio start -->
+<div class="card">
+    <div class="card-header">
+       Portfolio
+    </div>
+
+   <div class="">
+           <p-table [value]="profile" >
+       <ng-template pTemplate="header">
+           <tr>
+               <th>Symbol</th>
+               <th>Asset name</th>
+               <th>Percentage</th>
+               <th>Amount </th>
+               <th>Value</th>
+           </tr>
+       </ng-template>
+       <ng-template pTemplate="body" let-profile>
+           <tr>
+               <td>{{ profile.code }}</td>
+               <td>{{ profile.asset}}</td>
+               <td><p-progressBar [value]="profile.value2"></p-progressBar></td>
+               <td>{{ profile.amount }}</td>
+               <td>{{ profile.price }}</td>
+           </tr>
+       </ng-template>
+   </p-table>
+   </div>
+
+   
+</div>
+
+<!-- last table -->
+<div class="card lasttable mt-5">
+  <p-table [value]="summury" [tableStyle]="{ 'min-width': '50rem'}" [rows]="3"
+  [showFirstLastIcon]="true"
+  [paginator]="true">
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="Symbol">Symbol<p-sortIcon field="Symbol"></p-sortIcon></th>
+        <th pSortableColumn="Date">Date<p-sortIcon field="Date"></p-sortIcon></th>
+        <th pSortableColumn="Time">Time<p-sortIcon field="Time"></p-sortIcon></th>
+        <th pSortableColumn="Type">Type<p-sortIcon field="Type"></p-sortIcon></th>
+        <th pSortableColumn="Side">Side<p-sortIcon field="Side"></p-sortIcon></th>
+        <th pSortableColumn="Average">Average<p-sortIcon field="Average"></p-sortIcon></th>
+        <th pSortableColumn="Price">Price<p-sortIcon field="Price"></p-sortIcon></th>
+        <th pSortableColumn="Executed">Executed<p-sortIcon field="Executed"></p-sortIcon></th>
+        <th pSortableColumn="Amount">Amount<p-sortIcon field="Amount"></p-sortIcon></th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-tableData>
+      <tr>
+        <td><img style="width:20px" src="../../../../../assets/bnb.png" /></td>
+        <td>{{ tableData.date }}</td>
+        <td>{{ tableData.Time }}</td>
+        <td>{{ tableData.Type }}</td>
+        <td [ngClass]="{'green-chart-text': tableData.Side=='Buy', 'red-chart-text': tableData.Side=='Sell'}" >{{ tableData.Side }}</td>
+        <td>{{ tableData.Average }}</td>
+        <td>{{ tableData.Price}}</td>
+        <td>{{ tableData.Executed}}</td>
+        <td>{{ tableData.Amount}}</td> 
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

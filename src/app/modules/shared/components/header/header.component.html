@@ -1,0 +1,293 @@
+<div>
+  <div class="header-container grid">
+    <div
+      class="col-12 md:col-6 langueg flex justify-content-start align-items-center"
+    >
+      <div class="feature">
+
+        <p-button [hidden]="arrowStatus == false" type="button" class="mr-2 arrowbutton" icon="pi pi-arrow-left"
+          (click)="sendToggle()" (onClick)="changeArrowStatus()"></p-button>
+        <!-- (click)="toggleSidebar.emit()"
+                     (onClick)="changeArrowStatus()" -->
+        <p-button [hidden]="arrowStatus == true" type="button" class="mr-2 arrowbutton" icon="pi pi-arrow-right"
+          (click)="sendToggle()" (onClick)="changeArrowStatus()"></p-button>
+        <!-- (click)="toggleSidebar.emit()"
+                  (onClick)="changeArrowStatus()" -->
+
+
+        <!-- <p-button
+          [hidden]="arrowStatus == false"
+          type="button"
+          class="mr-2 arrowbutton"
+          (click)="toggleSidebar.emit()"
+          (onClick)="changeArrowStatus()"
+          icon="pi pi-arrow-left"
+        ></p-button>
+        <p-button
+          [hidden]="arrowStatus == true"
+          type="button"
+          class="mr-2 arrowbutton"
+          (click)="toggleSidebar.emit()"
+          (onClick)="changeArrowStatus()"
+          icon="pi pi-arrow-right"
+        ></p-button> -->
+        <!-- <p-button type="button" class="mr-2" (click)="toggleSidebar.emit()" icon="pi pi-arrow-left"></p-button> -->
+
+        <p-dropdown
+          [options]="platform"
+          optionLabel="name"
+          [style]="{ 'border-right': '2px solid #68728a' }"
+        ></p-dropdown>
+
+        <!-- <p-dropdown
+          [options]="futures"
+          optionLabel="name"
+          optionValue="code"
+          name="type"
+          (onChange)="changeTradeType($event.value)"
+          [style]="{ 'border-right': '2px solid #68728a' }"
+        ></p-dropdown>
+         -->
+        <!-- <select class="accountset accountset-select" [(ngModel)]="selectedAccountId" (change)="updateRecord()">
+          <option *ngFor="let accountlist of accountlist" [ngValue]="accountlist.subuid" [selected]="accountlist.subuid == selectedAccountId">{{accountlist.label }}</option>
+        </select> -->
+
+        <!-- dropdown for subaccount list-->
+        <!-- <p-dropdown [options]="accountlist" optionLabel="label"   optionValue="subuid" [(ngModel)]="selectedAccountId"  (onChange)="updateRecord($event.value)"></p-dropdown> -->
+      </div>
+    </div>
+
+    <div class="col-12 md:col-6 flex justify-content-end align-items-center">
+      <div class="grid pt-2">
+        <div class="country">
+          <p-dropdown
+            [options]="languegg"
+            optionLabel="name"
+            class="pdrop2 pi pi-globe ml-1"
+          ></p-dropdown>
+
+          <!-- <p-dropdown [options]="crunncy" optionLabel="name"></p-dropdown> -->
+        </div>
+
+        <!-- 
+        <div
+          class="sheild-img-container px-2 flex justify-content-center align-items-center"
+        >
+          <img src="../../../../../assets/shield.svg" />
+        </div> -->
+
+        <div
+          class="notification px-2 flex justify-content-center align-items-center"
+        >
+          <img
+            src="../../../../../assets/bell.svg"
+            style="cursor: pointer"
+            (click)="op.toggle($event)"
+          />
+        </div>
+
+        <div
+          class="user-profile-header px-2 flex justify-content-center align-items-center"
+        >
+          <!-- <img src="../../../../../assets/user-img.svg" /> -->
+          <img
+            *ngIf="imagesrc"
+            style="width: 30px; height: 30px"
+            [src]="imagesrc"
+            alt="Uploaded Image"
+            class="profile-img"
+          />
+          <!-- <img *ngIf="!imageUrl" style="max-width: 60%" [src]="imageUrl" alt="Uploaded Image" class="profile-img" /> -->
+          <div class="without-profile-img" *ngIf="!imagesrc">
+            <img
+              style="width: 30px; height: 30px"
+              src="/assets/Profile-PNG-File.png"
+            />
+          </div>
+
+          <!-- <img src="{{ imagesrc }}" style="width: 30px;height:30px"/> -->
+          <label class="user-profile-lbl ml-2">{{ userName }}</label>
+          <img
+            src="../../../../../assets/down-arrow.svg"
+            (click)="menu.toggle($event)"
+          />
+          <p-menu #menu [model]="items" [popup]="true"></p-menu>
+        </div>
+
+        <!-- <div class="user-profile-header2 px-2 flex justify-content-center align-items-center">
+          <img src="../../../../../assets/user-img.svg" (click)="menu.toggle($event)" />
+        </div> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<p-overlayPanel class="overView" #op>
+  <div class="p-4 flex flex-row justify-content-between">
+    <div>
+      <label class="notification-header">Notifications</label>
+    </div>
+    <div>
+      <label class="mark-lbl"
+        ><span class="m-2"
+          ><img src="../../../../../assets/mark-all-read.svg" /></span
+        >Mark all as read</label
+      >
+    </div>
+  </div>
+  <div class="flex flex-row justify-content-around">
+    <div
+      [ngClass]="
+        notificationSection === 0
+          ? 'tab-btn flex align-items-center justify-content-center active-noti'
+          : 'tab-btn flex align-items-center justify-content-center'
+      "
+      (click)="onclickNotificationSection(0)"
+    >
+      <label
+        >System<span class="notification-count m-2">{{
+          notifications.length
+        }}</span></label
+      >
+    </div>
+    <div
+      [ngClass]="
+        notificationSection === 1
+          ? 'tab-btn flex align-items-center justify-content-center active-noti'
+          : 'tab-btn flex align-items-center justify-content-center'
+      "
+      (click)="onclickNotificationSection(1)"
+    >
+      <label
+        >Trade<span class="notification-count m-2">{{
+          notifications.length
+        }}</span></label
+      >
+    </div>
+    <div
+      [ngClass]="
+        notificationSection === 2
+          ? 'tab-btn flex align-items-center justify-content-center active-noti'
+          : 'tab-btn flex align-items-center justify-content-center'
+      "
+      (click)="onclickNotificationSection(2)"
+    >
+      <label
+        >Private<span class="notification-count m-2">{{
+          notifications.length
+        }}</span></label
+      >
+    </div>
+  </div>
+  <div class="overlay-content">
+    <p-scrollPanel [style]="{ width: '100%', height: '20rem' }">
+
+      <div *ngIf="notificationSection === 0">
+        <div
+          *ngFor="let ele of notifications"
+          class="flex flex-row align-items-center p-3 not-readed"
+        >
+          <div style="width: 10%">
+            <img src="../../../../../assets/{{ ele.notificationType }}.svg" />
+          </div>
+          <div class="ml-3 flex flex-column" style="width: 80%">
+            <p class="notification-data">
+              {{ ele.label }}
+            </p>
+            <label class="noti-duration m-1">{{ ele.duration }}</label>
+          </div>
+          <div
+            style="width: 10%"
+            class="flex align-items-center justify-content-center"
+          >
+            <i
+              class="pi pi-ellipsis-v"
+              style="font-size: 1rem; color: white; cursor: pointer"
+            ></i>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="notificationSection === 1">
+        <div
+          *ngFor="let ele of notifications"
+          class="flex flex-row align-items-center p-3"
+        >
+          <div style="width: 10%">
+            <img src="../../../../../assets/{{ ele.notificationType }}.svg" />
+          </div>
+          <div class="ml-3 flex flex-column" style="width: 80%">
+            <p class="notification-data">
+              {{ ele.label }}
+            </p>
+            <label class="noti-duration m-1">{{ ele.duration }}</label>
+          </div>
+          <div
+            style="width: 10%"
+            class="flex align-items-center justify-content-center"
+          >
+            <i
+              class="pi pi-ellipsis-v"
+              style="font-size: 1rem; color: white"
+            ></i>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="notificationSection === 2">
+        <div
+          *ngFor="let ele of notifications"
+          class="flex flex-row align-items-center p-3"
+        >
+          <div style="width: 10%">
+            <img src="../../../../../assets/{{ ele.notificationType }}.svg" />
+          </div>
+          <div class="ml-3 flex flex-column" style="width: 80%">
+            <p class="notification-data">
+              {{ ele.label }}
+            </p>
+            <label class="noti-duration m-1">{{ ele.duration }}</label>
+          </div>
+          <div
+            style="width: 10%"
+            class="flex align-items-center justify-content-center"
+          >
+            <i
+              class="pi pi-ellipsis-v"
+              style="font-size: 1rem; color: white"
+            ></i>
+          </div>
+        </div>
+      </div>
+      
+    </p-scrollPanel>
+  </div>
+</p-overlayPanel>
+<!-- HTML file of your existing component -->
+<div *ngIf="popupVisible" id="popup" class="modal pop-up-acc-name-body-pp">
+  <div class="modal-content pop-up-acc-name-head">
+    <span class="close" (click)="closePopup()">&times;</span>
+    <p>Add Account</p>
+  </div>
+  <form [formGroup]="CreatesubaccountForm" (ngSubmit)="Createsubaccount()">
+    <div class="pop-up-acc-name">
+      <label>Account Label:</label>
+      <input type="text" formControlName="acc_label" />
+      <div
+        *ngIf="
+          CreatesubaccountForm.get('acc_label')?.invalid &&
+          CreatesubaccountForm.get('acc_label')?.touched
+        "
+        style="color: red"
+      >
+        Account Label is required.
+      </div>
+    </div>
+    <div class="pop-up-acc-btns">
+      <button class="pop-up-acc-btns-cancel" (click)="resetForm()">
+        Cancel
+      </button>
+      <button class="pop-up-acc-btns-create">Create</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,976 @@
+<div class="main-profile-container grid">
+ 
+  <div class="col-12 sm:col-3">
+      <div class="user-profile-menu">
+    <div class="user-profile-container">
+      <img *ngIf="imageUrl" style="max-width: 60%" [src]="imageUrl" alt="Uploaded Image" class="profile-img" />
+      <!-- <img *ngIf="!imageUrl" style="max-width: 60%" [src]="imageUrl" alt="Uploaded Image" class="profile-img" /> -->
+      <div class="without-profile-img" *ngIf="!imageUrl"><img src="/assets/Profile-PNG-File.png" /></div>
+      
+      <div class="choose-file">
+      <form [formGroup]="myForm" (ngSubmit)="submit()">
+        <!-- File input control -->
+        <div class="upload-image-button-outer">
+        <input
+          formControlName="file"
+          type="file"
+          (change)="fileChangeEvent($event)"
+          accept="image/*"
+          (click)="showDialog = true"
+        />
+        <button class="upload-image-button">Upload Image</button>
+      </div>
+        
+        <!-- <div class="image-cropper-submit-form-outer">
+        <div class="image-cropper-submit-form"> -->
+        <!-- Image Cropper -->
+        <p-dialog *ngIf="imageChangedEvent" [(visible)]="showDialog">
+          <div class="image-cropper-submit-form-outer">
+            <div class="image-cropper-submit-form">
+        <ng-container *ngIf="showImageCropper">
+          <image-cropper
+            [imageChangedEvent]="imageChangedEvent"
+            (imageCropped)="imageCropped($event)"
+          >
+          </image-cropper>
+          <button type="submit" [class.valid-button]="myForm.valid" [disabled]="myForm.invalid">Submit</button>
+          </ng-container>
+        </div>
+      </div>
+          </p-dialog>
+      <!-- </div>
+         </div> -->
+
+      </form>
+      </div>
+      <div class="user-name">
+      <label class="user-name-panel">User Name</label>
+      <label class="user-id" *ngIf="profileForm.userName">{{ profileForm.userName }}</label>
+      <label class="user-id" *ngIf="!profileForm.userName">{{ profileForm.acc | slice:0:10 }}{{profileForm.acc.length > 0 ? '...' :''}}</label>
+      </div>
+    </div>
+    <div class="menu-container">
+      <p-panelMenu
+        [multiple]="false"
+        [model]="items"
+        [style]="{ width: '100%', height: '100%' }"
+      ></p-panelMenu>
+    </div>
+  </div>
+  </div>
+
+  <div class="col-12 sm:col-9">
+     <div class="user-profile-content">
+    <!-- section 1 -->
+    <form class="innerformbg" #profileUpdateForm="ngForm" (ngSubmit)="profileUpdate()">
+    <div class="grid col-12 mt-5" *ngIf="sectionId === 0">
+      <div class="col-12 mb-4">
+        <label class="card-header">User Profile</label>
+      </div>
+      <div class="grid" style="padding: 0px 20px; width:100%">
+        <div class="col-12 sm:col-4 form">
+          <label class="form-label">Name</label>
+          <input
+            class="form-input"
+            type="text"
+            style="width: 100%"
+            pInputText
+            name="userName"
+            [(ngModel)]="profileForm.userName"
+          />
+        </div>
+
+<!-- new chnage -->
+    
+        <div class="col-12 sm:col-4" style="position: relative;" *ngIf="contactForm">
+          <form [formGroup]="contactForm" (ngSubmit)="submitContactForm()">
+            <label class="form-label">Contact Number</label>
+            <div style="position: relative; width: 100%;">
+              <input class="form-input" type="text" style="width: calc(100% - 90px);" pInputText
+                formControlName="phoneNumber" [(ngModel)]="profileForm.phoneNumber"  />
+        
+              <button *ngIf="profileForm.phoneNumber === ''" type="submit" class="p-button" style="position: absolute; right: 25px; top: 10px;">Assign</button>
+            
+              <button *ngIf="profileForm.phoneNumber != ''" type="submit" class="p-button" style="position: absolute; right: 25px; top: 10px;">Change</button>
+
+            </div>
+            <div
+              *ngIf="contactForm.get('phoneNumber')?.invalid && (contactForm.get('phoneNumber')?.dirty || contactForm.get('phoneNumber')?.touched)">
+              <span style="color: red;">Please enter a valid phone number.</span>
+            </div>
+          </form>
+        </div>
+      
+        <div class="col-12 sm:col-4" style="position: relative;" *ngIf="emailForm">
+          <form [formGroup]="emailForm" (ngSubmit)="submitEmailForm()">
+            <label class="form-label">Email</label>
+            <div style="position: relative; width: 100%;">
+              <input class="form-input" type="text"  required style="width: calc(100% - 70px);"   pInputText
+                formControlName="email" [(ngModel)]="profileForm.email" />
+               
+              <button *ngIf="profileForm.email === ''" type="submit" class="p-button" style="position: absolute; right: 25px; top: 10px;">Assign</button>
+          
+              <button *ngIf="profileForm.email != ''" type="submit" class="p-button" style="position: absolute; right: 25px; top: 10px;">change</button>
+
+            </div>
+            <div *ngIf="emailForm.get('email')?.invalid && (emailForm.get('email')?.dirty || emailForm.get('email')?.touched)">
+              <span style="color: red;">Please enter a valid email address.</span>
+            </div>
+          </form>
+        </div>
+        
+        <p-dialog [style]="{width: '35vw'}" class="login-modal-popup" [contentStyle]="{'overflow':'auto', 'padding': '10px'}"
+          [(visible)]="showEmailDialog" [breakpoints]="{ '991px': '95vw' }">
+           <form [formGroup]="emotp" (ngSubmit)="emailOTP()">
+            <div class="alert alert-danger" [hidden]="!error">{{error}} </div>
+            <div *ngIf="showEmailDialog">
+              <div style="text-align: center;font-family: 'Euclid Circular A';font-size: 38px;margin: 0px 0px;">
+                Email Verification
+              </div>
+              <div class="grid flex align-items-center justify-content-center">
+                <p style="font-family: 'Euclid Circular A';font-size: 16px;margin: 20px 0px;color: #707688;">You are requesting
+                  to complete the following actions:</p>
+                <div class="col-10 flex justify-content-center align-items-center">
+                  <input class="form-input" type="text" pInputText formControlName="emailOTP"   />
+                </div>
+                
+                <!-- <div class="spinner-container" *ngIf="loading | async">
+                  <div class="d-flex justify-content-center">
+                    <div class="spinner-border" role="status">
+                      <span id="loading"></span>
+                    </div>
+                  </div>
+                </div> -->
+                <!-- <div class="col-10 mt-2 p-0 flex justify-content-between">
+                </div> -->
+                <div class="col-10 form">
+                  <button class="p-button" type="submit">Submit</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </p-dialog>
+
+
+
+
+
+
+
+        <p-dialog [style]="{width: '35vw'}" class="login-modal-popup" [contentStyle]="{'overflow':'auto', 'padding': '10px'}"
+          [(visible)]="showMobileDialog" [breakpoints]="{ '991px': '95vw' }">
+          <form [formGroup]="contactotp" (ngSubmit)="mobileOTP()">
+            <div class="alert alert-danger" [hidden]="!error">{{error}} </div>
+            <div *ngIf="showMobileDialog">
+              <div style="text-align: center;font-family: 'Euclid Circular A';font-size: 38px;margin: 0px 0px;">
+                Contact Verification
+              </div>
+              <div class="grid flex align-items-center justify-content-center">
+                <p style="font-family: 'Euclid Circular A';font-size: 16px;margin: 20px 0px;color: #707688;">You are requesting
+                  to complete the following actions:</p>
+                <div class="col-10 flex justify-content-center align-items-center">
+                  <input class="form-input" type="text" formControlName="contact_otp" pInputText required />
+                </div>
+                <div class="p-0 m-0 mt-2 otp-msg">
+                </div>
+                <div class="spinner-container" *ngIf="loading | async">
+                  <div class="d-flex justify-content-center">
+                    <div class="spinner-border" role="status">
+                      <span id="loading"></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-10 mt-2 p-0 flex justify-content-between">
+                </div>
+                <div class="col-10 form">
+                  <button class="p-button"  type="submit">Submit</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </p-dialog>
+
+
+
+<!-- ====================== Contact model ========================================= -->
+
+       
+        <!-- <div class="col-12 sm:col-4">
+          <label class="form-label">Country</label>
+          <div>
+            <p-dropdown
+            [options]="commonOptions"
+            name="country"
+            optionLabel="name"
+            optionValue="code"
+            [(ngModel)]="profileForm.country"
+          ></p-dropdown>
+          </div>
+        </div> -->
+
+       
+
+       
+      </div>
+      <div class="grid col-12 flex flex-row justify-content-end">
+        <p-button type="submit" label="Save" *ngIf="!isDisabled"></p-button>
+        <!-- <input [disabled]="!profileForm.valid" type="submit" name="submit" class="blue-btn m-btn" value="{{ 'Submit' }}" *ngIf="!isDisabled" />
+       <input type="submit" name="" value="{{ 'PleaseWait'}}..." class="btn blue-btn mt-10" disabled *ngIf="isDisabled" /> -->
+      </div>
+    </div>
+    </form>
+       
+    <div class="grid" *ngIf="kycText">
+      <div class="col-12 p-3">
+         <!-- <img src="../../../assets/succes.svg"> -->
+         <h2 [ngStyle]="{'font-family': 'Euclid Circular A', 'font-size': '26px', 'font-weight': '100', 'color': getColorBasedOnStatus()}">{{ kycText }}</h2>
+          <!-- <p style="font-family: 'Euclid Circular A';
+          font-size: 14px;color: #707688;">Security details has been updated successfully</p> -->
+          <!-- <p-button label="Done" (click)="submit()" [style]="{'width':'100%'}"></p-button> -->
+        </div>
+    </div> 
+
+    <!-- <alert type="danger">
+      Please  submit your kyc
+    </alert> -->
+    
+
+    <!-- <div *ngFor="let alert of alerts">
+      <alert [type]="alert.type" [dismissible]="dismissible" (onClosed)="onClosed(alert)">{{ alert.msg }}</alert>
+    </div> -->
+
+    <!-- <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      Please  submit your kyc
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div> -->
+
+    <!-- section 2 -->
+    <div class="grid col-12 mt-5" *ngIf="sectionId === 1 && kycStatus">
+      <div class="alert-for-sumission" *ngIf="isVisible && UserKycStatus == 0">
+        <span>Please  submit your KYC</span>
+        <i (click)="hideBox()" class="fa-regular fa-circle-xmark"></i>
+       </div>
+      <form class="innerformbg" #profileUpdateForm="ngForm"  (ngSubmit)="kycUpdate()" *ngIf="showForm">
+          <div class="col-12 mb-4">
+            <label class="card-header">KYC</label>
+          </div>
+          <div class="alert alert-danger" [hidden]="!error">{{error}} </div>
+          <div class="grid" style="padding: 0px 20px">
+            <div class="col-12 sm:col-4 form">
+              <label class="form-label">First Name</label>
+              <input
+                class="form-input"
+                type="text"
+                style="width: 100%"
+                pInputText
+                name="userName"
+                [(ngModel)]="kycForm.firstName"
+              />
+            </div>
+            <div class="col-12 sm:col-4">
+              <label class="form-label">Last Name</label>
+              <input
+                class="form-input"
+                type="text"
+                style="width: 100%"
+                pInputText
+                name="lastName"
+                [(ngModel)]="kycForm.lastName"
+              />
+            </div>
+            <div class="col-12 sm:col-4">
+              <label class="form-label">Phone Number</label>
+              <input
+                class="form-input"
+                type="text"
+                style="width: 100%"
+                pInputText
+                name="phoneNumber"
+                [(ngModel)]='kycForm.phoneNumber'
+              />
+            </div>
+            <div class="col-12 sm:col-4">
+              <label class="form-label">Gender</label>
+              <p-dropdown
+                [options]="genderOptions"
+                optionLabel="name"
+                optionValue="code"
+                name="gender"
+                [(ngModel)]="kycForm.gender"
+              ></p-dropdown>
+            </div>
+            
+            <div class="col-12 sm:col-4">
+              <label class="form-label">Date of Birth</label>
+              <input
+                class="form-input"
+                type="date"
+                style="width: 100%"
+                pInputText
+                name="dob"
+                [(ngModel)]='kycForm.dob'
+              />
+            </div>
+            <div class="col-12 sm:col-4">
+              <label class="form-label">Country</label>
+              <div>
+                <p-dropdown
+                  [options]="commonOptions"
+                  optionLabel="name"
+                  name="country"
+                  optionValue="code"
+                  [(ngModel)]="kycForm.country"
+                ></p-dropdown>
+              </div>
+            </div>
+    
+            <div class="col-12 sm:col-4">
+              <label class="form-label">State</label>
+              <input
+                class="form-input"
+                type="text"
+                style="width: 100%"
+                pInputText
+                name="state"
+                [(ngModel)]='kycForm.state'
+              />
+            </div>
+            <div class="col-12 sm:col-4">
+              <label class="form-label">City</label>
+              <input
+                class="form-input"
+                type="text"
+                style="width: 100%"
+                pInputText
+                name="city"
+                [(ngModel)] ='kycForm.city'
+    
+              />
+            </div>
+            <div class="col-12 sm:col-4">
+              <label class="form-label">Zip/Postal Code</label>
+              <input
+                class="form-input"
+                type="text"
+                style="width: 100%"
+                pInputText
+                name="postalCode"
+                [(ngModel)] ='kycForm.postalCode'
+              />
+            </div>
+    
+            <div class="col-12 sm:col-4">
+              <label class="form-label">Address Line 1</label>
+              <input
+                class="form-input"
+                type="text"
+                style="width: 100%"
+                pInputText
+                name="address1"
+                [(ngModel)] ='kycForm.address1'
+              />
+            </div>
+
+            <div class="col-12 sm:col-4">
+              <label class="form-label">Address Line 2</label>
+              <input
+                class="form-input"
+                type="text"
+                style="width: 100%"
+                pInputText
+                name="address2"
+                [(ngModel)] ='kycForm.address2'
+              />
+
+              <div id="myModal" class="modal" *ngIf="showpopup">
+ 
+                <!-- Modal content -->
+                <div class="modal-content">
+                  <span class="close" (click)="closeModel()">&times;</span>
+                  <div class="grid">
+                      <div class="col-12 md:col-2 pr-2 justify-content-center align-item-center">
+                          <img src="../../../assets/succes.svg" width="130%"  style="max-width: 100px;"/>
+                      </div>
+                      <div class="col-12 md:col-10 justify-content-center align-item-center">
+                          <h3>Update Successful</h3>
+                          <p>You have successfully Update Your KYC</p>
+                      </div>
+                    </div>
+                </div>        
+              </div>
+
+            </div>
+
+<div class="col-12 id-proof-details">
+<label>ID PROOF DETAILS</label>
+<p>Upload here your Passport (your photo and all 4 corners of your ID / Passport must be visible. There is no light glare or reflections on the card.)</p>
+</div>
+
+            <div class="col-12 sm:col-4">
+              <label class="form-label">ID Document Type</label>
+
+            <p-dropdown
+              [options]="idType"
+              name="idType"
+              optionLabel="name"
+              optionValue="name"
+              [(ngModel)] ='kycForm.idType'
+            ></p-dropdown>
+
+            </div>
+            <div class="col-12 sm:col-4">
+              <label class="form-label">ID Document Number</label>
+              
+               <input
+                class="form-input"
+                type="text"
+                style="width: 100%"
+                pInputText
+                name="idNumber"
+                [(ngModel)] ='kycForm.idNumber'
+              /> 
+              
+            </div>
+            <div class="col-12 sm:col-4">
+              <label class="form-label">Expiry Date</label>
+              <input
+                class="form-input"
+                type="date"
+                style="width: 100%"
+                pInputText
+                name="expiryDate"
+                [(ngModel)] ='kycForm.id_exp'
+              />
+            </div>
+
+            <div class="col-12 sm:col-4">
+              <label class="form-label">ID Front Document</label>
+              <input
+                class="form-input"
+                type="file"
+                style="width: 100%"
+                name="front_upload_id"
+                [(ngModel)]="kycForm.front_upload_id"
+                (change)="onImage1Selected($event)"
+                accept="image/*"
+              />
+            </div>
+
+            <div class="col-12 sm:col-4">
+              <label class="form-label">ID Back Document</label>
+              <input
+                class="form-input"
+                type="file"
+                style="width: 100%"
+                name="back_upload_id"
+                [(ngModel)]="kycForm.back_upload_id"
+                (change)="onImage2Selected($event)"
+                accept="image/*"
+              />
+            </div>
+            
+          </div>
+          <div class="grid col-12 flex flex-row justify-content-end">
+            <p-button type="submit" label="Save" *ngIf="!isDisabled"></p-button>
+            <!-- <input [disabled]="!profileForm.valid" type="submit" name="submit" class="blue-btn m-btn" value="{{ 'Submit' }}" *ngIf="!isDisabled" />
+           <input type="submit" name="" value="{{ 'PleaseWait'}}..." class="btn blue-btn mt-10" disabled *ngIf="isDisabled" /> -->
+          </div>
+        </form>
+
+
+    </div>
+
+    <!-- section 3 -->
+    <form #currencyForm="ngForm" (ngSubmit)="Currency()" >
+    <div class="grid col-12 mt-5" *ngIf="sectionId === 2">
+      <div class="col-12 mb-4">
+        <label class="card-header">Currency Preferences (Payment)</label>
+      </div>
+      <div class="grid" style="padding: 0px 20px">
+        <div class="col-6">
+          <div class="curreny-selector flex flex-row justify-content-around">
+            <input
+              class="radio"
+              type="radio"
+              id="html"
+              name="fav_language"
+              value="USD"
+              [(ngModel)]="currency.currency"
+            />
+            <label class="curreny-lbl">USD $</label>
+            <label class="curreny-lbl2">US Dollar</label>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="curreny-selector flex flex-row justify-content-around">
+            <input
+              class="radio"
+              type="radio"
+              id="html"
+              name="fav_language"
+              value="YEN"
+              [(ngModel)]="currency.currency"
+            />
+            <label class="curreny-lbl">CNY $</label>
+            <label class="curreny-lbl2">Chinese Yen</label>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="curreny-selector flex flex-row justify-content-around">
+            <input
+              class="radio"
+              type="radio"
+              id="html"
+              name="fav_language"
+              value="INR"
+              [(ngModel)]="currency.currency"
+            />
+            <label class="curreny-lbl">IND ₹</label>
+            <label class="curreny-lbl2">Indian Rupees</label>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="curreny-selector flex flex-row justify-content-around">
+            <input
+              class="radio"
+              type="radio"
+              id="html"
+              name="fav_language"
+              value="AED"
+              [(ngModel)]="currency.currency"
+            />
+            <label class="curreny-lbl">AED $</label>
+            <label class="curreny-lbl2">UAE Dirham</label>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="curreny-selector flex flex-row justify-content-around">
+            <input
+              class="radio"
+              type="radio"
+              id="html"
+              name="fav_language"
+              value="EUR"
+              [(ngModel)]="currency.currency"
+            />
+            <label class="curreny-lbl">EUR €</label>
+            <label class="curreny-lbl2">Euro</label>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="curreny-selector flex flex-row justify-content-around">
+            <input
+              class="radio"
+              type="radio"
+              id="html"
+              name="fav_language"
+              value="SGD"
+              [(ngModel)]="currency.currency"
+            />
+            <label class="curreny-lbl">SGD $</label>
+            <label class="curreny-lbl2">Singapur Dollar</label>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="curreny-selector flex flex-row justify-content-around">
+            <input
+              class="radio"
+              type="radio"
+              id="html"
+              name="fav_language"
+              value="GBP"
+              [(ngModel)]="currency.currency"
+            />
+            <label class="curreny-lbl">GBP £</label>
+            <label class="curreny-lbl2">Pound</label>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="curreny-selector flex flex-row justify-content-around">
+            <input
+              class="radio"
+              type="radio"
+              id="html"
+              name="fav_language"
+              value="JPY"
+              [(ngModel)]="currency.currency"
+            />
+            <label class="curreny-lbl">JPY $</label>
+            <label class="curreny-lbl2">Japanese Yen</label>
+          </div>
+        </div>
+      </div>
+      <div class="grid col-12 flex flex-row justify-content-end mt-3">
+        <p-button type="submit" label="Save"></p-button>
+      </div>
+    </div>
+    </form>
+
+    
+    <!-- section 4 -->
+    <div *ngIf="sectionId === 3">
+      <form #socialnetworkForm="ngForm" (ngSubmit)="social()" >
+      <div class="grid p-3 mt-3" style="padding: 0px 20px">
+
+        <div class="col-12 grid form">
+          <div class="col-12 p-0 m-0 flex justify-content-between pr-2">
+            <label class="form-label">Telegram</label>
+            <img src="../../../../assets/add-pl.svg" />
+          </div>
+          <div class="col-12 p-0 m-0 reletive-element">
+            <input
+              class="form-input"
+              type="text"
+              name="telegram"
+              style="width: 100%"
+              pInputText
+              [(ngModel)]="socialForm.telegram"
+              #elementContentToCopy
+            />
+            <!-- <img class="copy-img" title="Copy to Clipboard" src="../../../../assets/Content copy.svg" (click)='copyToClipboard(elementContentToCopy.value)'/>
+            <img class="clear-img" title="Clear" src="../../../../assets/clear.svg" (click)="elementContentToCopy.value = '';" /> -->
+
+          </div>
+
+        </div>
+
+        <div class="col-12 grid form">
+          <div class="col-12 p-0 m-0 flex justify-content-between pr-2">
+            <label class="form-label">Discord</label>
+            <img src="../../../../assets/add-pl.svg" />
+          </div>
+          <div class="col-12 p-0 m-0 reletive-element">
+            <input
+              class="form-input"
+              type="text"
+              name="discord"
+              style="width: 100%"
+              pInputText
+              [(ngModel)]="socialForm.discord"
+              #elementContentToCopy2
+            />
+            <!-- <img class="copy-img" title="Copy to Clipboard" src="../../../../assets/Content copy.svg" (click)='copyToClipboard(elementContentToCopy.value)'/>
+            <img class="clear-img" title="Clear" src="../../../../assets/clear.svg" (click)="elementContentToCopy.value = '';" /> -->
+
+          </div>
+        </div>
+
+        <div class="col-12 grid form">
+          <div class="col-12 p-0 m-0 flex justify-content-between pr-2">
+            <label class="form-label">Facebook</label>
+            <img src="../../../../assets/add-pl.svg" />
+          </div>
+          <div class="col-12 p-0 m-0 reletive-element">
+            <input
+              class="form-input"
+              type="text"
+              style="width: 100%"
+              pInputText
+              name="facebook"
+              [(ngModel)]="socialForm.facebook"
+              #elementContentToCopy3
+            />
+
+            <!-- <img class="copy-img" title="Copy to Clipboard" src="../../../../assets/Content copy.svg" (click)='copyToClipboard(elementContentToCopy.value)'/>
+            <img class="clear-img" title="Clear" src="../../../../assets/clear.svg" (click)="elementContentToCopy.value = '';" /> -->
+
+          </div>
+        </div>
+
+        <div class="col-12 grid form">
+          <div class="col-12 p-0 m-0 flex justify-content-between pr-2">
+            <label class="form-label">Instagam</label>
+            <img src="../../../../assets/add-pl.svg" />
+          </div>
+          <div class="col-12 p-0 m-0 reletive-element">
+            <input
+              class="form-input"
+              type="text"
+              style="width: 100%"
+              pInputText
+              name="instagram"
+              [(ngModel)]="socialForm.instagram"
+              #elementContentToCopy4
+            />
+            <!-- <img class="copy-img" title="Copy to Clipboard" src="../../../../assets/Content copy.svg" (click)='copyToClipboard(elementContentToCopy.value)'/>
+            <img class="clear-img" title="Clear" src="../../../../assets/clear.svg" (click)="elementContentToCopy.value = '';" /> -->
+          </div>
+        </div>
+
+        <div id="myModal" class="modal" *ngIf="showpopup">
+ 
+          <!-- Modal content -->
+          <div class="modal-content">
+            <span class="close" (click)="closeModel()">&times;</span>
+            <div class="grid">
+                <div class="col-12 md:col-2 pr-2 justify-content-center align-item-center">
+                    <img src="../../../assets/succes.svg" width="130%"  style="max-width: 100px;"/>
+                </div>
+                <div class="col-12 md:col-10 justify-content-center align-item-center">
+                    <h3>Update Successful</h3>
+                    <p>You have successfully Update Your Social Media details</p>
+                </div>
+              </div>
+          </div>        
+        </div>
+
+        <div class="grid col-12 flex flex-row justify-content-end mt-3">
+          <p-button type="submit" label="Save"></p-button>
+        </div>
+
+      </div>
+    </form>
+    </div>
+
+
+    <div *ngIf="sectionId === 4">
+      <div class="my-fee-rate-content">
+        <div class="my-fee-rate-head">
+         <div class="my-fee-rate-head-left"><label>My Fee Level</label><span>{{userFeeRole}}</span></div>
+         <div class="my-fee-rate-head-right">
+          <!-- <button class="p-button">View All Fee Rates</button> -->
+         </div>
+        </div>
+        <div class="my-fee-rate-body-1 grid">
+         <div class="col-12 sm:col-3 my-fee-rate-grid">
+          <label class="my-fee-rate-heading">Spot</label>
+          <div class="items-list my-fee-rate-body">
+            <div class="items-list-inner"><label>Taker</label><span>0.1000%</span></div>
+            <div class="items-list-inner"><label>Maker</label><span>0.1000%</span></div>
+          </div>
+          <a href="#" class="items-list-link">Trade Spot</a>
+         </div>
+         <div class="col-12 sm:col-3 my-fee-rate-grid">
+          <label class="my-fee-rate-heading">Derivatives</label>
+          <div class="items-list my-fee-rate-body">
+            <div class="items-list-inner"><label>Taker</label><span>0.1000%</span></div>
+            <div class="items-list-inner"><label>Maker</label><span>0.1000%</span></div>
+          </div>
+          <a href="#" class="items-list-link">Trade Derivatives</a>
+         </div>
+         <div class="col-12 sm:col-3 my-fee-rate-grid">
+          <label class="my-fee-rate-heading">USDC Options</label>
+          <div class="items-list my-fee-rate-body">
+            <div class="items-list-inner"><label>Taker</label><span>0.0550%</span></div>
+            <div class="items-list-inner"><label>Maker</label><span>0.0550%</span></div>
+          </div>
+          <a href="#" class="items-list-link">Trade USDC Options</a>
+         </div>
+         <div class="col-12 sm:col-3 my-fee-rate-grid">
+          <label class="my-fee-rate-heading">Fiat Pairs on Spot</label>
+          <div class="items-list my-fee-rate-body">
+            <div class="items-list-inner"><label>Taker</label><span>0.2000%</span></div>
+            <div class="items-list-inner"><label>Maker</label><span>0.1500%</span></div>
+          </div>
+          <a href="#" class="items-list-link">Trade Spot</a>
+         </div>
+        </div>
+        <div class="my-fee-rate-body-2">
+         <p>Your VIP Level and fees will be updated at 7 AM UTC if you meet the respective requirements. <a href="#" class="items-list-link">Check out the requirements.</a></p>
+         <p>View Fiat Trading Fees <a href="#" class="items-list-link">Find out the details.</a></p>
+        </div>
+
+        <div *ngIf="userRole == 'basic'">
+        <div class="my-fee-rate-body-2">
+          <div class="my-fee-rate-body-2-left">
+         <p>Upgrade to Pro for just 15 USDT and gain access to our advanced future trades and trading bots.</p>
+         <!-- <p>View Fiat Trading Fees <a href="#" class="items-list-link">Find out the details.</a></p> -->
+        </div>
+       
+        <div  class="my-fee-rate-body-2-right"><button class="upload-image-button" (click)="upgradeToPro()">Upgrade to PRO</button></div>
+        </div>
+        </div>
+        
+      </div>
+
+      <div class="even-lower-fees-part">
+        <h3>Enjoy Even Lower Fees</h3>
+        <p>Meet any of the following requirements to level up to VIP 1 and enjoy lower fee rates.</p>
+        <div class="even-lower-fees-body">
+          <div class="even-lower-fees-body-grid">
+            <div class="even-lower-fees-body-grid-head">30-Day Spot Trading Volume (USD) <span>?</span></div>
+            <div class="loading-points"></div>
+            <label>0/10,000,000 USD</label>
+            <!-- <div class="progress-bar-container">
+              <div class="progress-bar" [style.width.%]="value"></div>
+            </div> -->
+            <a href="#" class="items-list-link">Spot Trade History</a>
+           </div>
+           <span class="OR-class">OR</span>
+           <div class="even-lower-fees-body-grid">
+            <div class="even-lower-fees-body-grid-head">30-Day Derivatives Trading Volume (USD) <span>?</span></div>
+            <div class="loading-points"></div>
+            <label>0/10,000,000 USD</label>
+            <a href="#" class="items-list-link">Derivatives Trade History</a>
+           </div>
+           <span class="OR-class">OR</span>
+           <div class="even-lower-fees-body-grid">
+            <div class="even-lower-fees-body-grid-head">30-Day USDC Options Trading Volume (USD) <span>?</span></div>
+            <div class="loading-points"></div>
+            <label>0/5,000,000 USD</label>
+            <a href="#" class="items-list-link">USDC Options Trade History</a>
+           </div>
+           <div class="even-lower-fees-body-grid">
+            <div class="even-lower-fees-body-grid-head">30-Day Average Effective Net Borrowing (USD) <span>?</span></div>
+            <div class="loading-points"></div>
+            <label>100000/5,00,000 USD</label>
+            <a href="#" class="items-list-link">Loan History</a>
+           </div>
+           <span class="OR-class">OR</span>
+           <div class="even-lower-fees-body-grid">
+            <div class="even-lower-fees-body-grid-head">Total Equity (USD) <span>?</span></div>
+            <div class="loading-points"></div>
+            <label>200000/10,000,000 USD</label>
+            <a href="#" class="items-list-link">Wallet Balance(Earn Account)</a>
+           </div>
+           <span class="OR-class">OR</span>
+           <div class="even-lower-fees-body-grid">
+            <div class="even-lower-fees-body-grid-head">300 Avg. Equity (USD) <span>?</span></div>
+            <div class="loading-points"></div>
+            <label>100000/10,000,000 USD</label>
+            <a href="#" class="items-list-link">Wallet Balance(Earn Account)</a>
+           </div>
+        </div>
+
+        <div class="final-fee-table">
+          <table>
+           <tr><td class="text-align-center" colspan="7">Final Fee</td></tr>
+            <tr>  					
+              <th class="font-sze-18px"></th>
+              <th class="font-sze-18px" colspan="2">Spot Trading</th>
+              <th class="font-sze-18px" colspan="2">Perpetual & Futures Contracts Trading</th>
+              <th class="font-sze-18px" colspan="2">USDC Options Trading</th>
+            </tr>
+            <tr>
+             <td class="font-sze-16px">Users' Tiers </td>
+             <td class="font-sze-16px">           Taker Fee Rate		</td>
+             <td class="font-sze-16px">           Maker Fee Rate		</td>
+             <td class="font-sze-16px">           Taker Fee Rate		</td>
+             <td class="font-sze-16px">           Maker Fee Rate		</td>
+             <td class="font-sze-16px">           Taker Fee Rate		</td>
+             <td class="font-sze-16px">           Maker Fee Rate</td>
+           </tr>
+            
+            <tr class="row-final-fee-body beginner-block">
+              <td>Beginner	</td>
+              <td>0.20000	</td>
+              <td>0.20000	</td>
+              <td>0.06000	</td>
+              <td>0.02500	</td>
+              <td>0.02500	</td>
+              <td>0.02500</td>
+            </tr>
+            <tr class="row-final-fee-body Contender-block">
+             <td>Contender 1	</td>
+             <td>0.17250	</td>
+             <td>0.16000	</td>
+             <td>0.04475	</td>
+             <td>0.02275	</td>
+             <td>0.02475	</td>
+             <td>0.01975</td>
+           </tr>
+           
+           <tr class="row-final-fee-body Contender-block">
+             <td>Contender 2	</td>
+             <td>0.16000	</td>
+             <td>0.14750	</td>
+             <td>0.04200	</td>
+             <td>0.02050	</td>
+             <td>0.02450	</td>
+             <td>0.01950</td>
+           </tr>
+           
+           <tr class="row-final-fee-body Contender-block">
+             <td>Contender 3	</td>
+             <td>          0.14750	</td>
+             <td>          0.13500	</td>
+             <td>          0.03925	</td>
+             <td>          0.01825	</td>
+             <td>          0.02425	</td>
+             <td>          0.01925</td>
+           </tr>
+            
+           <tr class="row-final-fee-body Master-block">
+             <td>Master 1	</td>
+             <td>          0.12250	</td>
+             <td>          0.67500	</td>
+             <td>          0.03600	</td>
+             <td>          0.01600	</td>
+             <td>          0.02375	</td>
+             <td>          0.01900</td>
+           </tr>
+           <tr class="row-final-fee-body Master-block">
+            <td>Master 2	</td>
+            <td>          0.10250	</td>
+            <td>          0.09250	</td>
+            <td>          0.03575	</td>
+            <td>          0.01375	</td>
+            <td>          0.02300	</td>
+            <td>          0.01875</td>
+          </tr>
+          <tr class="row-final-fee-body Master-block">
+            <td>Master 3	</td>
+            <td>          0.09750	</td>
+            <td>          0.08500	</td>
+            <td>          0.03500	</td>
+            <td>          0.01350	</td>
+            <td>          0.02200	</td>
+            <td>          0.01850</td>
+          </tr>
+          <tr class="row-final-fee-body Champion-block">
+            <td>Champion 1	</td>
+            <td>          0.09000	</td>
+            <td>          0.08000	</td>
+            <td>          0.03525	</td>
+            <td>          0.01325	</td>
+            <td>          0.02125	</td>
+            <td>          0.01825</td>
+          </tr>
+          <tr class="row-final-fee-body Champion-block">
+           <td>Champion 2	</td>
+           <td>          0.07000	</td>
+           <td>          0.06000	</td>
+           <td>          0.03500	</td>
+           <td>          0.00800	</td>
+           <td>          0.01800	</td>
+           <td>          0.01300</td>
+         </tr>
+         <tr class="row-final-fee-body Champion-block">
+          <td>Champion 3	</td>
+          <td>          0.06500	</td>
+          <td>          0.05000	</td>
+          <td>          0.03275	</td>
+          <td>          0.00275	</td>
+          <td>          0.01775	</td>
+          <td>          0.00475</td>
+        </tr>
+        <tr class="row-final-fee-body hof-block">
+          <td>Hall of Fame 1	</td>
+          <td>          0.05000	</td>
+          <td>          0.04000	</td>
+          <td>          0.02950	</td>
+          <td>          0.00200	</td>
+          <td>          0.01200	</td>
+          <td>          0.00400</td>
+        </tr>
+        <tr class="row-final-fee-body hof-block">
+          <td> Hall of Fame 2	</td>
+          <td>          0.02000	</td>
+          <td>          0.01000	</td>
+          <td>          0.02600	</td>
+          <td>          0.00100	</td>
+          <td>          0.01100	</td>
+          <td>          0.00100</td>
+        </tr>
+          </table>
+       </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+</div>
+
+<!-- <p-toast></p-toast> -->

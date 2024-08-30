@@ -1,0 +1,164 @@
+<div class="card">
+  <div
+    class="card-header card-header flex justify-content-between"
+    style="
+      width: 100%;
+      overflow: hidden;
+      overflow-x: auto;
+      margin-bottom: 10px;
+      overflow-x: auto;
+    "
+  >
+    <div class="md-col-8">
+      <span class="flex align-items-center">
+        <img
+          style="margin: 8px"
+          src="../../../../../assets/signal-provider.svg"
+        />
+        Signal Provider</span
+      >
+    </div>
+    <div class="md-col-8">
+      <div class="flex align-items-center" style="position: relative">
+        <input class="search-bar-top mr-4" />
+        <img
+          class="search-bar-icon"
+          src="../../../../../assets/search-table.svg"
+        />
+        <span
+          ><p-button
+            label="Add New"
+            [routerLink]="['/app/marketplace/create-signal']"
+          ></p-button
+        ></span>
+        <span class="ml-2 mr-2 filter-icon" (click)="op.toggle($event)">
+          <i class="pi pi-filter" style="font-size: 1rem"></i>
+        </span>
+      </div>
+    </div>
+  </div>
+
+
+  
+
+  <p-overlayPanel #op>
+    <div class="grid p-4">
+      <h2 style="color: #fff;font-weight: 500; margin-left: 10px;">Filter</h2>
+
+      <div class="col-12 grid">
+        <div class="col-12 md:col-6">
+          <label class="form-label">Market</label>
+          <div>
+            <p-dropdown
+              [options]="commonOptions"
+              optionLabel="name"
+                [style]="{'width':'100%','background':'#2b4071','color':'#fff','border':'none'}"></p-dropdown>
+          </div>
+        </div>
+
+        <div class="col-12 md:col-6">
+          <label class="form-label">Broker</label>
+          <div>
+              <p-dropdown [options]="commonOptions" optionLabel="name"
+              [style]="{'width':'100%','background':'#2b4071','color':'#fff','border':'none'}"
+              ></p-dropdown>
+          </div>
+        </div>
+      </div>
+
+      <!-- first row end -->
+      <div class="col-12 grid">
+        <div class="col-12 md:col-6">
+          <label class="form-label">Assets</label>
+          <div>
+            <p-dropdown
+              [options]="commonOptions"
+              optionLabel="name" [style]="{'width':'100%','background':'#2b4071','color':'#fff','border':'none'}"
+            ></p-dropdown>
+          </div>
+        </div>
+
+        <div class="col-12 md:col-6">
+          <label class="form-label">Access</label>
+          <div>
+              <p-dropdown [options]="commonOptions" optionLabel="name"
+              [style]="{'width':'100%','background':'#2b4071','color':'#fff','border':'none'}"
+              ></p-dropdown>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 grid">
+        <div class="col-12 md:col-6">
+          <label class="form-label">KYC</label>
+          <div>
+            <p-dropdown
+              [options]="commonOptions"
+              optionLabel="name"
+              [style]="{'width':'100%','background':'#2b4071','color':'#fff','border':'none'}"
+            ></p-dropdown>
+          </div>
+        </div>
+
+       
+      </div>
+    </div>
+
+    <div class="col-12 flex  justify-content-end">
+      <p-button label="Clear Filters" class="mr-3"></p-button>
+      <p-button label="Apply"></p-button>
+    </div>
+  </p-overlayPanel>
+
+  <!-- Signal Provider Table start -->
+ <div class="common-table-style">
+  <p-table
+    [value]="summury"
+    [tableStyle]="{ 'min-width': '50rem' }"
+    [rows]="3"
+    [showFirstLastIcon]="false"
+    [paginator]="true"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th class="signal-provider-table-head">Rank<p-sortIcon></p-sortIcon></th>
+        <th class="signal-provider-table-head">Account name<p-sortIcon icon="pi pi-fw pi-sort"></p-sortIcon></th>
+        <!-- <th>Balance <p-sortIcon></p-sortIcon></th> -->
+        <th class="signal-provider-table-head">Market <p-sortIcon></p-sortIcon></th>
+        <th class="signal-provider-table-head">Broker <p-sortIcon></p-sortIcon></th>
+        <th class="signal-provider-table-head">Assets <p-sortIcon></p-sortIcon></th>
+        <th class="signal-provider-table-head">Strategy <p-sortIcon></p-sortIcon></th>
+        <th class="signal-provider-table-head">Avg Performance<p-sortIcon></p-sortIcon></th>
+        <th class="signal-provider-table-head">Access <p-sortIcon></p-sortIcon></th>
+        <th class="signal-provider-table-head">KYC <p-sortIcon></p-sortIcon></th>
+        <th class="signal-provider-table-head">Rewards <p-sortIcon></p-sortIcon></th>
+        <th class="signal-provider-table-head">Risks <p-sortIcon></p-sortIcon></th>
+        <th class="signal-provider-table-head">Subcriber Count <p-sortIcon></p-sortIcon></th>
+        <!-- <th class="signal-provider-table-head">Subcriber Fees <p-sortIcon></p-sortIcon></th> -->
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-tableData>
+      <tr (click)="onClickCreate()">
+        <td>{{ tableData.rank }}</td>
+        <td>{{ tableData.name }}</td>
+        <td>{{ tableData.market }}</td>
+        <td>
+          <div>
+            <!-- <img style="width: 20px" src="../../../../../assets/bnb.png" /> -->
+            {{ tableData.broker }}
+          </div>
+        </td>
+        <td>{{ tableData.assets }}</td>
+        <td>{{ tableData.strategy }}</td>
+        <td>{{ tableData.avg_monthly_performance }}</td>
+        <td>{{ tableData.access }}</td>
+        <td>{{ tableData.kyc == 1 ? 'Yes' : 'No' }}</td>
+        <td>{{ tableData.rewards }}</td>
+        <td>{{ tableData.risk }}</td>
+        <td>{{ tableData.sub_count }}</td>
+        <!-- <td>{{ tableData.Subcriberfess }}</td> -->
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+</div>

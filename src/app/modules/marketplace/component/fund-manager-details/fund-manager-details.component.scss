@@ -1,0 +1,137 @@
+.fund-man-head {
+  font-family: "Euclid Circular A";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 2.4rem;
+  line-height: 140%;
+  color: #ffffff;
+}
+.fund-man-lbl {
+  font-family: "Euclid Circular A";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.3rem;
+  line-height: 140%;
+  color: #ffffff;
+}
+.reletive-elm {
+  position: relative;
+}
+
+.chart-bottom-legend {
+  position: absolute;
+  bottom: 20px;
+  background: rgb(255, 255, 255, 0.1);
+  border-radius: 10px;
+  width: 90%;
+  margin-left: 5%;
+}
+.bottom-leg-value {
+  font-family: "Euclid Circular A";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.6rem;
+  line-height: 140%;
+  color: #ffffff;
+}
+.bottom-leg-lb {
+  font-family: "Euclid Circular A";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 0.9rem;
+
+  color: #ffffff;
+}
+.green {
+  color: green;
+}
+.red {
+  color: red;
+}
+.legend-container {
+  position: absolute;
+  top: 35px;
+  right: 23px;
+}
+.first {
+  border-radius: 8px 0px 0px 8px;
+}
+
+.last {
+  border-radius: 0px 8px 8px 0px;
+}
+
+.active {
+  opacity: 1 !important;
+}
+
+/* Clear floats (clearfix hack) */
+.btn-group:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.btn-group button:not(:last-child) {
+  border-right: none;
+  /* Prevent double borders */
+}
+
+/* Add a background color on hover */
+.btn-group button:hover {
+  background-color: #3c71fb;
+  opacity: 1;
+}
+
+:host ::ng-deep {
+  .p-inputtext {
+    margin: 10px 0px;
+    width: 100%;
+    font-family: "Euclid Circular A";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.9rem;
+    line-height: 140%;
+
+    color: #ffffff;
+    background: #2e4060;
+    border: 1px solid #5c6276;
+    border-radius: 8px;
+  }
+
+  .p-inputtext:hover {
+    border: 1px solid #3c71fb;
+    box-shadow: 0px 2px 8px 4px rgba(15, 168, 255, 0.17);
+    border-radius: 8px;
+  }
+
+  .p-inputtext:enabled:focus {
+    border: 1px solid #3c71fb;
+    box-shadow: 0px 2px 8px 4px rgba(15, 168, 255, 0.17);
+    border-radius: 8px;
+    font-size: 0.9rem;
+  }
+}
+.card-head-fund-man {
+  font-family: "Euclid Circular A";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.3rem;
+
+  color: #ffffff;
+}
+.subs-btn {
+  background-color: #3c71fb;
+  color: #ffffff;
+  width: 80%;
+  font-family: "Euclid Circular A";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 140%;
+  color: #ffffff;
+  outline: none;
+  border: none;
+  border-radius: 6px;
+  padding: 10px;
+}

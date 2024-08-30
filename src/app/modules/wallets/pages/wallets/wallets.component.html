@@ -1,0 +1,942 @@
+<div class="card mt-4">
+  <div class="grid flex flex-row align-items-center justify-content-center pt-5">
+
+    <div class="col-10 md:col-3">
+      <div (click)="onClickSection(0)" style="width: 100%" [ngClass]="
+          selectedSection === 0
+            ? 'col-2 m-2 p-3 section-head flex align-items-center justify-content-center active'
+            : 'col-2 m-2 p-3 section-head flex align-items-center justify-content-center'
+        ">
+        Internal Wallet
+      </div>
+    </div>
+  </div>
+  <!-- Button End Here -->
+  <div class="flex flex-column p-5">
+    <div *ngIf="selectedSection === 0">
+      <div id="outer-id-balance-account-type">
+        <select name="" id="balance-account-type" (change)="onAccountTypeChange($event)">
+          <option value="account-type" disabled>Account Type</option>
+          <option (onselect)="funding" value="unified">UNIFIED</option>
+          <option  value="contract">CONTRACT</option>
+          <option  value="funding">FUNDING</option>
+         
+        </select>
+      <div class="listwallet flex">
+
+        <!-- <p [ngClass]="{ active: activeButton === 'btn5' }" (click)="setActiveButton('btn5')" (click)="funding()" (click)="
+                    Funding=true;  Balance = false; Deposit = false; Withdraw = false; Transfer = false
+                  ">
+          Funding
+        </p>
+
+        <p [ngClass]="{ active: activeButton === 'btn6' }" (click)="setActiveButton('btn6')" (click)="contract()" (click)="
+            Contract = true; Funding=false;  Balance = false; Deposit = false; Withdraw = false; Transfer = false
+                          ">
+          Contract
+        </p> -->
+
+        <p [ngClass]="{ active: activeButton === 'btn1' }" (click)="setActiveButton('btn1')" (click)="Walletbalance()"
+          (click)="
+         Contract = false;  Funding=false; Balance = true; Deposit = false; Withdraw = false; Transfer = false
+          ">
+          Balance
+        </p>
+        <p [ngClass]="{ active: activeButton === 'btn2' }" (click)="setActiveButton('btn2')" (click)="getWalletData('deposit')"
+
+          (click)="
+           Contract = false;  Funding=false; Deposit = true; Balance = false; Withdraw = false; Transfer = false
+          ">
+          Deposit
+        </p>
+
+        <p [ngClass]="{ active: activeButton === 'btn3' }" (click)="setActiveButton('btn3')" (click)="getWalletData('withdraw')"
+          (click)="
+          Contract = false;  Funding=false;  Withdraw = true; Balance = false; Deposit = false; Transfer = false
+          ">
+          Withdraw
+        </p>
+
+        <p *ngIf="userRole === 'pro'" [ngClass]="{ active: activeButton === 'btn4' }" (click)="setActiveButton('btn4')"
+          (click)="
+           Contract = false;  Funding=false; Transfer = true; Withdraw = false; Balance = false; Deposit = false
+          ">
+          Transfer
+        </p>
+      </div>
+    </div>
+      <!-- btn end -->
+      <div class="grid mt-3">
+
+
+        <!-- Fund start here -->
+
+
+
+
+        <!-- Fund End here -->
+
+        <!-- funding start -->
+        <div class="col-12 md:col-12" *ngIf="Balance">
+
+          <div class="mt-3 icon-list-wallet-table">
+
+            <div class="depobox flex align-items-center justify-content-center fixed-search-bar wallet-main-search">
+              <i class="fa-solid fa-magnifying-glass icon-input__icon"></i>
+              <input type="text" [(ngModel)]="searchQueryBalance" placeholder="Search..."
+                (input)="filterItemsbalance()" />
+            </div>
+            <p-table [value]="filteredCoinsdepbalance" *ngIf="filteredCoinsdepbalance.length > 0">
+              <ng-template pTemplate="header" class="icon-list">
+                <tr>
+                  <th>
+                    <i class="pi pi-search mr-2" style="font-size: 1rem"></i>Coin
+                  </th>
+                  <th>Balance</th>
+                  <th>In Orders</th>
+                  <th>Action</th>
+                </tr>
+              </ng-template>
+
+              <ng-template pTemplate="body" let-item>
+
+                <tr *ngIf="item.walletBalance !== 0">
+                  <td>
+
+                    {{ item.coin }}
+                  </td>
+                  <td>
+                    {{ item.walletBalance || 0 }}
+                  </td>
+                  <td>{{ item.locked }}</td>
+
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-item>
+
+                <tr>
+                  <td>
+                    <div class="coin-image-size-outer">
+                      <div class="coin-image-size">
+
+                      </div>
+                      {{ item.coin }}
+                    </div>
+                  </td>
+                  <td>
+                    {{ item.walletBalance || 0 }}
+                  </td>
+                  <td>{{ item.locked }}</td>
+                  <td> <p-button class="transfer-ahref-btn"
+                      (click)="fromPanel(item.coin,'transfer')">Transfer</p-button></td>
+                </tr>
+              </ng-template>
+
+            </p-table>
+
+
+          </div>
+        </div>
+        <!-- funding end -->
+        <div class="col-12 md:col-12" *ngIf="Deposit">
+          <div class="grid p-2">
+            <div class="col-2 icon-list" style="border-right: 1px solid #8991a4">
+              <div class="depobox flex align-items-center justify-content-center fixed-search-bar sticky-search-bar">
+                <input type="text" [(ngModel)]="searchQuery" placeholder="Search..." (input)="filterItems()" />
+                <i class="fa-solid fa-magnifying-glass icon-input__icon"></i>
+              </div>
+
+              <div *ngFor="let item of filteredCoins" (click)="depofirst = true" (click)="depo2 = false"
+                (click)="assetdetails(item.source)"
+                class="depotable flex align-items-center mt-2 justify-content-center p-2 mdi cursor-pointer ">
+
+                <p style="font-size: 14px; font-family: 'Euclid Circular A'">
+                  {{ item.source }}
+                </p>
+              </div>
+            </div>
+
+            <div class="col-3 Please-choose-Network" *ngIf="depofirst" style="border-right: 1px solid #8991a4">
+              <div class="depobox align-items-center justify-content-center">
+
+                <input type="text" [(ngModel)]="searchQuerydep" placeholder="Choose Network"
+                  (input)="filterItemsdep()" />
+                <!-- <i class="icon-input__icon material-icons"></i> -->
+                <i class="fa-solid fa-magnifying-glass icon-input__icon"></i>
+              </div>
+
+              <br />
+              <p style="font-size: 14px; font-family: 'Euclid Circular A'">
+                Please choose Network
+              </p>
+              <div *ngFor="let datas of filteredCoinsdep; let i = index" (click)="updateIndex(i)"
+                (click)="checkaddress(datas.address)" class="depotable flex align-items-center mt-2 p-2">
+                <p style="font-size: 14px; font-family: 'Euclid Circular A'">
+                  {{ datas.type }}
+                </p>
+              </div>
+            </div>
+
+            <div class="col-7" *ngIf="activeGenAdd">
+              <div class="gen-div">
+                <button class="add-gen" (click)="addGen()">
+                  Generate address
+                </button>
+              </div>
+            </div>
+
+            <div class="col-7" *ngIf="depo2">
+              <p style="
+                  color: #ffffff;
+                  font-family: 'Euclid Circular A';
+                  font-size: 14px;
+                ">
+                Attention for security reasons, withdrawals for unverified
+                accounts will not be available until 72 hours after a deposit
+                has been made.
+              </p>
+              <div class="grid mt-3">
+                <div class="col-2">
+                  <img [src]="
+                      'https://www.bybit.com/bycsi-root/assets/image/coins/light/' +
+                      detailsData.result.asset.toLowerCase() +
+                      '.svg'
+                    " width="70%" />
+                </div>
+                <div class="col-10 flex">
+                  <div>
+                    <div>
+                      <p style="
+                          color: #8991a4;
+                          font-family: 'Euclid Circular A';
+                          font-size: 14px;
+                        ">
+                        {{ detailsData.network[k].type }}
+                      </p>
+                      <p style="
+                          color: #ffffff;
+                          font-family: 'Euclid Circular A';
+                          font-size: 18px;
+                        ">
+                        {{ detailsData.network[k].chaintype }}
+                      </p>
+                    </div>
+
+                    <div class="mt-3">
+                      <p style="
+                          color: #8991a4;
+                          font-family: 'Euclid Circular A';
+                          font-size: 14px;
+                        ">
+                        Deposit address
+                      </p>
+                      <h5 #myInput style="
+                          color: #ffffff;
+                          font-family: 'Euclid Circular A';
+                          font-size: 14px;
+                          font-weight: 100;
+                        ">
+                        {{ detailsData.network[k].address }}
+                        <i [ngClass]="copied ? 'pi pi-check' : 'pi pi-copy'"
+                          [ngStyle]="{ color: copied ? 'green' : '#8991a4' }"
+                          (click)="copyAddr(detailsData.network[k].address)"></i>
+                      </h5>
+                    </div>
+
+                    <div class="mt-3">
+                      <p style="
+                          color: #8991a4;
+                          font-family: 'Euclid Circular A';
+                          font-size: 14px;
+                        ">
+                        Network confirmations
+                      </p>
+                      <h5 style="
+                          color: #ffffff;
+                          font-family: 'Euclid Circular A';
+                          font-size: 16px;
+                          font-weight: 100;
+                        ">
+                        {{ detailsData.network[k].confirmation }}
+                      </h5>
+                    </div>
+
+                    <div style="
+                        background-color: #30456f;
+                        height: 90px;
+                        padding: 10px;
+                        margin-top: 50px;
+                        width: 100%;
+                      ">
+                      <p style="
+                          color: #8991a4;
+                          font-family: 'Euclid Circular A';
+                          font-size: 12px;
+                        ">
+                        <i class="pi pi-circle-fill mr-2" style="font-size: 5px; color: #8991a4"></i>Send only {{
+                        detailsData.network[k].name }} to this
+                        deposit address
+                      </p>
+                      <p style="
+                          color: #8991a4;
+                          font-family: 'Euclid Circular A';
+                          font-size: 12px;
+                        ">
+                        <i class="pi pi-circle-fill mr-2" style="font-size: 5px; color: #8991a4"></i>Ensure the network
+                        is
+                        {{ detailsData.network[k].chaintype }}
+                      </p>
+                    </div>
+
+                    <!-- <div class="flex mt-3">
+                      <p style="
+                          color: #8991a4;
+                          font-family: 'Euclid Circular A';
+                          font-size: 12px;
+                        ">
+                        Recent Deposit
+                      </p>
+                      <i class="pi pi-sync ml-2"></i>
+                      <h6 style="
+                          color: #ffffff;
+                          font-family: 'Euclid Circular A';
+                          font-size: 12px;
+                          font-weight: 100;
+                          margin-left: 5px;
+                        ">
+                        Update
+                      </h6>
+                    </div> -->
+                  </div>
+
+                  <div class="p-3">
+                    <img src="{{ detailsData.network[k].qrcode }}" alt="" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="deposit-history-table">
+            <table *ngIf="deposit && deposit.length > 0; else noRecords">
+              <thead>
+                <tr>
+                  <th>S.No</th>
+                  <th>Coin</th>
+                  <th>Network</th>
+                  <th>Amount</th>
+                  <th>To Address</th>
+                  <th>Created At</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of deposit; let i = index">
+                  <td>{{ i + 1 }}</td>
+                  <td>{{ item.coin }}</td>
+                  <td>{{ item.chain }}</td>
+                  <td>{{ item.amount }}</td>
+                  <td>{{ item.toAddress }} <div class="common-flex-class"></div>
+                  </td>
+                  <td>12:10:10 31/07/2024</td>
+                  <td class="green-color">Completed</td>
+                </tr>
+              </tbody>
+            </table>
+          
+            <ng-template #noRecords>
+              <table>
+                <thead>
+                  <tr>
+                    <th>S.No</th>
+                    <th>Coin</th>
+                    <th>Network</th>
+                    <th>Amount</th>
+                    <th>To Address</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td colspan="5">No records found</td>
+                  </tr>
+                </tbody>
+              </table>
+            </ng-template>
+          </div>
+
+        </div>
+        <!-- Deposit End here -->
+        <div class="col-12 md:col-12 withhh" *ngIf="Withdraw">
+          <div class="grid p-2">
+            <div class="col-2 icon-list" style="border-right: 1px solid #8991a4">
+              <div class="depobox flex align-items-center justify-content-center cursor-pointer sticky-search-bar">
+                <!-- <i
+                  class="pi pi-search mr-2"
+                  style="font-size: 1rem; color: hsl(222, 13%, 59%)"
+                ></i> -->
+                <input type="text" [(ngModel)]="searchQuery" placeholder="Search..." (input)="filterItems()" />
+                <i class="fa-solid fa-magnifying-glass icon-input__icon"></i>
+              </div>
+
+              <div *ngFor="let data of filteredCoins" (click)="assetdetails(data.source)" (click)="wallet = true"
+                class="depotable flex align-items-center mt-2 justify-content-center p-2">
+                <!-- <img
+                  [src]="
+                    '/assets/images/color/' + data.source.toLowerCase() + '.svg'
+                  "
+                  width="25%"
+                  class="mr-2"
+                /> -->
+                <p style="font-size: 14px; font-family: 'Euclid Circular A'">
+                  {{ data.source }}
+                </p>
+              </div>
+            </div>
+
+            <div class="col-7 new-withdrawal-address" *ngIf="wallet">
+              <h5 style="
+                  color: #ffffff;
+                  font-family: 'Euclid Circular A';
+                  font-size: 18px;
+                  font-weight: 100;
+                ">
+                New Withdrawal Address
+              </h5>
+              <form [formGroup]="withdrawForm" (ngSubmit)="onSubmit()">
+                <!-- <div *ngIf="apiError" style="color: red">
+                  {{ apiError }}
+                </div> -->
+                <div class="grid mt-3">
+                  <div class="col-12">
+                    <label style="
+                        color: #8991a4;
+                        font-family: 'Euclid Circular A';
+                        font-size: 12px;
+                      ">Label (Optional)</label><br />
+                    <input pInputText formControlName="label" />
+                    <div *ngIf="
+                        withdrawForm.get('label')?.invalid &&
+                        withdrawForm.get('label')?.touched
+                      " style="color: red">
+                      Label is required.
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <label style="
+                        color: #8991a4;
+                        font-family: 'Euclid Circular A';
+                        font-size: 12px;
+                      ">Choose Network</label><br />
+                    <div class="flex flex-wrap gap-3 justify-content-start mt-3">
+                      <button *ngFor="let details of detailsData.network" type="button" pButton [label]="details.type"
+                        [class.selected]="
+                          withdrawForm.get('network')?.value ===
+                          detailsData.result.type
+                        " (click)="selectNetwork(detailsData.result.type)"></button>
+                    </div>
+                    <div *ngIf="
+                        withdrawForm.get('network')?.invalid &&
+                        withdrawForm.get('network')?.touched
+                      " style="color: red">
+                      Please select a network.
+                    </div>
+                  </div>
+
+                  <div class="col-12" *ngIf="activeAddress">
+                    <label style="
+                        color: #8991a4;
+                        font-family: 'Euclid Circular A';
+                        font-size: 12px;
+                      ">Address</label><br />
+                    <input pInputText formControlName="address" />
+                    <div *ngIf="
+                        withdrawForm.get('address')?.invalid &&
+                        withdrawForm.get('address')?.touched
+                      " style="color: red">
+                      Address is required.
+                    </div>
+                  </div>
+
+                  <!-- <div class="col-12">
+                    <label
+                      style="
+                        color: #8991a4;
+                        font-family: 'Euclid Circular A';
+                        font-size: 12px;
+                      "
+                      >Email Code</label
+                    ><br />
+                    <div
+                      class="flex align-items-center justify-content-between"
+                    >
+                      <input
+                        pInputText
+                        formControlName="OTP"
+                        style="width: 80%"
+                      />
+                      <p-button
+                        (click)="Sendotp()"
+                        label="Send Code"
+                        id="sendcode"
+                        [style]="{
+                          padding: '10px',
+                          'background-color': 'none'
+                        }"
+                      ></p-button>
+                    </div>
+                    <div
+                      *ngIf="
+                        withdrawForm.get('OTP')?.invalid &&
+                        withdrawForm.get('OTP')?.touched
+                      "
+                      style="color: red"
+                    >
+                      Email Code is required.
+                    </div>
+                  </div> -->
+
+                  <!-- <div class="col-12 ">
+                    <label style="color: #8991A4;font-family: 'Euclid Circular A';font-size: 12px;">2FA Code</label><br>
+                    <input pInputText />
+                  </div> -->
+
+                  <div class="col-12">
+                    <label style="
+                        color: #8991a4;
+                        font-family: 'Euclid Circular A';
+                        font-size: 12px;
+                      ">Amount</label><br />
+                    <input pInputText formControlName="amount" />
+                    <div *ngIf="withdrawForm.get('amount')?.errors?.['required'] && withdrawForm.get('amount')?.touched"
+                      style="color: red">
+                      Amount is required.
+                    </div>
+                    <div *ngIf="withdrawForm.get('amount')?.errors?.['pattern']" style="color: red">
+                      Please enter only numbers for the Amount.
+                    </div>
+                  </div>
+
+                  <input type="hidden" [(ngModel)]="detailsData.result.asset" name="coin" />
+
+                  <div class="col-12 flex justify-content-end">
+                    <button type="submit" pButton id="sendcode">Confirm</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <div class="deposit-history-table">
+            <table *ngIf="withdraw && withdraw.length > 0; else noRecords">
+              <thead>
+                <tr>
+                  <th>S.No</th>
+                  <th>Coin</th>
+                  <th>Network</th>
+                  <th>Amount</th>
+                  <th>To Address</th>
+                  <th>Created At</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of withdraw; let i = index">
+                  <td>{{ i + 1 }}</td>
+                  <td>{{ item.coin }}</td>
+                  <td>{{ item.chain }}</td>
+                  <td>{{ item.amount }}</td>
+                  <td>{{ item.toAddress }}</td>
+                  <td>12:10:10 31/07/2024</td>
+                  <td class="green-color">Completed</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <ng-template #noRecords>
+              <table>
+                <thead>
+                  <tr>
+                    <th>S.No</th>
+                    <th>Coin</th>
+                    <th>Network</th>
+                    <th>Amount</th>
+                    <th>To Address</th>
+                    <th>Created At</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td colspan="5">No records found</td>
+                  </tr>
+                </tbody>
+              </table>
+            </ng-template>
+          </div>
+
+        </div>
+
+        <!-- withdraw End here -->
+        <div class="col-12 md:col-12" *ngIf="Transfer">
+          <div class="grid p-2">
+            <div class="col-2 icon-list" style="border-right: 1px solid #8991a4">
+              <div class="depobox flex align-items-center justify-content-center cursor-pointer sticky-search-bar">
+                <input type="text" [(ngModel)]="searchQuery" placeholder="Search..." (input)="filterItems()" />
+                <i class="fa-solid fa-magnifying-glass icon-input__icon"></i>
+              </div>
+
+            <div *ngFor="let data of filteredCoins" (click)="Transfer1 = true"
+              class="depotable flex align-items-center mt-2 justify-content-center p-2">
+              <p style="font-size: 14px; font-family: 'Euclid Circular A'">
+                {{ data.source }}
+              </p>
+            </div>
+            </div>
+
+
+
+            <div class="col-10" *ngIf="Transfer1">
+
+              <div class="swapping-process-block transfer-main-outer">
+
+                <form class="wallet-old-form-display-none" #TForm="ngForm" (ngSubmit)="transSubmit()">
+
+                  <div class="swap-first-block">
+                    <h3 class="transfer-heading-style">Transfer</h3>
+                    <div class="row transfer-block-dropdown-outer transfer-block-dropdown-inner-coin">
+                      <div class="transfer-block-dropdown-inner">
+                        <label>From</label>
+                        <div class="transfer-block-dropdown">
+                          <p-dropdown name="from" [options]="concvertList" [(ngModel)]="transFrom" optionValue="code"
+                            (ngModelChange)="selectAccount($event, 'From')" optionLabel="name"
+                            placeholder="Select Wallet Type" [required]="true"></p-dropdown>
+                        </div>
+
+                        <div class="text-danger" *ngIf="TForm.submitted && TForm.controls['from'].invalid"
+                          style="color: red; padding-left: 5px ; font-size: 12px;" class="error-message">
+                          From Wallet Type is Invalid
+                        </div>
+
+                      </div>
+                      <div class="swapicon-ii">
+                        <img src="../../../../../assets/swapicon.png" alt="swapicon" />
+                      </div>
+                      <div class="transfer-block-dropdown-inner">
+                        <label>To</label>
+                        <div class="transfer-block-dropdown">
+                          <p-dropdown #coinTwoDropdown="ngModel" name="to" [options]="concvertList"
+                            [(ngModel)]="transTo" (ngModelChange)="
+                              selectAccount($event, 'To');
+                            " optionValue="code" optionLabel="name" placeholder="Select Wallet Type"
+                            [required]="true"></p-dropdown>
+                        </div>
+                        <div class="text-danger" *ngIf="TForm.submitted && TForm.controls['to'].invalid"
+                          style="color: red; padding-left: 5px ; font-size: 12px;text-align: left;"
+                          class="error-message">
+                          To Wallet Type is Invalid
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="transfer-block-dropdown-inner transfer-block-dropdown-inner-coin">
+                      <label>Coin</label>
+                      <div class="transfer-block-dropdown">
+
+                        <select [(ngModel)]="transCoin" (change)="onCoinSelectionChange($event)">
+                          <option name="amount" *ngFor="let option of filteredCoins" [value]="option.source">{{
+                            option.source }}</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="transfer-block-dropdown-inner transfer-block-dropdown-inner-coin">
+                      <label>Amount</label>
+                      <div class="transfer-block-dropdown">
+                        <div class="swap-sell-block common-block">
+                          <div class="cash-amount">
+                            <input type="text" name="amount" [(ngModel)]="transForm.amount"
+                              placeholder="Enter an amount" [required]="true" />
+                          </div>
+                          <div class="text-danger" style="color: red; padding-left: 5px" *ngIf="
+                              TForm.controls['amount'].touched &&
+                              TForm.controls['amount'].invalid 
+                            " class="error-message">
+                            Please enter an amount
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- <div class="swapicon-outer"><div class="swapicon"><img src="../../../../../assets/swapicon.png" alt="swapicon"></div></div> -->
+
+                  <div class="row">
+                    <div class="col">
+                      <button type="submit" class="tranfer-swallet-mt connect-wallet-button-left btn btn-primary">
+                        Confirm
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="selectedSection === 1">
+    <div class="left-contain-block col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+      <div class="swapping-process-block">
+        <form #metaMForm="ngForm" (ngSubmit)="metaMFormSubmit(metaForm.selectedCoinOne)">
+          <div class="swap-first-block">
+            <p-dropdown #coinOneDropdown="ngModel" name="coinOne" [options]="coinsListOne"
+              [(ngModel)]="metaForm.selectedCoinOne" optionValue="code" (ngModelChange)="updateCoinOptions($event)"
+              optionLabel="name" placeholder="Select a Coin" [required]="true"></p-dropdown>
+            <div class="row">
+              <p-dropdown #coinOneDropdown="ngModel" name="chainID" [options]="chainList" [(ngModel)]="metaForm.chainID"
+                optionValue="code" (ngModelChange)="changeNetwork($event)" optionLabel="name"
+                placeholder="Select a Chain" [required]="true"></p-dropdown>
+              <div class="col">
+                <div class="swap-sell-block common-block">
+                  <div class="cash-amount">
+                    <input type="text" name="amountOne" [(ngModel)]="metaForm.amount" placeholder="Enter an amount"
+                      [required]="true" />
+                    <div class="text-danger" style="color: red" *ngIf="
+                          metaMForm.controls['amountOne'].touched &&
+                          metaMForm.controls['amountOne'].invalid &&
+                          metamaskBalance != 0
+                        " class="error-message">
+                      Please enter an amount
+                    </div>
+                    <div class="text-danger" style="color: red" *ngIf="
+                          metaMForm.controls['amountOne'].touched &&
+                          metamaskBalance < metaForm.amount &&
+                          metamaskBalance != 0
+                        " class="error-message">
+                      Insufficient balance
+                    </div>
+                    <div class="text-danger" style="color: red" *ngIf="
+                          metaMForm.controls['amountOne'].touched &&
+                          metamaskBalance == 0
+                        " class="error-message">
+                      Insufficient balance
+                    </div>
+                  </div>
+                  <div class="calculate-value-balance">
+                    <div class="calculate-balance">
+                      <span>Balance:
+                        <span class="calculate-balance-value">{{
+                          metamaskBalance
+                          }}</span></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="swapicon-outer"><div class="swapicon"><img src="../../../../../assets/swapicon.png" alt="swapicon"></div></div> -->
+
+          <div class="swap-second-block">
+            <p-dropdown #coinTwoDropdown="ngModel" name="coinTwo" [options]="coinsListTwo"
+              [(ngModel)]="metaForm.selectedCoinTwo" (ngModelChange)="
+                  updateCoinOptions($event);
+                  metaBalance(metaForm.selectedCoinTwo, metaForm.chainID)
+                " optionValue="code" optionLabel="name" placeholder="Select a Coin" [required]="true"></p-dropdown>
+            <!-- Add similar validation for the second coin dropdown if needed -->
+          </div>
+          <br />
+          <br />
+          <div class="swapping-price-block">
+            <label>Price</label>
+            <div>
+              1 {{ metaForm.selectedCoinOne }}
+              <div class="swapicon-ii">
+                <img src="../../../../../assets/swapicon.png" alt="swapicon" />
+              </div>
+              1 {{ metaForm.selectedCoinTwo }}
+            </div>
+          </div>
+
+          <!-- <div class="row">
+        <div class="col">
+          <div class="swap-slippage-tolerance-block common-block">
+            <div class="head-select"><span>   
+                 <div class="swap-second-block">
+              <p-dropdown #coinTwoDropdown="ngModel" name="coinTwo" [options]="coinsListTwo" [(ngModel)]="metaForm.selectedCoinTwo" optionValue="code" optionLabel="name" placeholder="Select a Coin" [required]="true"></p-dropdown>
+              Add similar validation for the second coin dropdown if needed
+            </div></span>
+              <div class="swap-slippage-tolerance-block-input cash-amount">
+                <div class="value-get-text-box"></div>
+                <span class="slippage-tolerance-percentage">0.5%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+          <div class="row">
+            <div class="col">
+              <button type="submit" class="connect-wallet-button-left btn btn-primary" *ngIf="
+                    metaMForm.controls['amountOne'].valid &&
+                    metaMForm.controls['chainID'].valid &&
+                    metaForm.amount <= metamaskBalance &&
+                    metamaskBalance != 0 &&
+                    metamaskBalance
+                  ">
+                Buy
+              </button>
+              <button type="button" class="connect-wallet-button-left btn btn-primary" (click)="focusAmount()"
+                [disabled] *ngIf="
+                    metaMForm.controls['amountOne'].invalid &&
+                    metamaskBalance != 0 &&
+                    metamaskBalance
+                  ">
+                Enter Amount
+              </button>
+              <button type="button" class="connect-wallet-button-left btn btn-primary" (click)="focusAmount()"
+                [disabled] *ngIf="
+                    metaMForm.controls['chainID'].invalid &&
+                    metaMForm.controls['amountOne'].valid &&
+                    metamaskBalance != 0 &&
+                    metaForm.amount < metamaskBalance &&
+                    metamaskBalance
+                  ">
+                Select Chain
+              </button>
+              <button type="button" class="connect-wallet-button-left btn btn-primary" (click)="focusAmount()"
+                [disabled] *ngIf="
+                    metaMForm.controls['amountOne'].valid &&
+                    metaForm.amount > metamaskBalance &&
+                    metamaskBalance != 0 &&
+                    metamaskBalance
+                  ">
+                Insufficient Balance
+              </button>
+              <button type="button" class="connect-wallet-button-left btn btn-primary" [disabled]
+                *ngIf="metamaskBalance == 0 && metamaskBalance">
+                Insufficient balance
+              </button>
+              <button type="button" class="connect-wallet-button-left btn btn-primary" *ngIf="!metamaskBalance">
+                Insufficient balance
+              </button>
+            </div>
+          </div>
+        </form>
+        <!--     
+    <div class="mptr-block">
+     <div class="mptr-block-flex"><label>Minimum received</label> <span>0.00767 BNB</span></div>
+     <div class="mptr-block-flex"><label>Price Impact</label> <span>< 0.01% </span></div>
+     <div class="mptr-block-flex"><label>Trading Fee</label> <span>0.0005 CAKE</span></div>
+     <div class="mptr-block-flex"><label>Route</label> <span> CAKE > BNB</span></div>
+    </div> -->
+      </div>
+    </div>
+  </div>
+
+  <div class="grid col-12 flex flex-row align-items-center justify-content-around data-row p-2 mt-3"
+    *ngIf="selectedSection === 2">
+    <div class="col-12 md:col-2 flex flex-column justify-content-around align-items-center">
+      <label class="field-label m-2">Account 1</label>
+      <label class="field-desc m-2">N/A</label>
+    </div>
+    <div class="col-12 md:col-2 flex flex-column justify-content-around align-items-center">
+      <label class="field-label m-2">PlateForm</label>
+      <label class="field-desc m-2">Binance</label>
+    </div>
+    <div class="col-12 md:col-2 flex flex-column justify-content-around align-items-center">
+      <label class="field-label m-2">Date Created</label>
+      <label class="field-desc m-2">12/02/2022</label>
+    </div>
+    <div class="col-6 md:col-2 flex flex-column justify-content-around align-items-center">
+      <label class="field-label"><i class="pi pi-check m-2" style="
+              font-size: 1rem;
+              color: rgb(2, 199, 2);
+              border: 2px solid rgb(0, 177, 0);
+              padding: 4px;
+              border-radius: 50%;
+              font-weight: bold;
+            "></i>
+        Connected</label>
+    </div>
+    <div class="col-6 md:col-2 flex flex-column justify-content-around align-items-center">
+      <i class="pi pi-pencil" (click)="visible = true" style="font-size: 1rem"></i>
+    </div>
+  </div>
+
+  <div class="grid col-12 flex flex-row align-items-center justify-content-around data-row p-2 mt-3"
+    *ngIf="selectedSection === 2">
+    <div class="col-12 md:col-2 flex flex-column justify-content-around align-items-center">
+      <label class="field-label m-2">Account 1</label>
+      <label class="field-desc m-2">N/A</label>
+    </div>
+    <div class="col-12 md:col-2 flex flex-column justify-content-around align-items-center">
+      <label class="field-label m-2">PlateForm</label>
+      <label class="field-desc m-2">Binance</label>
+    </div>
+    <div class="col-12 md:col-2 flex flex-column justify-content-around align-items-center">
+      <label class="field-label m-2">Date Created</label>
+      <label class="field-desc m-2">12/02/2022</label>
+    </div>
+    <div class="col-6 md:col-2 flex flex-column justify-content-around align-items-center">
+      <label class="field-label"><i class="pi pi-check m-2" style="
+              font-size: 1rem;
+              color: rgb(2, 199, 2);
+              border: 2px solid rgb(0, 177, 0);
+              padding: 4px;
+              border-radius: 50%;
+              font-weight: bold;
+            "></i>
+        Connected</label>
+    </div>
+    <div class="col-6 md:col-2 flex flex-column justify-content-around align-items-center">
+      <i class="pi pi-pencil" (click)="visible = true" style="font-size: 1rem"></i>
+    </div>
+  </div>
+</div>
+
+<!-- popup start here  -->
+
+<p-dialog header="Header" [(visible)]="visible">
+  <ng-template pTemplate="header">
+    <label>Address Book</label>
+  </ng-template>
+
+  <div class="card flex flex-column align-items-center" style="padding-bottom: 2px; margin-top: 22px">
+    <div class="grid flex flex-row justify-content-around p-4">
+      <div class="col-6 form">
+        <label class="form-label">Name of assets</label>
+        <div>
+          <p-dropdown optionLabel="name"></p-dropdown>
+        </div>
+      </div>
+      <div class="col-6">
+        <label class="form-label">Nickname</label>
+
+        <div>
+          <p-dropdown optionLabel="name"></p-dropdown>
+        </div>
+      </div>
+      <div class="col-6">
+        <label class="form-label">Network</label>
+        <div>
+          <p-dropdown optionLabel="name"></p-dropdown>
+        </div>
+      </div>
+      <div class="col-6">
+        <label class="form-label">Asset</label>
+        <div>
+          <p-dropdown optionLabel="name"></p-dropdown>
+        </div>
+      </div>
+      <div class="col-12">
+        <label class="form-label">Address</label>
+        <div>
+          <p-dropdown [filter]="true" optionLabel="name"></p-dropdown>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="grid col-12 mt-2 pl-4">
+    <button class="save-btn">Save</button>
+  </div>
+</p-dialog>

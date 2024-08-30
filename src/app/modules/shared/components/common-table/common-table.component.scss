@@ -1,0 +1,63 @@
+:host ::ng-deep {
+  .p-datatable .p-datatable-thead > tr > th {
+    text-align: left;
+    padding: 1rem 1rem;
+    border: none;
+    border-width: 0 0 0 0;
+    font-weight: 700;
+    color: #ebebeb;
+    // background: linear-gradient(94.92deg, rgba(144, 162, 208, 0.1) 3.22%, rgba(219, 220, 224, 0.1) 50.78%, rgba(80, 106, 172, 0.1) 102.75%);
+    box-shadow: 33px 4px 16px rgba(31, 31, 31, 0.16);
+    background-color: rgb(255, 255, 255, 0.09);
+    transition: box-shadow 0.2s;
+    font-family: "Euclid Circular A";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.9rem;
+    line-height: 140%;
+    position: relative;
+  }
+
+  .p-datatable .p-datatable-tbody > tr {
+    background: transparent;
+    border-radius: 10px;
+    transition: box-shadow 0.2s;
+    color: #ffffff;
+    font-family: "Euclid Circular A - light";
+    font-style: normal;
+    // font-weight: 500;
+    font-size: 0.9rem;
+    line-height: 140%;
+  }
+
+  .p-datatable-table {
+    // background: linear-gradient(94.92deg, rgba(144, 162, 208, 0.1) 3.22%, rgba(219, 220, 224, 0.1) 50.78%, rgba(80, 106, 172, 0.1) 102.75%);
+    // box-shadow: 33px 4px 16px rgba(31, 31, 31, 0.16);
+    border-spacing: 0px;
+    width: 100%;
+    font-family: "Euclid Circular A";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.9rem;
+    line-height: 140%;
+  }
+
+  .p-datatable .p-datatable-tbody > tr > td {
+    color: #ffffff;
+    font-family: "Euclid Circular A";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.8rem;
+    line-height: 140%;
+    border: 1px solid rgba(255, 255, 255, 0.29);
+    border-width: 0 0 1px 0;
+  }
+}
+
+.border {
+    height: 27px;
+    width: 2px;
+    background-color: white;
+    position: absolute;
+    right: 0px;
+}

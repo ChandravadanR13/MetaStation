@@ -1,0 +1,276 @@
+<div class="container">
+  <div class="card">
+
+    <div class="card-header card-header flex justify-content-between" style="width: 100%;overflow: hidden;overflow-x: auto;margin-bottom: 10px;overflow-x: auto;">
+      <div class="md-col-8">
+      <span class="flex align-items-center">
+        <img
+          style="margin: 8px"
+          src="../../../../../assets/signal-provider.svg"
+        />
+        Signal Provider</span
+      ></div>
+      <div class="md-col-8">
+      <div class="flex align-items-center" style="position: relative">
+        <input class="search-bar-top mr-4" />
+        <img
+          class="search-bar-icon"
+          src="../../../../../assets/search-table.svg"
+        />
+        <span
+          ><p-button
+            label="Add New"
+            [routerLink]="['/app/marketplace/create-signal']"
+          ></p-button
+        ></span>
+        <span class="ml-2 mr-2 filter-icon" (click)="op.toggle($event)">
+          <i class="pi pi-filter" style="font-size: 1rem"></i>
+        </span>
+      </div>
+    </div>
+
+    </div>
+
+
+
+    <p-overlayPanel #op>
+      <div class="grid p-4" >
+        <div class="col-12">
+          <label class="form-label">Market</label>
+                            <i class="pi pi-info-circle" pTooltip="Information" tooltipPosition="right"
+                                style="margin-left: 4px; font-size: 15px"></i>
+                            <div>
+                                <p-dropdown [options]="commonOptions" optionLabel="name"></p-dropdown>
+                            </div>
+        </div>
+        <div class="col-6">
+          <label class="form-label">Broker</label>
+          <i class="pi pi-info-circle" pTooltip="Information" tooltipPosition="right"
+              style="margin-left: 4px; font-size: 15px"></i>
+          <div>
+              <p-dropdown [options]="commonOptions" optionLabel="name"></p-dropdown>
+          </div>
+        </div>
+        <div class="col-6">
+          <label class="form-label">Assets</label>
+                            <i class="pi pi-info-circle" pTooltip="Information" tooltipPosition="right"
+                                style="margin-left: 4px; font-size: 15px"></i>
+                            <div>
+                                <p-dropdown [options]="commonOptions" optionLabel="name"></p-dropdown>
+                            </div>
+        </div>
+        <div class="col-6">
+          <label class="form-label">Access</label>
+                            <i class="pi pi-info-circle" pTooltip="Information" tooltipPosition="right"
+                                style="margin-left: 4px; font-size: 15px"></i>
+                            <div>
+                                <p-dropdown [options]="commonOptions" optionLabel="name"></p-dropdown>
+                            </div>
+        </div>
+        <div class="col-6">
+          <label class="form-label">KYC</label>
+          <i class="pi pi-info-circle" pTooltip="Information" tooltipPosition="right"
+              style="margin-left: 4px; font-size: 15px"></i>
+          <div>
+              <p-dropdown [options]="commonOptions" optionLabel="name"></p-dropdown>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 flex justify-content-end">
+        <p-button
+            label="Clear Filters"
+            class="m-2"
+          ></p-button
+        >
+        <p-button
+            label="Apply"
+            class="m-2"
+          ></p-button
+        >
+      </div>
+    </p-overlayPanel>
+  
+    <!-- Signal Provider Table start -->
+
+    <p-table
+      [value]="summury"
+      [tableStyle]="{ 'min-width': '50rem' }"
+      [rows]="3"
+      [showFirstLastIcon]="false"
+      [paginator]="true"
+    >
+      <ng-template pTemplate="header">
+        <tr>
+          <th class="signal-provider-table-head">Rank<p-sortIcon></p-sortIcon></th>
+          <th class="signal-provider-table-head">Account name<p-sortIcon icon="pi pi-fw pi-sort"></p-sortIcon></th>
+          <!-- <th>Balance <p-sortIcon></p-sortIcon></th> -->
+          <th class="signal-provider-table-head">Market <p-sortIcon></p-sortIcon></th>
+          <th class="signal-provider-table-head">Broker <p-sortIcon></p-sortIcon></th>
+          <th class="signal-provider-table-head">Assets <p-sortIcon></p-sortIcon></th>
+          <th class="signal-provider-table-head">Strategy <p-sortIcon></p-sortIcon></th>
+          <th class="signal-provider-table-head">Avg Performance<p-sortIcon></p-sortIcon></th>
+          <th class="signal-provider-table-head">Access <p-sortIcon></p-sortIcon></th>
+          <th class="signal-provider-table-head">KYC <p-sortIcon></p-sortIcon></th>
+          <th class="signal-provider-table-head">Rewards <p-sortIcon></p-sortIcon></th>
+          <th class="signal-provider-table-head">Risks <p-sortIcon></p-sortIcon></th>
+          <th class="signal-provider-table-head">Subcriber Count <p-sortIcon></p-sortIcon></th>
+          <th class="signal-provider-table-head">Subcriber Fees <p-sortIcon></p-sortIcon></th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-tableData>
+        <tr (click)="onClickCreate()">
+          <td>{{ tableData.rank }}</td>
+          <td>{{ tableData.telegramusername }}</td>
+          <td>{{ tableData.market }}</td>
+
+          <td>
+            <div>
+              <img style="width: 20px" src="../../../../../assets/bnb.png" />
+            </div>
+          </td>
+          <td>{{ tableData.Assets }}</td>
+          <td>{{ tableData.Strategy }}</td>
+          <td>{{ tableData.AvgPerformance }}</td>
+          <td>{{ tableData.Access }}</td>
+          <td>{{ tableData.kyc }}</td>
+          <td>{{ tableData.Rewards }}</td>
+          <td>{{ tableData.Risks }}</td>
+          <td>{{ tableData.Subscribercount }}</td>
+          <td>{{ tableData.Subcriberfess }}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+  
+  <!-- Signal Provider End-->
+
+  <div class="card">
+    <div class="card-header">
+      <span class="flex align-items-center">
+        <img style="margin: 8px" src="../../../../../assets/fund-manager.svg" />
+        Fund Manager
+      </span>
+      <span style="position: absolute; right: 3%; top: 15%"
+        ><p-button
+          label="Add New" [routerLink]="['./funds-add']"
+        ></p-button
+      ></span>
+    </div>
+
+    <p-table
+      [value]="summury"
+      [tableStyle]="{ 'min-width': '50rem' }"
+      [rows]="3"
+      [showFirstLastIcon]="false"
+      [paginator]="true"
+    >
+      <ng-template pTemplate="header">
+        <tr>
+          <th class="signal-provider-table-head">Rank<p-sortIcon></p-sortIcon></th>
+          <th class="signal-provider-table-head">Account name<p-sortIcon icon="pi pi-fw pi-sort"></p-sortIcon></th>
+          <!-- <th>Balance <p-sortIcon></p-sortIcon></th> -->
+          <th class="signal-provider-table-head">Market <p-sortIcon></p-sortIcon></th>
+          <th class="signal-provider-table-head">Broker <p-sortIcon></p-sortIcon></th>
+          <th class="signal-provider-table-head">Assets <p-sortIcon></p-sortIcon></th>
+          <th class="signal-provider-table-head">Strategy <p-sortIcon></p-sortIcon></th>
+          <th class="signal-provider-table-head">Avg Performance<p-sortIcon></p-sortIcon></th>
+          <th class="signal-provider-table-head">Access <p-sortIcon></p-sortIcon></th>
+          <th class="signal-provider-table-head">KYC <p-sortIcon></p-sortIcon></th>
+          <th class="signal-provider-table-head">Rewards <p-sortIcon></p-sortIcon></th>
+          <th class="signal-provider-table-head">Risks <p-sortIcon></p-sortIcon></th>
+          <th class="signal-provider-table-head">Subcriber Count <p-sortIcon></p-sortIcon></th>
+          <th class="signal-provider-table-head">Subcriber Fees <p-sortIcon></p-sortIcon></th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-tableData>
+        <tr [routerLink]="['/app/marketplace/fund-manager-details']">
+          <td>{{ tableData.rank }}</td>
+          <td>{{ tableData.telegramusername }}</td>
+          <td>{{ tableData.market }}</td>
+
+          <td>
+            <div>
+              <img style="width: 20px" src="../../../../../assets/bnb.png" />
+            </div>
+          </td>
+          <td>{{ tableData.Assets }}</td>
+          <td>{{ tableData.Strategy }}</td>
+          <td>{{ tableData.AvgPerformance }}</td>
+          <td>{{ tableData.Access }}</td>
+          <td>{{ tableData.kyc }}</td>
+          <td>{{ tableData.Rewards }}</td>
+          <td>{{ tableData.Risks }}</td>
+          <td>{{ tableData.Subscribercount }}</td>
+          <td>{{ tableData.Subcriberfess }}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+
+  <!-- Funds End-->
+
+  <div class="card">
+    <div class="card-header">
+      <span class="flex align-items-center">
+        <img style="margin: 8px" src="../../../../../assets/copy-trading.svg" />
+        Copy Trading
+      </span>
+      <span style="position: absolute; right: 3%; top: 15%"
+        ><p-button
+          label="Add New"
+          [routerLink]="['./copy-trading']"
+        ></p-button
+      ></span>
+    </div>
+    <p-table
+      [value]="summury"
+      [tableStyle]="{ 'min-width': '50rem' }"
+      [rows]="3"
+      [showFirstLastIcon]="false"
+      [paginator]="true"
+    >
+      <ng-template pTemplate="header">
+        <tr>
+          <th class="signal-provider-table-head">Rank<p-sortIcon></p-sortIcon></th>
+          <th class="signal-provider-table-head">Account name<p-sortIcon icon="pi pi-fw pi-sort"></p-sortIcon></th>
+          <th class="signal-provider-table-head">Market <p-sortIcon></p-sortIcon></th>
+          <th class="signal-provider-table-head">Broker <p-sortIcon></p-sortIcon></th>
+          <th class="signal-provider-table-head">Assets <p-sortIcon></p-sortIcon></th>
+          <th class="signal-provider-table-head">1D <p-sortIcon></p-sortIcon></th>
+          <th class="signal-provider-table-head">1W <p-sortIcon></p-sortIcon></th>
+          <th class="signal-provider-table-head">1M <p-sortIcon></p-sortIcon></th>
+          <th class="signal-provider-table-head">1Y <p-sortIcon></p-sortIcon></th>
+          <th class="signal-provider-table-head">Total <p-sortIcon></p-sortIcon></th>
+          <th class="signal-provider-table-head">Rewards <p-sortIcon></p-sortIcon></th>
+          <th class="signal-provider-table-head">Risks <p-sortIcon></p-sortIcon></th>
+          <th class="signal-provider-table-head">Subcriber Count <p-sortIcon></p-sortIcon></th>
+          <th class="signal-provider-table-head">Subcriber Fees <p-sortIcon></p-sortIcon></th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-tableData>
+        <tr (click)="onClickAction()">
+          <td>{{ tableData.rank }}</td>
+          <td>{{ tableData.telegramusername }}</td>
+          <td>{{ tableData.market }}</td>
+
+          <td>
+            <div>
+              <img style="width: 20px" src="../../../../../assets/bnb.png" />
+            </div>
+          </td>
+          <td>{{ tableData.Assets }}</td>
+          <td>{{ tableData.d }}</td>
+          <td>{{ tableData.w }}</td>
+          <td>{{ tableData.m }}</td>
+          <td>{{ tableData.y }}</td>
+          <td>{{ tableData.Rewards }}</td>
+          <td>{{ tableData.Subscribercount }}</td>
+          <td>{{ tableData.Risks }}</td>
+          <td>{{ tableData.Subscribercount }}</td>
+          <td>{{ tableData.Subcriberfess }}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>
+<router-outlet></router-outlet>

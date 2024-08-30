@@ -1,0 +1,1563 @@
+
+
+<!-- privious bots end -->
+
+<div class="grid col-12">
+
+  <div class="col-12 md:col-2" style="border-right: 1px solid #ffffff4e;">
+   
+  
+
+      <!-- <div  class="col-2" style="width: 25px; height: 25px; background-color: #1F2C4D;border-radius: 3px;text-align: center;">
+       <i class="pi pi-plus" style="font-size: 1rem"></i>
+      </div> -->
+
+      <div class="grid col-12 md:col-12 flex align-items-center">
+       <div class="col-3 p-0">
+         <img src="./assets/darkadd.png" width="90%" (click)="onPlusClick()" style="cursor: pointer;" (click)="toggleForm()" >
+       </div>
+       <div class="col-9 p-0">
+         <p-dropdown [options]="cities"  placeholder="Select a City"  optionLabel="name" style="width: 100%;"></p-dropdown>
+       </div>
+
+      </div>
+
+  
+
+   <!-- Top Area End -->
+
+   <div class="flex justify-content-between align-items-center my-3" *ngFor="let listItem of listItems"  >
+     <label> {{ listItem.text }}</label>
+       
+        <label class="switch" >
+         <input type="checkbox" [(ngModel)]="listItem.switchValue"/>
+         <span class="slider round"></span>
+       </label>
+   </div>
+ </div>
+
+ <!-- first col end -->
+
+  <div class="col-12 md:col-3" style="border-right: 1px solid #ffffff4e; " *ngIf="isFormActive">
+     <div class="toparea-2 flex justify-content-between align-items-center" style="width: 100%; height: 70px;   background: linear-gradient(83deg, rgba(217, 217, 217, 0.10) 0%, rgba(85, 110, 173, 0.10) 100%);">
+        <div class="button-save">
+         <p-button label="Save"></p-button>
+        </div>
+
+       <div class="subicon">
+         <i class="pi pi-clone mr-1" style="font-size: 1rem" pTooltip="copy"></i>
+         <i class="pi pi-file mr-1" style="font-size: 1rem" pTooltip="?"></i>
+         <i class="pi pi-trash mr-1 " style="font-size: 1rem"  pTooltip="delete" ></i>
+         <!-- (click)="onDeleteClick(i)" -->
+         <span class="mr-1">Docs<i class="pi pi-question-circle mr-1 " style="font-size: 1rem"   pTooltip="?"></i></span>
+       </div>
+        
+     </div>
+
+     <!-- Top Area-2 End -->
+     <div class="flex justify-content-between align-items-center mt-3 mb-5">
+       <div class="flex justify-content-around align-items-center">
+         <label> Enabled</label>
+     <label class="switch">
+       <input type="checkbox" />
+       <span class="slider round"></span>
+     </label>
+       </div>
+
+       <div class="flex justify-content-around align-items-center">
+         <label> Master bot <i class="pi pi-question-circle mr-1 " style="font-size: 1rem" pTooltip="?"></i></label>
+     <label class="switch">
+       <input type="checkbox" />
+       <span class="slider round"></span>
+     </label>
+       </div>
+     </div>
+
+     <!-- Enable Area End -->
+     <div class="form">
+       <div class="col-12">
+         <label>Name</label>
+         <input pInputText />
+       </div>
+       <div class="col-12">
+         <label>Source</label>
+         <p-dropdown [options]="commonOptions" optionLabel="name"></p-dropdown>
+       </div>
+       <div class="col-12">
+         <label>Pair <i class="pi pi-question-circle mr-1 " style="font-size: 1rem" pTooltip="placesholder {{'ticker'}} passes the name of the pair from the tradingview signal,but you can specify the name of the pair without {{''}} for example,BTCUSDT"></i></label>
+         <input pInputText  />
+       </div>
+       <div class="col-12">
+         <label>Order side <i class="pi pi-question-circle mr-1 " style="font-size: 1rem" pTooltip="Order side"></i></label>
+         <p-dropdown [options]="orderside" optionLabel="name"></p-dropdown>
+       </div>
+       <div class="col-12">
+         <label>Allowed IP <i class="pi pi-question-circle mr-1 " style="font-size: 1rem" pTooltip="Allowed IP"></i></label>
+         <input pInputText />
+       </div>
+       <div class="col-12">
+         <label>Signal URL <i class="pi pi-eye  mr-1" style="font-size: 1rem" pTooltip="view"></i><i class="pi pi-clone mr-1" style="font-size: 1rem" pTooltip="copy"></i></label>
+         <input pInputText />
+       </div>
+       <div class="col-12">
+         <label class="form-label" [(ngModel)]="value">Signal Massege <i class="pi pi-eye  mr-1" style="font-size: 1rem" pTooltip="view"></i><i class="pi pi-clone mr-1" style="font-size: 1rem" pTooltip="copy" (click)="clickborad(userinput)"></i></label>
+         <textarea rows="10" cols="50" pInputTextarea  style="resize: none;" #userinput>{{ dataArraykeyValueJSON }}</textarea>
+       </div>
+       <div class="col-12 flex justify-content-end">
+         <p-button label="Save"></p-button>
+       </div>
+     </div>
+  </div>
+   
+  <!-- second col end -->
+
+  <div class="col-12 md:col-7" *ngIf="isFormActive">
+  
+     <p-tabView>
+
+
+       <p-tabPanel header="Open">
+        
+        <!-- <div class="flex align-items-center my-4">
+           <p-checkbox  [binary]="true" inputId="binary" class="mr-1"></p-checkbox>
+           <label class="mr-2"> Enabled</label>
+       <label class="switch">
+         <input type="checkbox" />
+         <span class="slider round"></span>
+       </label>
+         </div> -->
+         <div class="flex align-items-center my-4">
+          <p-checkbox  [binary]="true" inputId="binary" (onChange)="updateKeyValue('open','Enabled', isSwitchOn)" class="mr-1"></p-checkbox>
+          <label class="mr-2"> Enabled</label>
+      <label class="switch">
+        <input type="checkbox" [(ngModel)]="isSwitchOn" (change)="updateValue('open','Enabled', isSwitchOn)" />
+        <span class="slider round"></span>
+      </label>
+        </div>
+         <!-- First enable end -->
+         <div class="card flex col-12 flex p-2  align-items-center info-view">
+          <div class="col-1">
+            <p-checkbox  [binary]="true" inputId="binary" (onChange)="updateKeyValue('open','keyk2', selectedOption)" ></p-checkbox>
+          </div>
+          <div class="col-6">
+            <p-dropdown
+            [(ngModel)]="selectedOption"
+            [options]="commonOptions"
+            optionLabel="value"
+            (onChange)="updateValue('open','keyk2', selectedOption)"
+          ></p-dropdown>
+          </div>
+          <div class="col-5">
+            <input pInputText />
+          </div>
+        </div>
+         <!-- card 1 end -->
+
+         <div class="grid card mx-auto flex p-2 mt-3 info-view">
+           <div class="col-12 flex">
+           <div class="col-3">
+             <label>Order / Grid</label>
+           </div>
+           <div class="col-3">
+             
+               <div class="checkbox ml-2">
+                 <label class="check_cont">
+                   Single order
+                   <input type="radio" checked="checked" name="radio"  (change)="showForm = true; showPopup = false"/>
+                   <span class="checkmark"></span>
+                 </label>
+                 
+               </div>
+           </div>
+           <div class="col-3">
+             <!-- <input type="radio" id="scaled" name="so" value="Scaledorder" (change)="showPopup = true; showForm = false">
+             <label>Scaled order</label> -->
+             <div class="checkbox ml-2">
+               <label class="check_cont">
+                 Scaled order
+                 <input type="radio" checked="checked" name="radio"  (change)="showPopup = true; showForm = false"/>
+                 <span class="checkmark"></span>
+               </label>
+             </div>
+           </div>
+         </div>
+
+
+           <div class="grid ml-3 mt-3" style="width: 100%;">
+             <ng-container *ngIf="showForm">
+               <div class="grid" style="width: 100%;">
+                    <div class="col-12 md:col-4">
+                     <label>Levels auto update</label>
+                     <p-dropdown [options]="allTabCommon" optionLabel="name"> </p-dropdown>
+                    </div>
+                    <div class="col-12 md:col-4">
+                     <p-checkbox [binary]="true" inputId="binary" (onChange)="updateKeyValue('open','Factor', Factortext)"></p-checkbox>
+
+                     <label class="ml-1 ">Factor<i class="pi pi-question-circle ml-2" style="font-size: 1rem"  pTooltip="factor"></i></label>
+                     
+                     <input pInputText [(ngModel)]="Factortext" (change)="updateValue('open','Factor', Factortext)"/>
+                     
+                    </div>
+               </div>
+           <!-- first grid end -->
+               <div class="grid flex align-items-center" style="width: 100%;">
+                 <div class="col-12 md:col-6">
+                  <p-dropdown [options]="allTabCommon" optionLabel="name"> </p-dropdown>
+                 </div>
+                 <div class="col-12 md:col-1">
+                   <i class="pi pi-question-circle mr-1 " style="font-size: 1rem"  pTooltip="volume"></i>
+                 </div>
+                 <div class="col-12 md:col-5">
+                   <input pInputText />
+                  </div>
+            </div>
+            <!-- second grid end -->
+            <div class="grid flex align-items-center" style="width: 100%;">
+             <div class="col-12 md:col-5">
+               <p-checkbox [binary]="true" inputId="binary" (onChange)="updateKeyValue('open','word Count', wordCounttext)"></p-checkbox>
+               <label class="ml-1">Order Count<i class="pi pi-question-circle ml-2 " style="font-size: 1rem" pTooltip="order count"></i></label>
+               <input pInputText [(ngModel)]="wordCounttext" (change)="updateValue('open','word Count', wordCounttext)" />
+             </div>
+             </div>
+              <!-- third grid end -->
+              <div class="grid flex align-items-center" style="width: 100%;">
+               <div class="col-12 md:col-1">
+                 <p-checkbox [binary]="true" inputId="binary" 
+                 (onChange)="updateKeyValue('open','Amount type1', selectedOptionopenamount1)"
+                 (onChange)="updateKeyValue('open','Price1', openAmoountType1)"></p-checkbox>
+               </div>
+               <div class="col-12 md:col-6">
+                <p-dropdown [(ngModel)]="selectedOptionopenamount1"
+                (onChange)="updateValue('open','Amount type1', selectedOptionopenamount1)"
+                [options]="allTabCommon" optionLabel="name"> </p-dropdown>
+               </div>
+               <div class="col-12 md:col-5">
+                 <input pInputText [(ngModel)]="openAmoountType1" 
+                 (change)="updateValue('open','Price1', openAmoountType1)"/>
+                </div>
+          </div>
+           <!-- fourth grid end -->
+           <div class="grid flex align-items-center" style="width: 100%;">
+             <div class="col-12 md:col-1">
+               <p-checkbox [binary]="true" inputId="binary"
+               (onChange)="updateKeyValue('open','Amount type2', selectedOptionopenamount2)"
+                 (onChange)="updateKeyValue('open','Price2', openAmoountType2)"></p-checkbox>
+             </div>
+             <div class="col-12 md:col-6">
+              <p-dropdown [(ngModel)]="selectedOptionopenamount2"
+              (onChange)="updateValue('open','Amount type2', selectedOptionopenamount2)" 
+              [options]="allTabCommon" optionLabel="name"> </p-dropdown>
+             </div>
+             <div class="col-12 md:col-5">
+               <input pInputText [(ngModel)]="openAmoountType2" 
+               (change)="updateValue('open','Price2', openAmoountType2)"/>
+              </div>
+        </div>
+         <!-- fifth grid end -->
+         <div class="grid flex align-items-center" style="width: 100%;">
+           <div class="col-12 md:col-1">
+             <p-checkbox [binary]="true" inputId="binary" 
+             (onChange)="updateKeyValue('open','Amount type3', selectedOptionopenamount3)"
+             ></p-checkbox>
+           </div>
+           <div class="col-12 md:col-8">
+            <p-dropdown [(ngModel)]="selectedOptionopenamount2"
+            (onChange)="updateValue('open','Amount type3', selectedOptionopenamount2)"
+             [options]="allTabCommon" optionLabel="name"> </p-dropdown>
+           </div>
+           <div class="col-12 md:col-1">
+             <i class="pi pi-question-circle mr-1 " style="font-size: 1rem" pTooltip="volume"></i>
+            </div>
+      </div>
+             </ng-container>
+             
+             <div *ngIf="showPopup" class="popup">
+               <div class="grid" style="width: 100%;">
+                 <div class="col-12 md:col-4">
+                  <label>Levels auto update<i class="pi pi-question-circle ml-2 " style="font-size: 1rem" pTooltip="Levels auto update"></i></label>
+                  <p-dropdown [options]="allTabCommon" optionLabel="name"> </p-dropdown>
+                 </div>
+                 <div class="col-12 md:col-4">
+
+                  <label>Candle price<i class="pi pi-question-circle ml-2 " style="font-size: 1rem" pTooltip="Candle price"></i></label>
+                  
+                  <input pInputText />
+                  
+                 </div>
+
+                 <div class="col-12 md:col-4">
+                   <p-checkbox [binary]="true" inputId="binary"></p-checkbox>
+
+                   <label class="ml-2">Factor<i class="pi pi-question-circle ml-2 " style="font-size: 1rem"  pTooltip="factor"></i></label>
+                   
+                   <input pInputText />
+                   
+                  </div>
+            </div>
+        <!-- first grid end -->
+            <div class="grid flex align-items-center" style="width: 100%;">
+              <div class="col-12 md:col-6">
+               <p-dropdown [options]="allTabCommon" optionLabel="name"> </p-dropdown>
+              </div>
+              <div class="col-12 md:col-1">
+                <i class="pi pi-question-circle mr-1 " style="font-size: 1rem" pTooltip="volume"></i>
+              </div>
+              <div class="col-12 md:col-5">
+                <input pInputText />
+               </div>
+         </div>
+         <!-- second grid end -->
+         <div class="grid flex align-items-center" style="width: 100%;">
+          <div class="col-12 md:col-5">
+            <p-checkbox [binary]="true" inputId="binary" (onChange)="updateKeyValue('open','word Count2', wordCounttext2)"></p-checkbox>
+            <label class="ml-1">Order Count<i class="pi pi-question-circle ml-2 " style="font-size: 1rem" pTooltip="order count"></i></label>
+            <input pInputText [(ngModel)]="wordCounttext2" (change)="updateValue('open','word Count2', wordCounttext2)" />
+          </div>
+          </div>
+           <!-- third grid end -->
+           <div class="grid flex align-items-center" style="width: 100%;">
+            <div class="col-12 md:col-1">
+              <p-checkbox [binary]="true" inputId="binary" 
+              (onChange)="updateKeyValue('open','Amount type4', selectedOptionopenamount4)"
+              (onChange)="updateKeyValue('open','Price3', openAmoountType3)"></p-checkbox>
+            </div>
+            <div class="col-12 md:col-6">
+             <p-dropdown [(ngModel)]="selectedOptionopenamount4"
+             (onChange)="updateValue('open','Amount type4', selectedOptionopenamount4)"
+             [options]="allTabCommon" optionLabel="name"> </p-dropdown>
+            </div>
+            <div class="col-12 md:col-5">
+              <input pInputText [(ngModel)]="openAmoountType3" 
+              (change)="updateValue('open','Price3', openAmoountType3)"/>
+             </div>
+       </div>
+        <!-- fourth grid end -->
+        <div class="grid flex align-items-center" style="width: 100%;">
+          <div class="col-12 md:col-1">
+            <p-checkbox [binary]="true" inputId="binary"
+            (onChange)="updateKeyValue('open','Amount type5', selectedOptionopenamount5)"
+              (onChange)="updateKeyValue('open','Price4', openAmoountType2)"></p-checkbox>
+          </div>
+          <div class="col-12 md:col-6">
+           <p-dropdown [(ngModel)]="selectedOptionopenamount5"
+           (onChange)="updateValue('open','Amount type5', selectedOptionopenamount5)" 
+           [options]="allTabCommon" optionLabel="name"> </p-dropdown>
+          </div>
+          <div class="col-12 md:col-5">
+            <input pInputText [(ngModel)]="openAmoountType4" 
+            (change)="updateValue('open','Price4', openAmoountType4)"/>
+           </div>
+     </div>
+      <!-- fifth grid end -->
+      <div class="grid flex align-items-center" style="width: 100%;">
+        <div class="col-12 md:col-1">
+          <p-checkbox [binary]="true" inputId="binary" 
+          (onChange)="updateKeyValue('open','Amount type3', selectedOptionopenamount6)"
+          ></p-checkbox>
+        </div>
+        <div class="col-12 md:col-8">
+         <p-dropdown [(ngModel)]="selectedOptionopenamount6"
+         (onChange)="updateValue('open','Amount type6', selectedOptionopenamount6)"
+          [options]="allTabCommon" optionLabel="name"> </p-dropdown>
+        </div>
+        <div class="col-12 md:col-1">
+          <i class="pi pi-question-circle mr-1 " style="font-size: 1rem" pTooltip="volume"></i>
+         </div>
+   </div>
+             </div>
+ 
+            </div>
+         </div>
+          <!-- card 2 end -->
+          <div class="grid card mx-auto flex p-2 mt-3 info-view">
+          <div class="col-12 flex">
+           <div class="col-3">
+             <label>Order specification</label>
+           </div>
+           <div class="col-3">
+             
+             <div class="checkbox ml-2">
+               <label class="check_cont">
+                 Real
+                 <input type="radio" checked="checked" name="radio" (change)="showvirtual = false;"/>
+                 <span class="checkmark"></span>
+               </label>
+             </div>
+           </div>
+           <div class="col-3">
+             <div class="checkbox ml-2">
+               <label class="check_cont">
+                 Virtual
+                 <input type="radio" checked="checked" name="radio" (change)="showvirtual = true;"/>
+                 <span class="checkmark"></span>
+               </label>
+             </div>
+           </div>
+         </div>
+           <div class="grid pl-3 mt-2" *ngIf="showvirtual" style="width: 100%;">
+             
+               <div class="col-12 md:col-4">
+                 <label>Virtual trigger</label>
+                 <p-dropdown [options]="allTabCommon" optionLabel="name"> </p-dropdown>
+               </div>
+               
+               <div class="col-12 md:col-4 ">
+                 <p-checkbox [binary]="true" inputId="binary"></p-checkbox>
+                 <label class="ml-2">Trigger price<i class="pi pi-question-circle ml-2 " style="font-size: 1rem" pTooltip="Trigger price"></i></label>
+                 <input pInputText />
+               </div>
+            
+ 
+            </div>
+         
+       </div>
+         <!-- card 3 end -->
+         <div class="grid card mx-auto flex p-2 mt-3 info-view">
+         <div class="col-12 flex">
+           <div class="col-3">
+             <label>Order type</label>
+           </div>
+           <div class="col-3">
+             
+             <div class="checkbox ml-2">
+               <label class="check_cont">
+                 Floating
+                 <input type="radio" checked="checked" name="radio" (change)="showlimit= false"/>
+                 <span class="checkmark"></span>
+               </label>
+             </div>
+           </div>
+           <div class="col-3">
+            
+             <div class="checkbox ml-2">
+               <label class="check_cont">
+                 Market
+                 <input type="radio" checked="checked" name="radio" (change)="showlimit = false;"/>
+                 <span class="checkmark"></span>
+               </label>
+             </div>
+           </div>
+           <div class="col-3">
+             <div class="checkbox ml-2">
+               <label class="check_cont">
+                 Limit
+                 <input type="radio" checked="checked" name="radio" (change)="showlimit = true;"/>
+                 <span class="checkmark"></span>
+               </label>
+             </div>
+           </div>
+         </div>
+
+         <div class="grid pl-3 mt-2" *ngIf="showlimit" style="width: 100%;">
+          
+           <div class="col-12 md:col-4 ">
+             <p-checkbox [binary]="true" inputId="binary"></p-checkbox>
+             <label class="ml-1">Position side<i class="pi pi-question-circle ml-2 " style="font-size: 1rem" pTooltip="Position side"></i></label>
+             <input pInputText />
+           </div>
+          
+           <div class="col-12 md:col-4 ">
+             <p-checkbox [binary]="true" inputId="binary"></p-checkbox>
+             <label class="ml-1">Position side<i class="pi pi-question-circle ml-2 " style="font-size: 1rem" pTooltip="Position side"></i></label>
+             <input pInputText />
+           </div>
+         </div>
+        </div>
+          <!-- card 4 end -->
+          <div  class="card col-12 p-2 mt-3 info-view flex flex-row align-items-center">
+            <div class="col-3 flex">
+              <p-checkbox [binary]="true" inputId="binary"  (onChange)="updateKeyValue('open','Isolated', isSwitchOn2)" ></p-checkbox>
+              <label class="ml-2">Isolated<i class="pi pi-question-circle ml-2 " style="font-size: 1rem" pTooltip="Isolated"></i></label>
+            </div>
+            <div class="col-2 ">
+              <label class="switch">
+                <input type="checkbox" [(ngModel)]="isSwitchOn2" [(ngModel)]="isSwitchOn2" (change)="updateValue('open','Isolated', isSwitchOn2)"/>
+                <span class="slider round"></span>
+              </label>
+            </div>
+            <div class="col-6">
+              <label>
+                <p-checkbox [binary]="true" [(ngModel)]="leverageCheckbox" 
+                (onChange)="updateKeyValue('open','Leverage', leverageText)" inputId="binary" class="mr-2"></p-checkbox>Leverage
+              </label>
+              <input pInputText [(ngModel)]="leverageText" (change)="updateValue('open','Leverage', leverageText)" />
+            </div>
+            </div>
+        <!-- card 5 end -->
+         <div class="card col-12 p-2 mt-3 info-view flex flex-row align-items-center justify-content-center">
+         <div class="col-11">
+           <p-dropdown [options]="allTabCommon" optionLabel="name"> </p-dropdown>
+         </div>
+         <div class="col-1">
+           <i class="pi pi-question-circle mr-1 " style="font-size: 1rem" pTooltip="volume"></i>
+         </div>
+        </div>
+       <!-- card 6 end -->
+       <div class="col-12 p-2 mt-1">
+         <label style="font-size: 24px;">Limits</label>
+       </div>
+       <div class="card col-12 p-2 mt-3 info-view flex flex-row">
+         <div class="col-12 md:col-4">
+           <label class="form-label">
+             <p-checkbox [binary]="true" inputId="binary"
+             (onChange)="updateKeyValue('open','Position side', selectedOptionopenPositioinSide)"></p-checkbox>
+             Position side</label
+           >
+         <p-dropdown
+         [(ngModel)]="selectedOptionopenPositioinSide"
+         (onChange)="updateValue('open','Position side', selectedOptionopenPositioinSide)"
+             [options]="allTabCommon"
+             optionLabel="name"
+           ></p-dropdown>
+         </div>
+       </div>
+       <!-- card 7 end -->
+       <div class="card col-12 p-2 mt-3 info-view flex flex-row">
+         <div class="col-1 flex justify-content-center align-items-center">
+           <p-checkbox [binary]="true" inputId="binary"
+           (onChange)="updateKeyValue('open','limit type', selectedOptionopenLimit2)"
+                 (onChange)="updateKeyValue('open','ltype text', openLimit2Text)"
+           ></p-checkbox>
+         </div>
+         <div class="col-6">
+           <p-dropdown
+           (onChange)="updateValue('open','limit type', selectedOptionopenLimit2)" 
+           [(ngModel)]="selectedOptionopenLimit2"
+             [options]="limits2"
+             optionLabel="name"
+           ></p-dropdown>
+         </div>
+         <div class="col-5">
+           <input pInputText [(ngModel)]="openLimit2Text"
+           (change)="updateValue('open','ltype text', openLimit2Text)" />
+         </div>
+       </div>
+       <!-- card 8 end -->
+
+      <div
+         class="grid col-12 ml-1 grid no-gutter flex flex-row align-items-center justify-content-between"
+       >
+         <div
+           class="grid col-12 md:col-6 p-2 mt-3 info-view flex "
+         >
+           <div class="col-12 md:col-12">
+             <label> Maximum number of open positions <i class="pi pi-question-circle mr-1 " style="font-size: 1rem" pTooltip=" Maximum number of open positions"></i></label>
+             <input pInputText />
+           </div>
+         </div>
+
+         <div
+           class="grid col-12 md:col-6 p-2 mt-3 info-view flex "
+         >
+           <div class="col-12 md:col-12">
+             <label> Maximum open positions Sum, USD <i class="pi pi-question-circle mr-1 " style="font-size: 1rem"  pTooltip="Maximum open positions Sum, USD"></i></label>
+             <input pInputText />
+           </div>
+         </div>
+       </div>
+       <!-- card 9 end -->
+       <div
+         class="grid col-12 ml-1 grid no-gutter flex flex-row align-items-center justify-content-between"
+       >
+         <div
+           class="grid col-12 md:col-6 p-2 mt-3 info-view flex "
+         >
+           <div class="col-12 md:col-12">
+             <label> Maximum number of open positions per hook. <i class="pi pi-question-circle mr-1 " style="font-size: 1rem" pTooltip="Maximum number of open positions per hook."></i></label>
+             <input pInputText />
+           </div>
+         </div>
+
+         <div
+           class="grid col-12 md:col-6 p-2 mt-3 info-view flex "
+         >
+           <div class="col-12 md:col-12">
+             <label> Maximum open positions Sum per hook, USD <i class="pi pi-question-circle mr-1 " style="font-size: 1rem"  pTooltip="Maximum open positions Sum per hook, USD"></i></label>
+             <input pInputText />
+           </div>
+         </div>
+       </div>
+       <!-- card 10 end -->
+       <div
+         class="grid col-12 ml-1 grid no-gutter flex flex-row align-items-center justify-content-between"
+       >
+         <div
+           class="grid col-12 md:col-6 p-2 mt-3 info-view flex "
+         >
+           <div class="col-12 md:col-12">
+            <div class="flex justify-content-between">
+             <label> Blacklist of currency pairs <i class="pi pi-question-circle mr-1 " style="font-size: 1rem" pTooltip="Blacklist of currency pairs"></i></label>
+             <img src="./assets/Addpluse.png">
+            </div>
+             <input pInputText />
+           </div>
+         
+         </div>
+
+         <div
+           class="grid col-12 md:col-6 p-2 mt-3 info-view flex "
+         >
+           <div class="col-12 md:col-12">
+             <div class="flex justify-content-between">
+               <label>Whitelist of currency pairs <i class="pi pi-question-circle mr-1 " style="font-size: 1rem" pTooltip="Whitelist of currency pairs"></i></label>
+             <img src="./assets/Addpluse.png">
+             </div>
+             <input pInputText />
+           </div>
+         </div>
+       </div>
+
+
+       <div class="grid flex">
+          <div class="col-12 md:col-6">
+           <p-chip label="SNX" [removable]="true" class="mr-1" [style]="{'background':' rgba(255, 255, 255, 0.04)','color':'#fff','border-radius':'0px'}"></p-chip>
+       <p-chip label="CSR" [removable]="true" class="mr-1" [style]="{'background':' rgba(255, 255, 255, 0.04)','color':'#fff','border-radius':'0px'}"></p-chip>
+       <p-chip label="BTC" [removable]="true" class="mr-1" [style]="{'background':' rgba(255, 255, 255, 0.04)','color':'#fff','border-radius':'0px'}"></p-chip>
+       <p-chip label="DDG" [removable]="true" class="mr-1" [style]="{'background':' rgba(255, 255, 255, 0.04)','color':'#fff','border-radius':'0px'}"></p-chip>
+          </div>
+          <div class="col-12 md:col-6">
+           <p-chip label="SNX" [removable]="true" class="mr-1" [style]="{'background':' rgba(255, 255, 255, 0.04)','color':'#fff','border-radius':'0px'}"></p-chip>
+       <p-chip label="CSR" [removable]="true" class="mr-1" [style]="{'background':' rgba(255, 255, 255, 0.04)','color':'#fff','border-radius':'0px'}"></p-chip>
+       <p-chip label="BTC" [removable]="true" class="mr-1" [style]="{'background':' rgba(255, 255, 255, 0.04)','color':'#fff','border-radius':'0px'}"></p-chip>
+       <p-chip label="DDG" [removable]="true" class="mr-1" [style]="{'background':' rgba(255, 255, 255, 0.04)','color':'#fff','border-radius':'0px'}"></p-chip>
+          </div>
+       </div>
+        
+       </p-tabPanel>
+
+<!-- open  end -->
+
+       <p-tabPanel header="DCA">
+           <div class="flex justify-content-start align-items-center my-5">
+             
+             <div class="flex  align-items-center">
+               <p-checkbox  [binary]="true" inputId="binary" class="mr-1" (onChange)="updateKeyValue('dca','Enabled', dcaswitch1)"></p-checkbox>
+               <label class="mr-2"> Enabled</label>
+                <label class="switch">
+                   <input type="checkbox" [(ngModel)]="dcaswitch1" (change)="updateValue('dca','Enabled', dcaswitch1)"/>
+                   <span class="slider round"></span>
+                </label>
+             </div>
+             
+             <div class="flex  align-items-center ml-5">
+               <p-checkbox  [binary]="true" inputId="binary" class="mr-1" (onChange)="updateKeyValue('dca','multiple', dcaswitch2)"></p-checkbox>
+               <span class="mr-1">Averaging With opened CA <i class="pi pi-question-circle mr-1 " style="font-size: 1rem" pTooltip="Averaging With opened CA"></i></span>
+               <label class="switch">
+                 <input type="checkbox" [(ngModel)]="dcaswitch2" (change)="updateValue('dca','multiple', dcaswitch2) "/>
+                 <span class="slider round"></span>
+              </label>
+             </div>
+
+           </div>
+           <!-- first dive end -->
+           <div class="card flex col-12 flex p-2  align-items-center info-view">
+             <div class="col-1">
+               <p-checkbox  [binary]="true" inputId="binary" (onChange)="updateKeyValue('dca','keyk2', selectedOption)" ></p-checkbox>
+             </div>
+             <div class="col-6">
+               <p-dropdown
+               [options]="commonOptions"
+               [(ngModel)]="selectedOptiondca"
+               optionLabel="value"
+               (onChange)="updateValue('dca','keyk2', selectedOption)"
+             ></p-dropdown>
+             </div>
+             <div class="col-5">
+               <input pInputText />
+             </div>
+           </div>
+           <!-- card 1 end -->
+
+           <div class="card flex col-12 flex p-2  align-items-center info-view">
+             <div class="grid flex">
+               <div class="col-12 md:col-5">
+                 <label>Maximum size position <i class="pi pi-question-circle mr-1 " style="font-size: 1rem" pTooltip="Maximum size position"></i></label>
+                 <p-dropdown
+               [options]="commonOptions"
+               optionLabel="value"  style="width: 100%;"
+                                   ></p-dropdown>
+               </div>
+               <div class="col-12 md:col-5">
+                 <label>
+                   <p-checkbox  [binary]="true" inputId="binary"  [(ngModel)]="dcamaxbox" 
+                   (onChange)="updateKeyValue('dca','Maximum value', dcamaxtext)"></p-checkbox>
+                    Maximum value </label>
+                 <input pInputText [(ngModel)]="dcamaxtext" (change)="updateValue('dca','Maximum value', dcamaxtext)"/>
+               </div>
+             </div>
+           </div>
+            <!-- card 2 end -->
+            <div class="grid card mx-auto flex p-2 mt-3 info-view">
+              <div class="col-12 flex">
+              <div class="col-3">
+                <label>Order / Grid</label>
+              </div>
+              <div class="col-3">
+                
+                  <div class="checkbox ml-2">
+                    <label class="check_cont">
+                      Single order
+                      <input type="radio" checked="checked" name="radio"  (change)="showForm = true; showPopup = false"/>
+                      <span class="checkmark"></span>
+                    </label>
+                    
+                  </div>
+              </div>
+              <div class="col-3">
+                <!-- <input type="radio" id="scaled" name="so" value="Scaledorder" (change)="showPopup = true; showForm = false">
+                <label>Scaled order</label> -->
+                <div class="checkbox ml-2">
+                  <label class="check_cont">
+                    Scaled order
+                    <input type="radio" checked="checked" name="radio"  (change)="showPopup = true; showForm = false"/>
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+   
+   
+              <div class="grid ml-3 mt-3" style="width: 100%;">
+                <ng-container *ngIf="showForm">
+                  <div class="grid" style="width: 100%;">
+                       <div class="col-12 md:col-4">
+                        <label>Levels auto update</label>
+                        <p-dropdown [options]="allTabCommon" optionLabel="name"> </p-dropdown>
+                       </div>
+                       <div class="col-12 md:col-4">
+                        <p-checkbox [binary]="true" inputId="binary" (onChange)="updateKeyValue('dca','Factor', dcaFactortext)"></p-checkbox>
+   
+                        <label class="ml-1 ">Factor<i class="pi pi-question-circle ml-2" style="font-size: 1rem"  pTooltip="factor"></i></label>
+                        
+                        <input pInputText [(ngModel)]="dcaFactortext" (change)="updateValue('dca','Factor', dcaFactortext)"/>
+                        
+                       </div>
+                  </div>
+              <!-- first grid end -->
+                  <div class="grid flex align-items-center" style="width: 100%;">
+                    <div class="col-12 md:col-6">
+                     <p-dropdown [options]="allTabCommon" optionLabel="name"> </p-dropdown>
+                    </div>
+                    <div class="col-12 md:col-1">
+                      <i class="pi pi-question-circle mr-1 " style="font-size: 1rem"  pTooltip="volume"></i>
+                    </div>
+                    <div class="col-12 md:col-5">
+                      <input pInputText />
+                     </div>
+               </div>
+               <!-- second grid end -->
+               <div class="grid flex align-items-center" style="width: 100%;">
+                <div class="col-12 md:col-5">
+                  <p-checkbox [binary]="true" inputId="binary" (onChange)="updateKeyValue('dca','word Count', dcawordCounttext)"></p-checkbox>
+                  <label class="ml-1">Order Count<i class="pi pi-question-circle ml-2 " style="font-size: 1rem" pTooltip="order count"></i></label>
+                  <input pInputText [(ngModel)]="dcawordCounttext" (change)="updateValue('dca','word Count', dcawordCounttext)" />
+                </div>
+                </div>
+                 <!-- third grid end -->
+                 <div class="grid flex align-items-center" style="width: 100%;">
+                  <div class="col-12 md:col-1">
+                    <p-checkbox [binary]="true" inputId="binary" 
+                    (onChange)="updateKeyValue('dca','Amount type1', selectedOptionopenamount1)"
+                    (onChange)="updateKeyValue('dca','Price1', openAmoountType1)"></p-checkbox>
+                  </div>
+                  <div class="col-12 md:col-6">
+                   <p-dropdown [(ngModel)]="selectedOptiondcaamount1"
+                   (onChange)="updateValue('dca','Amount type1', selectedOptiondcaamount1)"
+                   [options]="allTabCommon" optionLabel="name"> </p-dropdown>
+                  </div>
+                  <div class="col-12 md:col-5">
+                    <input pInputText [(ngModel)]="dcaAmoountType1" 
+                    (change)="updateValue('dca','Price1', dcaAmoountType1)"/>
+                   </div>
+             </div>
+              <!-- fourth grid end -->
+              <div class="grid flex align-items-center" style="width: 100%;">
+                <div class="col-12 md:col-1">
+                  <p-checkbox [binary]="true" inputId="binary"
+                  (onChange)="updateKeyValue('dca','Amount type2', selectedOptiondcaamount2)"
+                    (onChange)="updateKeyValue('dca','Price2', dcaAmoountType2)"></p-checkbox>
+                </div>
+                <div class="col-12 md:col-6">
+                 <p-dropdown [(ngModel)]="selectedOptiondcaamount2"
+                 (onChange)="updateValue('dca','Amount type2', selectedOptiondcaamount2)" 
+                 [options]="allTabCommon" optionLabel="name"> </p-dropdown>
+                </div>
+                <div class="col-12 md:col-5">
+                  <input pInputText [(ngModel)]="dcaAmoountType2" 
+                  (change)="updateValue('dca','Price2', dcaAmoountType2)"/>
+                 </div>
+           </div>
+            <!-- fifth grid end -->
+            <div class="grid flex align-items-center" style="width: 100%;">
+              <div class="col-12 md:col-1">
+                <p-checkbox [binary]="true" inputId="binary" 
+                (onChange)="updateKeyValue('dca','Amount type3', selectedOptiondcaamount3)"
+                ></p-checkbox>
+              </div>
+              <div class="col-12 md:col-8">
+               <p-dropdown [(ngModel)]="selectedOptiondcaamount2"
+               (onChange)="updateValue('dca','Amount type3', selectedOptiondcaamount2)"
+                [options]="allTabCommon" optionLabel="name"> </p-dropdown>
+              </div>
+              <div class="col-12 md:col-1">
+                <i class="pi pi-question-circle mr-1 " style="font-size: 1rem" pTooltip="volume"></i>
+               </div>
+         </div>
+                </ng-container>
+                
+                <div *ngIf="showPopup" class="popup">
+                  <div class="grid" style="width: 100%;">
+                    <div class="col-12 md:col-4">
+                     <label>Levels auto update<i class="pi pi-question-circle ml-2 " style="font-size: 1rem" pTooltip="Levels auto update"></i></label>
+                     <p-dropdown [options]="allTabCommon" optionLabel="name"> </p-dropdown>
+                    </div>
+                    <div class="col-12 md:col-4">
+   
+                     <label>Candle price<i class="pi pi-question-circle ml-2 " style="font-size: 1rem" pTooltip="Candle price"></i></label>
+                     
+                     <input pInputText />
+                     
+                    </div>
+   
+                    <div class="col-12 md:col-4">
+                      <p-checkbox [binary]="true" inputId="binary"></p-checkbox>
+   
+                      <label class="ml-2">Factor<i class="pi pi-question-circle ml-2 " style="font-size: 1rem"  pTooltip="factor"></i></label>
+                      
+                      <input pInputText />
+                      
+                     </div>
+               </div>
+           <!-- first grid end -->
+               <div class="grid flex align-items-center" style="width: 100%;">
+                 <div class="col-12 md:col-6">
+                  <p-dropdown [options]="allTabCommon" optionLabel="name"> </p-dropdown>
+                 </div>
+                 <div class="col-12 md:col-1">
+                   <i class="pi pi-question-circle mr-1 " style="font-size: 1rem" pTooltip="volume"></i>
+                 </div>
+                 <div class="col-12 md:col-5">
+                   <input pInputText />
+                  </div>
+            </div>
+            <!-- second grid end -->
+            <div class="grid flex align-items-center" style="width: 100%;">
+             <div class="col-12 md:col-5">
+               <p-checkbox [binary]="true" inputId="binary" (onChange)="updateKeyValue('dca','word Count2', dcawordCounttext2)"></p-checkbox>
+               <label class="ml-1">Order Count<i class="pi pi-question-circle ml-2 " style="font-size: 1rem" pTooltip="order count"></i></label>
+               <input pInputText [(ngModel)]="dcawordCounttext2" (change)="updateValue('dca','word Count2', dcawordCounttext2)" />
+             </div>
+             </div>
+              <!-- third grid end -->
+              <div class="grid flex align-items-center" style="width: 100%;">
+               <div class="col-12 md:col-1">
+                 <p-checkbox [binary]="true" inputId="binary" 
+                 (onChange)="updateKeyValue('dca','Amount type4', selectedOptiondcaamount4)"
+                 (onChange)="updateKeyValue('dca','Price3', dcaAmoountType3)"></p-checkbox>
+               </div>
+               <div class="col-12 md:col-6">
+                <p-dropdown [(ngModel)]="selectedOptiondcaamount4"
+                (onChange)="updateValue('dca','Amount type4', selectedOptiondcaamount4)"
+                [options]="allTabCommon" optionLabel="name"> </p-dropdown>
+               </div>
+               <div class="col-12 md:col-5">
+                 <input pInputText [(ngModel)]="dcaAmoountType3" 
+                 (change)="updateValue('dca','Price3', dcaAmoountType3)"/>
+                </div>
+          </div>
+           <!-- fourth grid end -->
+           <div class="grid flex align-items-center" style="width: 100%;">
+             <div class="col-12 md:col-1">
+               <p-checkbox [binary]="true" inputId="binary"
+               (onChange)="updateKeyValue('dca','Amount type5', selectedOptiondcaamount5)"
+                 (onChange)="updateKeyValue('dca','Price4', dcaAmoountType2)"></p-checkbox>
+             </div>
+             <div class="col-12 md:col-6">
+              <p-dropdown [(ngModel)]="selectedOptiondcaamount5"
+              (onChange)="updateValue('dca','Amount type5', selectedOptiondcaamount5)" 
+              [options]="allTabCommon" optionLabel="name"> </p-dropdown>
+             </div>
+             <div class="col-12 md:col-5">
+               <input pInputText [(ngModel)]="dcaAmoountType4" 
+               (change)="updateValue('dca','Price4', dcaAmoountType4)"/>
+              </div>
+        </div>
+         <!-- fifth grid end -->
+         <div class="grid flex align-items-center" style="width: 100%;">
+           <div class="col-12 md:col-1">
+             <p-checkbox [binary]="true" inputId="binary" 
+             (onChange)="updateKeyValue('dca','Amount type3', selectedOptiondcaamount6)"
+             ></p-checkbox>
+           </div>
+           <div class="col-12 md:col-8">
+            <p-dropdown [(ngModel)]="selectedOptiondcaamount6"
+            (onChange)="updateValue('dca','Amount type6', selectedOptiondcaamount6)"
+             [options]="allTabCommon" optionLabel="name"> </p-dropdown>
+           </div>
+           <div class="col-12 md:col-1">
+             <i class="pi pi-question-circle mr-1 " style="font-size: 1rem" pTooltip="volume"></i>
+            </div>
+      </div>
+                </div>
+    
+               </div>
+            </div>
+           <!-- card 3 end ---->
+            
+              <div class="grid card mx-auto flex p-2 mt-3 info-view">
+   <div class="col-12 flex">
+    <div class="col-3">
+      <label>Order specification</label>
+    </div>
+    <div class="col-3">
+      <div class="checkbox ml-2">
+       <label class="check_cont">
+         Real
+         <input type="radio" checked="checked" name="radio"  (change)="showvirtual = false;"/>
+         <span class="checkmark"></span>
+       </label>
+     </div>
+    </div>
+    <div class="col-3">
+      <div class="checkbox ml-2">
+       <label class="check_cont">
+         Virtual
+         <input type="radio" checked="checked" name="radio"  (change)="showvirtual = true;"/>
+         <span class="checkmark"></span>
+       </label>
+     </div>
+    </div>
+  </div>
+
+  <div class="grid pl-3 mt-2" *ngIf="showvirtual" style="width: 100%;">
+             
+   <div class="col-12 md:col-4">
+     <label>Virtual trigger</label>
+     <p-dropdown [options]="allTabCommon" optionLabel="value"> </p-dropdown>
+   </div>
+</div>
+              </div>
+              <!-- card 4 end ---->
+              <div class="grid card mx-auto flex p-2 mt-3 info-view">
+               <div class="col-12 flex">
+                 <div class="col-3">
+                   <label>Order type</label>
+                 </div>
+                 <div class="col-3">
+                 
+                   <div class="checkbox ml-2">
+                     <label class="check_cont">
+                       Stop market
+                       <input type="radio" checked="checked" name="radio"  (change)="showmarket= true;showlimit= false"/>
+                       <span class="checkmark"></span>
+                     </label>
+                   </div>
+                 </div>
+                 <div class="col-3">
+                   
+                   <div class="checkbox ml-2">
+                     <label class="check_cont">
+                       Trailing market
+                       <input type="radio" checked="checked" name="radio"  (change)="showmarket= false;showlimit = false;"/>
+                       <span class="checkmark"></span>
+                     </label>
+                   </div>
+                 </div>
+                 <div class="col-3">
+               
+                   <div class="checkbox ml-2">
+                     <label class="check_cont">
+                       Limit
+                       <input type="radio" checked="checked" name="radio"  (change)="showlimit = true;showmarket= false"/>
+                       <span class="checkmark"></span>
+                     </label>
+                   </div>
+                 </div>
+               </div>
+     
+               <div class="grid pl-3 mt-2" *ngIf="showlimit" style="width: 100%;">
+                
+                 <div class="col-12 md:col-5 ">
+                   <label class="ml-1">Number of real orders<i class="pi pi-question-circle ml-2 " style="font-size: 1rem" pTooltip="Number of real orders"></i></label>
+                   <input pInputText />
+                 </div>
+               </div>
+
+               <div class="grid pl-3 mt-2" *ngIf="showmarket" style="width: 100%;">
+                
+                 <div class="col-12 md:col-5 ">
+                   <label class="ml-1">Callback rate<i class="pi pi-question-circle ml-2 " style="font-size: 1rem" pTooltip="Callback rate"></i></label>
+                   <input pInputText />
+                 </div>
+               </div>
+              </div>
+
+              <!-- card 5 end ---->
+              <div class="card  col-12 p-2  align-items-center info-view">
+               <div class="col-12 flex justify-content-between  align-items-center mt-0">
+                 <div class="col-12 md:col-1">
+                   <p-checkbox  [binary]="true" inputId="binary" class="mr-1" (onChange)="updateKeyValue('dca','keyk3', selectedOptiondca2)" ></p-checkbox>
+                 </div>
+                 <div class="col-12 md:col-10">
+                   <p-dropdown [options]="commonOptions"  [(ngModel)]="selectedOptiondca2" optionLabel="value" (onChange)="updateValue('dca','keyk3', selectedOptiondca2)">
+                   </p-dropdown>
+                 </div>
+                 <div class="col-12 md:col-1">
+                   <i class="pi pi-question-circle mr-1 " style="font-size: 1rem" pTooltip="volume"></i>
+                 </div>
+               </div>
+              </div>
+           
+       </p-tabPanel>
+
+       <p-tabPanel header="Close">
+        <div class="grid col-12 p-4 flex flex-row align-items-center">
+          <p-checkbox  [binary]="true" inputId="binary" class="mr-1" (onChange)="updateKeyValue('close','Enabled', isSwitchOn3)" ></p-checkbox>
+          <label class="mr-2"> Enabled</label>
+          <label class="switch">
+            <input type="checkbox" [(ngModel)]="isSwitchOn3" (change)="updateValue('close','Enabled', isSwitchOn3)" />
+            <span class="slider round"></span>
+          </label>
+        </div>
+
+        <div class="grid card mx-auto flex p-2 mt-3 info-view">
+          <div class="col-12 flex">
+            <div class="col-3">
+              <label>Order type</label>
+            </div>
+            <div class="col-3">
+            
+              <div class="checkbox ml-2">
+                <label class="check_cont">
+                  Floating
+                  <input type="radio" checked="checked" name="radio" (change)="showlimit= false" />
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+              
+            </div>
+            <div class="col-3">
+              
+              <div class="checkbox ml-2">
+                <label class="check_cont">
+                  Market
+                  <input type="radio" checked="checked" name="radio" (change)="showlimit = false;" />
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="col-3">
+              <!-- <input type="radio" id="Limit" name="so" value="Limit" (change)="showlimit = true;">
+              <label>Limit</label> -->
+              <div class="checkbox ml-2">
+                <label class="check_cont">
+                  Limit
+                  <input type="radio" checked="checked" name="radio"  (change)="showlimit = true;" />
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid pl-3 mt-2" *ngIf="showlimit" style="width: 100%;">
+           
+            <div class="col-12 md:col-4 ">
+              <p-checkbox [binary]="true" inputId="binary"  [(ngModel)]="closepricecheckbox" 
+              (onChange)="updateKeyValue('close','Price', closepricetext)"
+              ></p-checkbox>
+              <label class="ml-1">Price<i class="pi pi-question-circle ml-2 " style="font-size: 1rem" pTooltip="Price"></i></label>
+              <input pInputText  [(ngModel)]="closepricetext" (change)="updateValue('close','Price', closepricetext)"/>
+            </div>
+           
+          </div>
+         </div>
+
+        <div class="grid p-2 mt-3 info-view flex flex-row align-items-center">
+          <div class="col-4">
+            <label>Reverse/ Close</label>
+            <p-dropdown [options]="options"></p-dropdown>
+          </div>
+          <div class="col-1 flex justify-content-center align-items-center">
+            <p-checkbox  [binary]="true" inputId="binary" class="mr-1" 
+            (onChange)="updateKeyValue('close','keyk2', selectedOptionclose)" ></p-checkbox>
+
+          </div>
+          <div class="col-5">
+            <label>Open amount + Position amount</label>
+            <p-dropdown  optionLabel="value" [options]="options2" [(ngModel)]="selectedOptionclose" (onChange)="updateValue('close','keyk2', selectedOptionclose)"></p-dropdown>
+          </div>
+        </div>
+
+        <div class="grid p-3 col-12 flex flex-row mt-3 align-items-center">
+          <p-checkbox  [binary]="true" inputId="binary" class="mr-1"(onChange)="updateKeyValue('close','Check Profit', isSwitchOn)"></p-checkbox>
+
+          <label class="ml-3"> Check Profit</label>
+          <i
+            class="pi pi-question-circle ml-1 mr-1"
+            style="font-size: 1rem" pTooltip="Check Profit"
+          ></i>
+          <label class="switch ml-3">
+            <input type="checkbox" [(ngModel)]="isSwitchOn" (change)="updateValue('close','Check Profit', isSwitchOn)"/>
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <div class="grid col-10 mt-1 align-items-center">
+          <p class="msg-lbl">
+            Attention! The next option works with ALL open positions in account.
+            If enabled and received a signal all open positions will be closed
+            (if position Side is both) and no new ones will be opened.
+          </p>
+        </div>
+
+        <div class="grid p-3 col-12 flex flex-row mt-3 align-items-center">
+          <label class="ml-3"> Close All Positions</label>
+          <i
+            class="pi pi-question-circle ml-1 mr-1"
+            style="font-size: 1rem" pTooltip="Close All Positions"
+          ></i>
+          <label class="switch ml-3">
+            <input type="checkbox" />
+            <span class="slider round"></span>
+          </label>
+        </div>
+  </p-tabPanel>
+
+       <p-tabPanel header="SL">
+         <div class="grid col-12 p-4 flex flex-row align-items-center">
+           <p-checkbox  [binary]="true" inputId="binary" class="mr-1" (onChange)="updateKeyValue('sl','Enabled', isSwitchOn4)"></p-checkbox>
+           <label class="mr-2"> Enabled</label>
+           <label class="switch">
+             <input type="checkbox" [(ngModel)]="isSwitchOn4" (change)="updateValue('sl','Enabled', isSwitchOn4)"/>
+             <span class="slider round"></span>
+           </label>
+         </div>
+ 
+         <div class="card  p-2 mt-3 info-view flex flex-row align-items-center">
+           <div class="col-6 md:col-4">
+             <p-checkbox [binary]="true" inputId="binary" (onChange)="updateKeyValue('sl','initialOffset', selectedOptionSL)" ></p-checkbox>
+             <label class="ml-2">Initial offset in %</label>
+             <p-dropdown [options]="initialOffset" optionLabel="value" [(ngModel)]="selectedOptionSL" (onChange)="updateValue('sl','keyk2', selectedOptionSL)"></p-dropdown>
+           </div>
+           <div class="col-6 md:col-4">
+             <p-checkbox [binary]="true" inputId="binary"  (onChange)="updateKeyValue('sl','Price', selectedOptionSLprice)"></p-checkbox>
+             <label class="ml-2">Price</label>
+             <p-dropdown [options]="price" optionLabel="value" [(ngModel)]="selectedOptionSLprice" (onChange)="updateValue('sl','Price', selectedOptionSLprice)"></p-dropdown>
+           </div>
+         </div>
+ 
+         <div class="grid card mx-auto flex p-2 mt-3 info-view">
+           <div class="col-12 flex flex-row align-items-center">
+             <p-checkbox [binary]="true" inputId="binary"></p-checkbox>
+             <label class="ml-3">Order type</label>
+             <div class="checkbox ml-5">
+               <label class="check_cont">
+                 Virtual Floating
+                 <input type="radio"  name="radio" (change)="showvirtual = true;"/>
+                 <span class="checkmark"></span>
+               </label>
+             </div>
+             <div class="checkbox ml-2">
+               <label class="check_cont">
+                 Virtual Market
+                 <input type="radio" checked="checked" name="radio" (change)="showvirtual = false;" />
+                 <span class="checkmark"></span>
+               </label>
+             </div>
+             <div class="checkbox ml-2">
+               <label class="check_cont">
+                 Stop Market
+                 <input type="radio" checked="checked" name="radio" (change)="showvirtual = false;" />
+                 <span class="checkmark"></span>
+               </label>
+             </div>
+           </div>
+
+           <div class="grid pl-2 mt-2" *ngIf="showvirtual" style="width: 100%;">
+             
+             <div class="col-12 md:col-5">
+               <p-checkbox [binary]="true" inputId="binary" (onChange)="updateKeyValue('sl','Order trigger', selectedOptionSLtrigger)" ></p-checkbox>
+               <label class="ml-2">Order trigger<i class="pi pi-question-circle ml-2 " style="font-size: 1rem" pTooltip="Order trigger"></i></label>
+               <p-dropdown [options]="allTabCommon" optionLabel="name" optionLabel="value"  [(ngModel)]="selectedOptionSLtrigger"
+               (onChange)="updateValue('sl','Order trigger', selectedOptionSLtrigger)"> </p-dropdown>
+             </div>
+          </div>
+         </div>
+ 
+         <div class="grid p-3 col-12 flex flex-row mt-3 align-items-center">
+           <div class="col-12 md:col-5 flex align-items-center">
+             <p-checkbox [binary]="true" inputId="binary" (onChange)="updateKeyValue('sl','Rearrangement', isSwitchOn5)"></p-checkbox>
+           <label class="ml-3"> Rearrangement</label>
+           <i
+             class="pi pi-question-circle ml-1 mr-1"
+             style="font-size: 1rem" pTooltip="Rearrangement"
+           ></i>
+           <label class="switch ml-3">
+             <input type="checkbox"  [(ngModel)]="isSwitchOn5" (change)="updateValue('sl','Rearrangement', isSwitchOn5)"/>
+             <span class="slider round"></span>
+           </label>
+           </div>
+
+           <div class="col-12 md:col-7 flex align-items-center">
+             <p-checkbox class="ml-4" [binary]="true" inputId="binary" (onChange)="updateKeyValue('sl','Update settings by signal', isSwitchOn6)"></p-checkbox>
+           <label class="ml-3"> Update settings by signal</label>
+           <i
+             class="pi pi-question-circle ml-1 mr-1"
+             style="font-size: 1rem"  pTooltip="Update settings by signal"
+           ></i>
+           <label class="switch ml-3">
+             <input type="checkbox" [(ngModel)]="isSwitchOn6" (change)="updateValue('sl','Update settings by signal', isSwitchOn6)"/>
+             <span class="slider round"></span>
+           </label>
+           </div>
+         </div>
+       </p-tabPanel>
+
+     <p-tabPanel header="SLX">
+       <div class="grid col-12 p-4 flex flex-row align-items-center">
+         <p-checkbox [binary]="true" inputId="binary" (onChange)="updateKeyValue('slx','Enabled', isSwitchOn7)"></p-checkbox>
+         <label class="m-2">Enable</label>
+         <label class="switch">
+           <input type="checkbox" [(ngModel)]="isSwitchOn7" (change)="updateValue('slx','Enabled', isSwitchOn7)" />
+           <span class="slider round"></span>
+         </label>
+       </div>
+
+       <div class="grid card mx-auto flex p-2 mt-3 info-view">
+         <div class="col-12 flex flex-row align-items-center">
+           <p-checkbox [binary]="true" inputId="binary"></p-checkbox>
+           <label class="ml-3"
+             >Trailing mode
+             <i
+               class="pi pi-question-circle ml-1 mr-1"
+               style="font-size: 1rem" pTooltip="Trailing mode"
+             ></i
+           ></label>
+           <div class="checkbox col-12 md:col-4">
+             <label class="check_cont">
+               By executed TP
+               <input type="radio" checked="checked" name="radio"  (change)="showtrigger = false;"/>
+               <span class="checkmark"></span>
+             </label>
+           </div>
+           <div class="checkbox col-12 md:col-4">
+             <label class="check_cont">
+               By Trigger Price
+               <input type="radio"  name="radio" (change)="showtrigger = true;"/>
+               <span class="checkmark"></span>
+             </label>
+           </div>
+         </div>
+         
+       
+         <div class="grid pl-2 mt-2" *ngIf="showtrigger" style="width: 100%;">
+           <div class="col-12 flex flex-row">
+             <div class="col-4">
+               <p-checkbox [binary]="true" inputId="binary"  [(ngModel)]="PlaceatBreakevenbox" 
+               (onChange)="updateKeyValue('slx','Place at Breakeven', PlaceatBreakevenText)" 
+               ></p-checkbox>
+               <label class="ml-2"
+                 >Place at Breakeven
+                 <i
+                   class="pi pi-question-circle ml-1 mr-1"
+                   style="font-size: 1rem"
+                 ></i>
+               </label>
+               <input pInputText  [(ngModel)]="PlaceatBreakevenText" (change)="updateValue('slx','Place at Breakeven', PlaceatBreakevenText)" />
+             </div>
+             <div class="col-4">
+               <p-checkbox [binary]="true" inputId="binary"  [(ngModel)]="Breakevenindentbox" 
+               (onChange)="updateKeyValue('slx','Breakeven indent', BreakevenindentText)" ></p-checkbox>
+               <label class="ml-2"
+                 >Breakeven indent
+                 <i
+                   class="pi pi-question-circle ml-1 mr-1"
+                   style="font-size: 1rem"
+                 ></i>
+               </label>
+               <input pInputText [(ngModel)]="BreakevenindentText" (change)="updateValue('slx','Breakeven indent', BreakevenindentText)" />
+             </div>
+             <div class="col-4">
+               <p-checkbox [binary]="true" inputId="binary"  [(ngModel)]="TrailingActivationbox" 
+               (onChange)="updateKeyValue('slx','Trailing Activation', TrailingActivationText)"></p-checkbox>
+               <label class="ml-2"
+                 >Trailing Activation
+                 <i
+                   class="pi pi-question-circle ml-1 mr-1"
+                   style="font-size: 1rem"
+                 ></i>
+               </label>
+               <input pInputText [(ngModel)]="TrailingActivationText" (change)="updateValue('slx','Trailing Activation', TrailingActivationText)" />
+             </div>
+           </div>
+           <div class="col-12 flex flex-row">
+             <div class="col-4">
+               <p-checkbox [binary]="true" inputId="binary" [(ngModel)]="Callbackratebox" 
+               (onChange)="updateKeyValue('slx','Callback rate', CallbackrateText)"></p-checkbox>
+               <label class="ml-2"
+                 >Callback rate
+                 <i
+                   class="pi pi-question-circle ml-1 mr-1"
+                   style="font-size: 1rem" pTooltip="Callback rate"
+                 ></i>
+               </label>
+               <input pInputText [(ngModel)]="CallbackrateText" (change)="updateValue('slx','Callback rate', CallbackrateText)"/>
+             </div>
+             <div class="col-4">
+               <p-checkbox [binary]="true" inputId="binary" [(ngModel)]="Mintrailingbox" 
+               (onChange)="updateKeyValue('slx','Min trailing step', MintrailingText)"></p-checkbox>
+               <label class="ml-2"
+                 >Min trailing step
+                 <i
+                   class="pi pi-question-circle ml-1 mr-1"
+                   style="font-size: 1rem"
+                 ></i>
+               </label>
+               <input pInputText [(ngModel)]="MintrailingText" (change)="updateValue('slx','Min trailing step', MintrailingText)"/>
+             </div>
+             <div class="col-4">
+               <p-checkbox [binary]="true" inputId="binary" (onChange)="updateKeyValue('slx','keyk2', selectedOptionSLtriggerSLX)"></p-checkbox>
+               <label class="ml-2"
+                 >Trigge Price
+                 <i
+                   class="pi pi-question-circle ml-1 mr-1"
+                   style="font-size: 1rem"
+                 ></i>
+               </label>
+               <p-dropdown [options]="allTabCommon"  [(ngModel)]="selectedOptionSLtriggerSLX"  optionLabel="value"
+               (onChange)="updateValue('slx','keyk2', selectedOptionSLtriggerSLX)"> </p-dropdown>
+             </div>
+           </div>
+          
+        </div>
+       </div>
+
+       <div class="grid card mx-auto flex p-2 mt-3 info-view">
+       <div class="col-12 flex flex-row align-items-center">
+         <p-checkbox [binary]="true" inputId="binary"></p-checkbox>
+         <label class="ml-3"
+           >Order type
+           <i
+             class="pi pi-question-circle ml-1 mr-1"
+             style="font-size: 1rem" pTooltip="Order type"
+           ></i>
+         </label>
+         <div class="checkbox ml-5">
+           <label class="check_cont">
+             Virtual Floating
+             <input type="radio"  name="radio" (change)="showvirtual = true;" />
+             <span class="checkmark"></span>
+           </label>
+         </div>
+         <div class="checkbox ml-2">
+           <label class="check_cont">
+             Virtual Market
+             <input type="radio"  name="radio" (change)="showvirtual = false;" />
+             <span class="checkmark"></span>
+           </label>
+         </div>
+         <div class="checkbox ml-2">
+           <label class="check_cont">
+             Stop Market
+             <input type="radio" checked="checked" name="radio" (change)="showvirtual = false;" />
+             <span class="checkmark"></span>
+           </label>
+         </div>
+       </div>
+
+       <div class="grid pl-2 mt-2" *ngIf="showvirtual" style="width: 100%;">
+             
+        <div class="col-12 md:col-5">
+          <p-checkbox [binary]="true" inputId="binary" (onChange)="updateKeyValue('slx','Order trigger', selectedOptionSLtrigger)" ></p-checkbox>
+          <label class="ml-2">Order trigger<i class="pi pi-question-circle ml-2 " style="font-size: 1rem" pTooltip="Order trigger"></i></label>
+          <p-dropdown [options]="allTabCommon" optionLabel="name" optionLabel="value"  [(ngModel)]="selectedOptionSLtrigger"
+          (onChange)="updateValue('slx','Order trigger', selectedOptionSLtrigger)"> </p-dropdown>
+        </div>
+      </div>
+       </div>
+
+       <div class="grid card mx-auto flex p-2 mt-3 info-view">
+       <div class="col-12 flex flex-row align-items-center">
+         <p-checkbox [binary]="true" inputId="binary"></p-checkbox>
+         <label class="ml-3"
+           >CA Action
+           <i
+             class="pi pi-question-circle ml-1 mr-1"
+             style="font-size: 1rem" pTooltip="CA Action"
+           ></i>
+         </label>
+         <div class="checkbox ml-5">
+           <label class="check_cont">
+             Save
+             <input type="radio" checked="checked" name="radio" />
+             <span class="checkmark"></span>
+           </label>
+         </div>
+         <div class="checkbox ml-2">
+           <label class="check_cont">
+             Cancle
+             <input type="radio" checked="checked" name="radio" />
+             <span class="checkmark"></span>
+           </label>
+         </div>
+       </div>
+       </div>
+
+       <div class="grid p-3 col-12 flex flex-row mt-3 align-items-center">
+         <p-checkbox [binary]="true" inputId="binary"  (onChange)="updateKeyValue('slx','Check Profit', isSwitchOn8)"></p-checkbox>
+         <label class="ml-3"> Check Profit</label>
+         <i
+           class="pi pi-question-circle ml-1 mr-1"
+           style="font-size: 1rem" pTooltip=" Check Profit"
+         ></i>
+         <label class="switch ml-3">
+           <input type="checkbox" [(ngModel)]="isSwitchOn8" (change)="updateValue('slx','Check Profit', isSwitchOn8)"/>
+           <span class="slider round"></span>
+         </label>
+
+         <p-checkbox class="ml-4" [binary]="true" inputId="binary" (onChange)="updateKeyValue('slx','Update settings by signal', isSwitchOn)"></p-checkbox>
+         <label class="ml-3"> Update settings by signal</label>
+         <i
+           class="pi pi-question-circle ml-1 mr-1"
+           style="font-size: 1rem" pTooltip="Update settings by signal"
+         ></i>
+         <label class="switch ml-3">
+           <input type="checkbox" [(ngModel)]="isSwitchOn" (change)="updateValue('slx','Update settings by signal', isSwitchOn)" />
+           <span class="slider round"></span>
+         </label>
+       </div>
+   </p-tabPanel>
+
+   <p-tabPanel header="TP">
+     <div class="grid col-12 p-4 flex flex-row align-items-center">
+       <p-checkbox [binary]="true" inputId="binary" (onChange)="updateKeyValue('tp','Enabled', isSwitchOn9)"></p-checkbox>
+
+       <label class="m-2">Enable</label>
+       <label class="switch">
+         <input type="checkbox" [(ngModel)]="isSwitchOn9" (change)="updateValue('tp','Enabled', isSwitchOn9)"/>
+         <span class="slider round"></span>
+       </label>
+     </div>
+     <div class="grid card mx-auto flex p-2 mt-3 info-view">
+     <div class="col-12 flex flex-row  align-items-center  p-3">
+       <p-checkbox [binary]="true" inputId="binary"></p-checkbox>
+       <label class="ml-3"
+         >Order type
+         <i
+           class="pi pi-question-circle ml-1 mr-1"
+           style="font-size: 1rem" pTooltip="Order type" 
+         ></i>
+       </label>
+       <div class="checkbox ml-5">
+         <label class="check_cont">
+           Floating
+           <input type="radio" checked="checked" name="radio" (change)="showvirtual = false;"/>
+           <span class="checkmark"></span>
+         </label>
+       </div>
+       <div class="checkbox ml-2">
+         <label class="check_cont">
+           Market
+           <input type="radio"  name="radio" (change)="showvirtual = false;"/>
+           <span class="checkmark"></span>
+         </label>
+       </div>
+       <div class="checkbox ml-2">
+         <label class="check_cont">
+           Limit
+           <input type="radio"  name="radio" (change)="showvirtual = true;"/>
+           <span class="checkmark"></span>
+         </label>
+       </div>
+     </div>
+
+
+     <div class="grid pl-2 mt-2" *ngIf="showvirtual" style="width: 100%;">
+             
+       <div class="col-12 flex flex-row mt-3">
+         <div class="col-5">
+           <p-checkbox [binary]="true" inputId="binary" [(ngModel)]="TPbox" 
+           (onChange)="updateKeyValue('tp','Number of orders', TPtext)" ></p-checkbox>
+           <label class="ml-2"
+             >Number of orders
+             <i
+               class="pi pi-question-circle ml-1 mr-1"
+               style="font-size: 1rem"
+             ></i>
+           </label>
+           <input pInputText  [(ngModel)]="TPtext" (change)="updateValue('tp','Number of orders', TPtext)" />
+         </div>
+ 
+         <div class="col-5 flex flex-row align-items-center justify-content-center"
+         >
+         <p-checkbox [binary]="true" inputId="binary" (onChange)="updateKeyValue('tp','Rearrangement', isSwitchOn)"></p-checkbox>
+           <label class="ml-3">Rearrangement</label>
+           <i
+             class="pi pi-question-circle ml-1 mr-1"
+             style="font-size: 1rem"
+           ></i>
+           <label class="switch ">
+             <input type="checkbox" [(ngModel)]="isSwitchOn" (change)="updateValue('tp','Rearrangement', isSwitchOn)"/>
+             <span class="slider round"></span>
+           </label>
+         </div>
+       </div>
+    </div>
+   </div>
+     <!-- card 1 close -->
+     
+     <!-- card 2 close -->
+     <div class="grid flex flex-row info-view mt-3">
+       <div
+         class="grid col-12 flex flex-row align-items-center justify-content-around "
+       >
+         <div
+           class="col-1 flex"
+         >
+         <p-checkbox [binary]="true" inputId="binary"></p-checkbox>
+         </div>
+         <div
+           class="col-6 flex flex-row align-items-center"
+         >
+           <input pInputText />
+         </div>
+         <div
+           class="col-5 flex flex-row align-items-center"
+         >
+           <label>Amount. %</label>
+         </div>
+       </div>
+       <div
+         class="grid col-12 flex flex-row align-items-center justify-content-around"
+       >
+         <div class="col-1"></div>
+         <div class="col-6">
+           <input pInputText />
+         </div>
+         <div class="col-5">
+           <input pInputText />
+         </div>
+       </div>
+     </div>
+     <!-- card 3 close -->
+     <div class="grid flex my-5 px-2 align-items-center ">
+       <p-checkbox [binary]="true" inputId="binary" class="mr-1" (onChange)="updateKeyValue('tp','Update settings by signal', isSwitchOn10)"></p-checkbox>
+       <span>Update settings by signal <i class="pi pi-question-circle mr-1 " style="font-size: 1rem" pTooltip="Update settings by signal"></i></span>
+       <label class="switch">
+         <input type="checkbox" [(ngModel)]="isSwitchOn10" (change)="updateValue('tp','Update settings by signal', isSwitchOn10)"/>
+         <span class="slider round"></span>
+       </label>
+     </div>
+   </p-tabPanel>
+
+   </p-tabView>
+  
+  </div>
+   <!-- third col end -->
+</div>
+
+
+
+
+
+

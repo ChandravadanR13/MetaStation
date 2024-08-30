@@ -1,0 +1,99 @@
+
+
+
+
+.vid-contianer {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.app-container {
+  position: relative;
+  max-width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#myVideo {
+  // position: absolute;
+  // right: 0;
+  top: 0;
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.landing-head {
+  // position: absolute;
+  width: 786px;
+  height: 160px;
+  left: 106px;
+  // top: 299px;
+
+  font-family: "Euclid Circular A";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 60px;
+  line-height: 80px;
+  /* or 133% */
+
+  color: #ffffff;
+}
+
+.landing-sub-head {
+  // position: absolute;
+  margin-top: 20px;
+  width: 450px;
+  height: 64px;
+  left: 106px;
+  top: 505px;
+
+  font-family: "Euclid Circular A";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 32px;
+  /* or 133% */
+
+  letter-spacing: -0.05em;
+
+  color: #ffffff;
+}
+
+.info-div {
+  width: 95%;
+  display: flex;
+  margin: 10px 40px;
+}
+
+.info-img-container {
+  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.info-content-div {
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 7%;
+}
+
+
+.app-header {
+  height: 200px;
+}
+
+.side-bar-container {
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.07)),
+    linear-gradient(179.83deg, rgba(255, 255, 255, 0.1) -7.73%, rgba(12, 25, 58, 0.1) 119.55%);
+}
