@@ -1,0 +1,9 @@
+{
+    "/socket.io": {
+      "target": "https://stream.bybit.com",
+      "secure": true,
+      "changeOrigin": true,
+      "logLevel": "debug"
+    }
+  }
+  
